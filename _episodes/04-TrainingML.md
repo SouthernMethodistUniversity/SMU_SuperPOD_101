@@ -11,7 +11,7 @@ keypoints:
 ---
 # Supervised Learning training
 ## Train model using Linear Regression
-### Pre-processing data and create partition
+Pre-processing data and create partition
 ```r
 library(caret)
 data(airquality)
@@ -70,15 +70,58 @@ prediction2 <- predict(modFit2,testing)
 cor.test(prediction2,testing$Ozone)
 postResample(prediction2,testing$Ozone)
 ```
-Output is therefore better:
+Output is therefore better with smaller RMSE and higher Rsquared:
 ```r
 > postResample(prediction2,testing$Ozone)
       RMSE   Rsquared        MAE 
 24.3388752  0.5512334 16.5798881 
 ```
+## Train model using Stepwise Linear Regression
+This method uses Stepwise Linear Regression with AIC as the criterion.
+At the beginning, all inputs are being used and the AIC is computed.
+The for each subsequent iteration, one of the input data is droped based on its performance and the corresponding AIC is being computed.
+Once AIC reach minimum, the model stops.
+```r
+modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
+summary(modFit_SLR$finalModel)
 
+prediction_SLR <- predict(modFit_SLR,testing)
 
+cor.test(prediction_SLR,testing$Ozone)
+postResample(prediction_SLR,testing$Ozone)
+```
 
+```r
+> postResample(prediction_SLR,testing$Ozone)
+      RMSE   Rsquared        MAE 
+25.0004212  0.5239849 17.0977421 
+```
+
+## Train model using Principal Component Regression
+```r
+modFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
+summary(modFit_PCR$finalModel)
+
+prediction_PCR <- predict(modFit_PCR,testing)
+
+cor.test(prediction_PCR,testing$Ozone)
+postResample(prediction_PCR,testing$Ozone)
+```
+
+## Train model using Logistic Regression
+
+```r
+library(kernlab)
+data(spam)
+names(spam)
+
+indTrain <- createDataPartition(y=spam$type,p=0.6,list = FALSE)
+training <- spam[indTrain,]
+testing  <- spam[-indTrain,]
+
+ModFit_glm <- train(type~.,data=training,method="glm")
+summary(ModFit_glm$finalModel)
+```
 
 
 ## Tuning parameter using `trainControl`
