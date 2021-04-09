@@ -11,6 +11,8 @@ keypoints:
 ---
 
 ## What is Caret
+![image](https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png)
+
 The caret package (short for **C**lassification **A**nd **RE**gression **T**raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for:
 
 data splitting
@@ -26,6 +28,15 @@ The current release version can be found on CRAN and the project is hosted on gi
 Caret was developed by [Max Kuhn](https://topepo.github.io/caret/index.html)
 Here only touch some of the very basic command that is useful for our Machine Learning class.
 
+## Why using Caret
+- R has so many ML algorithms, challenge to keep track, different syntax for different packages
+- Possibly the biggest project in R
+- All in one supervised learning problem
+- Uniform interface
+- Standard pre & post processing
+
+![image](https://user-images.githubusercontent.com/43855029/114192809-e7611c80-991b-11eb-8142-7feaf6353e08.png)
+
 ## Install Caret
 In R console:
 ```r
@@ -40,3 +51,4 @@ Once installed, load the caret package to make sure that it works:
 library(caret)
 ```
 
+## Preprocessing using Caret
