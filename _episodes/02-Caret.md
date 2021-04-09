@@ -106,17 +106,23 @@ grid.arrange(plot1,plot2,nrow=2)
 
 ### Data partition: training and testing
 - In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
-- In usual practice, a typical sample size of training and testing set are 60% and 40%, respectively.
-- In the example below, we gonna use `airquality` data set. We will randomly pick 60% of data for traning and 40$ for testing. Here is the code:
+Here are some functions for spliting training/testing set in `caret`:
+
+- `createDataPartition`: create series of test/training partitions
+- `createResample` creates one or more bootstrap samples.
+- `createFolds` splits the data into k groups
+- `createTimeSlices` creates cross-validation split for series data. 
+-  `groupKFold` splits the data based on a grouping factor.
+
+In the example below, we gonna use `airquality` data set. We will randomly pick 60% of data for traning and 40$ for testing. Here is the code:
 ```r
-#Get row numbers for the training data based on dependent variable
-ind <- createDataPartition(y=DataImputeBag$Ozone,p=0.6,list=FALSE)
+ind <- createDataPartition(y=DataImputeBag$Ozone,p=0.6,list=FALSE,times=1)
 #list=FALSE, prevent returning result as a list
-#Create the training set
+#times: creates multiple splits at once. By default times = 1.
 training <- DataImputeBag[ind,]
-#Create the testing set
 testing   <- DataImputeBag[-ind,]
 ```
+
 
 ### Pre-processing with Transforming data
 #### Using Standardization
