@@ -90,6 +90,19 @@ PreImputeBag <- preProcess(airquality,method="bagImpute")
 DataImputeBag <- predict(PreImputeBag,airquality)
 ```
 In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
+`knnImpute` can also be used to normalized the data
+```r
+library(gridExtra)
+PreImpute <- preProcess(airquality[,-c(5,6)],method="knnImpute")
+TraImpute <- predict(PreImpute,airquality[,-c(5,6)])
+
+plot1 <- ggplot(airquality,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Original Probability")
+plot2 <- ggplot(TraImpute,aes(Ozone)) + geom_histogram(bins=30)+labs(title="KnnImpute Transform to Normal Distribution")
+grid.arrange(plot1,plot2,nrow=2)
+```
+![image](https://user-images.githubusercontent.com/43855029/114202025-cd780780-9924-11eb-999f-b89c9080cfdf.png)
+
+
 
 ### Data partition: training and testing
 - In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
@@ -135,3 +148,4 @@ library(gridExtra)
 grid.arrange(plot1,plot2,nrow=2)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
+
