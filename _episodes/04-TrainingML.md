@@ -270,6 +270,42 @@ confusionMatrix(predict_bag, testing$Species)
 plot(varImp(ModFit_bag))
 ```
 
+## Train model using Boosting
+Boosting is an approach to convert weak predictors to get stronger predictors.
+### Adaptive Boosting: Adaboost
+- Adaptive: weaker learners are tweaked by misclassify from previous classifier
+- AdaBoost is best used to boost the performance of decision trees on binary classification problems.
+- Better for classification rather than regression.
+- Sensitive to noise
+
+In the following example, we use the package `adabag`, not from `caret`
+
+```r
+library(adabag)
+
+ModFit_adaboost <- boosting(Species~.,data=training,mfinal = 10, coeflearn = "Breiman")
+importanceplot(ModFit_adaboost)
+predict_Ada <- predict(ModFit_adaboost,newdata=testing)
+confusionMatrix(testing$Species,as.factor(predict_Ada$class))
+```
+![image](https://user-images.githubusercontent.com/43855029/114237033-77b95480-9950-11eb-854d-fe4ae34dd2e1.png)
+
+You can see the weight of different predictors from boosting model
+
+### Gradient Boosting Machines: 
+- Extremely popular ML algorithm
+- Widely used in Kaggle competition
+- Ensemble of shallow and weak successive tree, with each tree learning and improving on the previous
+
+```r
+ModFit_GBM <- train(Species~.,data=training,method="gbm",verbose=FALSE)
+ModFit_GBM$finalModel
+predict_GBM <- predict(ModFit_GBM,newdata=testing)
+confusionMatrix(testing$Species,predict_GBM)
+```
+
+
+
 
 ## Tuning parameter using `trainControl`
 - One of the most important part of training ML models is tuning parameters. 
