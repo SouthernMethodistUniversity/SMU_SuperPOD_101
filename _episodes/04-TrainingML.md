@@ -66,10 +66,8 @@ Output is therefore better with smaller RMSE and higher Rsquared:
 24.3388752  0.5512334 16.5798881 
 ```
 ## Train model using Stepwise Linear Regression
-This method uses Stepwise Linear Regression with AIC as the criterion.
-At the beginning, all inputs are being used and the AIC is computed.
-The for each subsequent iteration, one of the input data is droped based on its performance and the corresponding AIC is being computed.
-Once AIC reach minimum, the model stops.
+It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:
+
 ```r
 modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
 summary(modFit_SLR$finalModel)
@@ -87,6 +85,9 @@ postResample(prediction_SLR,testing$Ozone)
 ```
 
 ## Train model using Principal Component Regression
+Linear Regression using the output of a Principal Component Analysis (PCA). 
+PCR is skillful when data has lots of highly correlated predictors
+
 ```r
 modFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
 summary(modFit_PCR$finalModel)
@@ -98,7 +99,14 @@ postResample(prediction_PCR,testing$Ozone)
 ```
 
 ## Train model using Logistic Regression
-For logistic regression, the output is binary/categorical. Therefore, we cannot use the `airquality` dataset.
+- Logistic regression is another technique borrowed by machine learning from the field of statistics. It is the go-to method for binary classification problems (problems with two class values).
+- Typical binary classification: True/False, Yes/No, Pass/Fail, Spam/No Spam, Male/Female
+- Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
+- The standard logistic function has formulation: ![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
+
+![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png)
+
+
 In this example, we use `spam` data set from package `kernlab`.
 This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
 More information on this data set can be found [here](https://rdrr.io/cran/kernlab/man/spam.html)
@@ -123,6 +131,64 @@ confusionMatrix(predictions, testing$type)
 ```
 
 ## Train model using Decision Tree
+-   Tree based learning algorithms are considered to be one of the best and mostly used supervised learning methods.
+-   Tree based methods empower predictive models with high accuracy, stability and ease of interpretation
+-   Non-parametric and non-linear relationships
+-   Types: Categorical and Continuous
+![image](https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png)
+
+### Spliting algorithm
+- Gini Impurity: (Categorical)
+- Chi-Square index (Categorical)
+- Cross-Entropy & Information gain (Categorical)
+- Reduction Variance (Continuous)
+
+### Pros & Cons
+![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png)
+
+### Implementation
+Here we will use `iris` data
+```r
+library(caret)
+data(iris)
+set.seed(123)
+indT <- createDataPartition(y=iris$Species,p=0.6,list=FALSE)
+training <- iris[indT,]
+testing  <- iris[-indT,]
+```
+Next we will train using `method="rpart"` with `gini` splitting algorithm:
+```r
+ModFit_rpart <- train(Species~.,data=training,method="rpart",
+                      parms = list(split = "gini"))
+# gini can be replaced by chisquare, entropy, information
+
+#fancier plot
+library(rattle)
+fancyRpartPlot(ModFit_rpart$finalModel)
+```
+![image](https://user-images.githubusercontent.com/43855029/114234603-ff04c900-994c-11eb-9999-0c5d5f85b76e.png)
+Apply decision tree model to predic output of testing data
+```r
+predict_rpart <- predict(ModFit_rpart,testing)
+confusionMatrix(predict_rpart, testing$Species)
+
+testing$PredRight <- predict_rpart==testing$Species
+ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
+  geom_point(aes(col=PredRight))
+```
+![image](https://user-images.githubusercontent.com/43855029/114234661-117f0280-994d-11eb-950f-d07ed91cda09.png)
+
+## Train model using Ensemble Approach
+Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
+Unlike a statistical ensemble in statistical mechanics, which is usually infinite, a machine learning ensemble consists of only a concrete finite set of alternative models, but typically allows for much more flexible structure to exist among those alternatives.
+Here we will be learning several ensemble models:
+- Random Forest
+- Bagging
+- Boosting with AdaBoost
+- Boosting with Gradient Boosting Machine
+
+
+- 
 
 
 ## Tuning parameter using `trainControl`
