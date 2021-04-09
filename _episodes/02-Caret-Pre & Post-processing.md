@@ -134,3 +134,30 @@ library(gridExtra)
 grid.arrange(plot1,plot2,nrow=2)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
+ 
+ ### Pre-processing as argument:
+ When using Preprocessing as argument in the training process in caret, the method is changed to preProcess, for example:
+```r
+modelFit2 <- train(Ozone~Temp,data=training,
+                  preProcess=c("center","scale","BoxCox"),
+                  method="lm")
+prediction2 <- predict(modelFit2,testing)
+```
+
+## Post-processing - Evaluate the test result
+Once getting the prediction coming out from Machine Learning training model, user is ready to evaluate the output with observed data from testing set.
+There are 2 main types of output: (1) Continuous data & (2) Discreet/Classification/Categorical data
+
+- For Regression with continuous data
+```r
+cor(prediction,testing)
+cor.test(prediction,testing)
+postResample(prediction,testing)
+```
+
+- For categorical data
+```r
+confusionMatrix(predict,testing)
+```
+
+We will discuss more in detail in the training section.
