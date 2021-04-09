@@ -10,22 +10,14 @@ keypoints:
 - "training option"
 ---
 
-# Simple Training using Linear Modeling algorithm
-```r
-modelFit <- train(y~x,data=training,method="lm")
-```
-Here, user can change the method to other algorithm with following abbreviation:
+## Train model using Linear Regression
 
-- Stepwise Linear Regression: `lmStepAIC`
-- Decision TreeL `rpart`
-- - Random Forest: `rf`
-- Generalized Linear Modeling: `glm` for Logistic Regression
-- Principal Component Regression: `pcr`
-- Bootstrap Aggregating: `treebag`, `bag`
-- Gradial Boosting Machines: `gbm`
-- Naive Bayes: `nb`
-- Linear Discriminant Analysis: `lda`
-- K-nearest neighbour: `knn`
-- Support Vector Machine: `svmLinear`
 
-There are many other algorithms, which we suggest user to read more in [caret page](https://topepo.github.io/caret/)
+
+
+## Tuning parameter using `trainControl`
+- One of the most important part of training ML models is tuning parameters. 
+- You can use the `trainControl` function to specify a number of parameters (including sampling parameters) in your model. 
+- The object that is outputted from trainControl will be provided as an argument for train.
+- `trainControl` is optional input. By default, it's gonna use bootstraping
+- 
