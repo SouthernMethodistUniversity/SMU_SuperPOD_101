@@ -1,12 +1,12 @@
-# FIXME Lesson title
+# Machine Learning using R
 
 This repository generates the corresponding course website based on the original templates
 from [The Carpentries](https://carpentries.org/).
 
 ## Maintainer(s)
 
-* Linh B. Ngo
+* Tue Vu
 
 ## Authors
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
+Tue Vu
