@@ -1,9 +1,9 @@
 ---
-title: "Data Slicing with caret"
+title: "Data Partition with caret"
 teaching: 20
 exercises: 0
 questions:
-- "What is Data slicing"
+- "What is Data Partition"
 objectives:
 - "Learn how to split data using caret"
 keypoints:
