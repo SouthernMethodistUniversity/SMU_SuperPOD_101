@@ -51,10 +51,60 @@ library(caret)
 
 ## Preprocessing using `caret`
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
-- Data partition: training and testing
-- Descriptive statistics
+- Visualize important variables
 - Preprocessing with missing value
 - Preprocessing: transform data
-- Visualize important variables
+- Data partition: training and testing
 
+### Visualize important variables
+Here we introduce the library `GGally`  with function `ggpairs` to help user in visualizing the input data
+```r
+library(GGally)
+ggpairs(data=iris,aes(colour=Species))
+```
+![image](https://user-images.githubusercontent.com/43855029/114196055-01e8c500-991f-11eb-8eaf-816f25e6c534.png)
+
+### Preprocessing with missing value
+- Most of the time the input data has missing values (`NA, NaN, Inf`) due to data collection issue (power, sensor, personel). 
+- There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency
+- These missing values need to be treated/cleaned before we can use because "Garbage in => Garbage out".
+- There are several ways to treat the missing values:
+- Method 1: remove all missing `NA` values
+```r
+library(base)
+data("airquality") # Here we use this sample data because it contains missing value
+new_airquality1 <- na.omit(airquality)
+``` 
+- Method 2: Set `NA` to mean value 
+```r
+NA2mean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
+new_airquality2 <-replace(airquality, TRUE, lapply(airquality, NA2mean))
+```
+- Method 3: Use `Impute` to handle missing values
+In statistics, imputation is the process of replacing missing data with substituted values. Because missing data can create problems for analyzing data, imputation is seen as a way to avoid pitfalls involved with listwise deletion of cases that have missing values. That is to say, when one or more values are missing for a case, most statistical packages default to discarding any case that has a missing value, which may introduce bias or affect the representativeness of the results. Imputation preserves all cases by replacing missing data with an estimated value based on other available information. Once all missing values have been imputed, the data set can then be analysed using standard techniques for complete data. There have been many theories embraced by scientists to account for missing data but the majority of them introduce bias. A few of the well known attempts to deal with missing data include: hot deck and cold deck imputation; listwise and pairwise deletion; mean imputation; non-negative matrix factorization; regression imputation; last observation carried forward; stochastic imputation; and multiple imputation.
+
+Here we use `preProcess` function from `caret` to perform `bagImpute` (Bootstrap Aggregation Imputation):
+```r
+PreImputeBag <- preProcess(airquality,method="bagImpute")
+DataImputeBag <- predict(PreImputeBag,airquality)
+```
+
+### Data partition: training and testing
+- In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
+- In usual practice, a typical sample size of training and testing set are 60% and 40%, respectively.
+- In the example below, we gonna use `iris` data set. We will randomly pick 60% of data for traning and 40$ for testing. Here is the code:
+```r
+rm(list=ls())
+library(caret)
+data(iris)
+#create seed
+set.seed(1234)
+#Get row numbers for the training data based on dependent variable
+ind <- createDataPartition(y=iris$Species,p=0.6,list=FALSE)
+#list=FALSE, prevent returning result as a list
+#Create the training set
+training_iris <- iris[ind,]
+#Create the testing set
+testing_iris   <- iris[-ind,]
+```
 
