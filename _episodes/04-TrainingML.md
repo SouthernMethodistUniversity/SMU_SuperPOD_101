@@ -98,7 +98,12 @@ postResample(prediction_PCR,testing$Ozone)
 ```
 
 ## Train model using Logistic Regression
+For logistic regression, the output is binary/categorical. Therefore, we cannot use the `airquality` dataset.
+In this example, we use `spam` data set from package `kernlab`.
+This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
+More information on this data set can be found [here](https://rdrr.io/cran/kernlab/man/spam.html)
 
+Train the model:
 ```r
 library(kernlab)
 data(spam)
@@ -111,6 +116,13 @@ testing  <- spam[-indTrain,]
 ModFit_glm <- train(type~.,data=training,method="glm")
 summary(ModFit_glm$finalModel)
 ```
+Predict based on testing data and evaluate model output:
+```r
+predictions <- predict(ModFit_glm,testing)
+confusionMatrix(predictions, testing$type)
+```
+
+## Train model using Decision Tree
 
 
 ## Tuning parameter using `trainControl`
