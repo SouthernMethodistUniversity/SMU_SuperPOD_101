@@ -38,17 +38,6 @@ prediction <- predict(ModFit,testing)
 cor.test(prediction,testing$Ozone)
 postResample(prediction,testing$Ozone)
 ```
-Plot result
-```r
-output <- cbind(testing$Ozone,prediction)
-colnames(output) <- c("obs","sim")
-noutput <- as.data.frame(output)
-ggplot(noutput,aes(obs,sim))+
-    geom_point(color='darkblue',size=4,)+
-    geom_smooth(method="lm",se=TRUE)+
-    ggtitle("Linear Regression between obs and sim Ozone")
-```
-![image](https://user-images.githubusercontent.com/43855029/114227177-a0d2e880-9942-11eb-893d-ec598992b8e4.png)
 
 ## Train model using Multi-Linear Regression
 From the above model, the `postResample` only show the reasonable result:
