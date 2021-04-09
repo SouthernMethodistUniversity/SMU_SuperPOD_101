@@ -49,7 +49,7 @@ Once installed, load the caret package to make sure that it works:
 library(caret)
 ```
 
-## Preprocessing using `caret`
+## Pre-processing using `caret`
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
 - Visualize important variables
 - Preprocessing with missing value
@@ -64,7 +64,7 @@ ggpairs(data=iris,aes(colour=Species))
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114196055-01e8c500-991f-11eb-8eaf-816f25e6c534.png)
 
-### Preprocessing with missing value
+### Pre-processing with missing value
 - Most of the time the input data has missing values (`NA, NaN, Inf`) due to data collection issue (power, sensor, personel). 
 - There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency
 - These missing values need to be treated/cleaned before we can use because "Garbage in => Garbage out".
@@ -102,8 +102,6 @@ grid.arrange(plot1,plot2,nrow=2)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114202025-cd780780-9924-11eb-999f-b89c9080cfdf.png)
 
-
-
 ### Data partition: training and testing
 - In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
 - In usual practice, a typical sample size of training and testing set are 60% and 40%, respectively.
@@ -118,7 +116,7 @@ training <- DataImputeBag[ind,]
 testing   <- DataImputeBag[-ind,]
 ```
 
-### Preprocessing with Transforming data
+### Pre-processing with Transforming data
 #### Using Standardization
 - Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units for example: rainfall (0-1000mm), temperature (-10 to 40oC), humidity (0-100%), etc.
 - These differences in the ranges of initial features causes trouble to many machine learning models. For example, for the models that are based on distance computation, if one of the features has a broad range of values, the distance will be governed by this particular feature.
@@ -148,4 +146,40 @@ library(gridExtra)
 grid.arrange(plot1,plot2,nrow=2)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
+
+## Train and Predict Machine Learning using `caret`
+There are many different ML model built-in to `caret`. In this chapter, we only use the simplest Linear Modeling model. For other ML, user can see in next chapter.
+```r
+#Training
+modelFit <- train(Ozone~Temp,data=training,method="lm")
+modelFit$finalModel
+#Compute output based on built model and testing data
+prediction <- predict(modelFit,testing)
+```
+
+## Train and Predict ML model with preProcess as argument
+When using Preprocessing as argument in the training process in caret, the method is changed to preProcess, for example:
+```r
+modelFit2 <- train(Ozone~Temp,data=training,
+                  preProcess=c("center","scale","BoxCox"),
+                  method="lm")
+# Or preProcess="BoxCox","knnImpute",""
+prediction2 <- predict(modelFit2,testing)
+```
+There are more advance parsing argument to Preprocess data, which will not be covered in this tutorial.
+
+## Post-proceesing: Evaluate test result
+For Regression with continuous data, using `postResample`
+```r
+cor(prediction,testing$Ozone)
+cor.test(prediction,testing$Ozone)
+postResample(prediction,testing$Ozone)
+```
+
+For discreet or classification data, using `confusionMatrix`
+```r
+ModFit_iris <- train(Species~Petal.Length,data=training_iris,method="rf")
+predict_iris  <- predict(ModFit_iris,testing_iris)
+confusionMatrix(predict_iris,testing_iris$Species)
+```
 
