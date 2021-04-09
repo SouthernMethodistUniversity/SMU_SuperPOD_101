@@ -104,9 +104,15 @@ grid.arrange(plot1,plot2,nrow=2)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114202025-cd780780-9924-11eb-999f-b89c9080cfdf.png)
 
+**Note** 
+`bagImpute` is more powerful and computational cost than `knnImpute`
+
 ### Pre-processing with Transforming data
 #### Using Standardization
+![image](https://user-images.githubusercontent.com/43855029/114231774-df6ba180-9948-11eb-9c61-3d2e0d3df889.png)
+
 - Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units for example: rainfall (0-1000mm), temperature (-10 to 40oC), humidity (0-100%), etc.
+- Standardition Convert all independent variables into the same scale (mean=0, std=1) 
 - These differences in the ranges of initial features causes trouble to many machine learning models. For example, for the models that are based on distance computation, if one of the features has a broad range of values, the distance will be governed by this particular feature.
 - The example below use data from above:
 ```r
