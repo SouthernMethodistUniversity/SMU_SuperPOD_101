@@ -28,6 +28,8 @@ The current release version can be found on CRAN and the project is hosted on gi
 Caret was developed by [Max Kuhn](https://topepo.github.io/caret/index.html)
 Here only touch some of the very basic command that is useful for our Machine Learning class.
 
+[caret cheatsheet](https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf)
+
 ## Why using Caret
 - R has so many ML algorithms, challenge to keep track, different syntax for different packages
 - Possibly the biggest project in R
