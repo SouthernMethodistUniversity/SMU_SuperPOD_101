@@ -35,9 +35,7 @@ Here only touch some of the very basic command that is useful for our Machine Le
 - Uniform interface
 - Standard pre & post processing
 
-![image](https://user-images.githubusercontent.com/43855029/114192809-e7611c80-991b-11eb-8142-7feaf6353e08.png)
-
-## Install Caret
+## Install `caret`
 In R console:
 ```r
 install.packages("caret", dependencies = c("Depends", "Suggests"))
@@ -51,4 +49,12 @@ Once installed, load the caret package to make sure that it works:
 library(caret)
 ```
 
-## Preprocessing using Caret
+## Preprocessing using `caret`
+There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
+- Data partition: training and testing
+- Descriptive statistics
+- Preprocessing with missing value
+- Preprocessing: transform data
+- Visualize important variables
+
+
