@@ -85,26 +85,53 @@ In statistics, imputation is the process of replacing missing data with substitu
 
 Here we use `preProcess` function from `caret` to perform `bagImpute` (Bootstrap Aggregation Imputation):
 ```r
+library(caret)
 PreImputeBag <- preProcess(airquality,method="bagImpute")
 DataImputeBag <- predict(PreImputeBag,airquality)
 ```
+In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
 
 ### Data partition: training and testing
 - In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
 - In usual practice, a typical sample size of training and testing set are 60% and 40%, respectively.
-- In the example below, we gonna use `iris` data set. We will randomly pick 60% of data for traning and 40$ for testing. Here is the code:
+- In the example below, we gonna use `airquality` data set. We will randomly pick 60% of data for traning and 40$ for testing. Here is the code:
 ```r
-rm(list=ls())
-library(caret)
-data(iris)
-#create seed
-set.seed(1234)
 #Get row numbers for the training data based on dependent variable
-ind <- createDataPartition(y=iris$Species,p=0.6,list=FALSE)
+ind <- createDataPartition(y=DataImputeBag$Ozone,p=0.6,list=FALSE)
 #list=FALSE, prevent returning result as a list
 #Create the training set
-training_iris <- iris[ind,]
+training <- DataImputeBag[ind,]
 #Create the testing set
-testing_iris   <- iris[-ind,]
+testing   <- DataImputeBag[-ind,]
 ```
 
+### Preprocessing with Transforming data
+#### Using Standardization
+- Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units for example: rainfall (0-1000mm), temperature (-10 to 40oC), humidity (0-100%), etc.
+- These differences in the ranges of initial features causes trouble to many machine learning models. For example, for the models that are based on distance computation, if one of the features has a broad range of values, the distance will be governed by this particular feature.
+- The example below use data from above:
+```r
+PreStd <- preProcess(training[,-c(1,5,6)],method=c("center","scale")) 
+TrainStd <- predict(PreStd,training[,-c(1,5,6)])
+apply(TrainStd,2,mean)
+apply(TrainStd,2,sd)
+
+TestStd <- predict(PreStd,testing[,-c(1,5,6)])
+apply(TestStd,2,mean)
+apply(TestStd,2,sd)
+```
+
+#### Using Box-Cox Transformation
+- A Box Cox transformation is a transformation of a non-normal dependent variables into a normal shape. 
+- Normality is an important assumption for many statistical techniques; if your data isn’t normal, applying a Box-Cox means that you are able to run a broader number of tests.
+- The Box Cox transformation is named after statisticians George Box and Sir David Roxbee Cox who collaborated on a 1964 paper and developed the technique.
+```r
+PreBxCx <- preProcess(training[,-c(5,6)],method="BoxCox")
+TrainBxCx <- predict(PreBxCx,training[,-c(5,6)])
+
+plot1 <- ggplot(training,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Original Probability")
+plot2 <- ggplot(TrainBxCx,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Box-Cox Transform to Normal")
+library(gridExtra)
+grid.arrange(plot1,plot2,nrow=2)
+```
+![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
