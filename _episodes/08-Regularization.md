@@ -24,14 +24,15 @@ keypoints:
 
 => in which: β represents the coefficient estimates for different variables or predictors(x)
 
-- The fitting procedure involves a loss function, known as residual sum of squares or RSS. 
-The coefficients are chosen, such that they minimize this loss function.
+The residual sum of squares **RSS** is the loss function of the fitting procedure.
+And we need to determine the optimal coefficients 𝛽 to minimize the loss function
 
-![image](https://user-images.githubusercontent.com/43855029/114417549-af5a1380-9b7f-11eb-9e5e-b0048fc38e71.png)
+![image](https://user-images.githubusercontent.com/43855029/114417635-c39e1080-9b7f-11eb-8465-cbb9e0dff39e.png)
 
+This procedure will adjust the 𝛽 based on the training data. 
+If there is any noise in training data, the model will not perform well for testing data. Thus, Regularization comes in and regularizes/shrinkage these 𝛽 towards zero.
 
-
-There are 3 main types of Regularization. Please see details in [here](https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a)
+There are 3 main types of Regularization. 
 - Ridge Regression
 - LASSO
 - Elastics Nets
