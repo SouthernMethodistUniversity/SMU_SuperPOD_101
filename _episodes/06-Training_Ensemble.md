@@ -1,3 +1,15 @@
+---
+title: "Training Machine Learning model using Ensemble approach"
+teaching: 20
+exercises: 0
+questions:
+- "How to overcome limitation of single ML model?"
+objectives:
+- "Learn to use different Ensemble ML algorithm for Machine Learning training"
+keypoints:
+- "Bagging, Boosting"
+---
+
 ## Train model using Ensemble Approach
 Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
 Unlike a statistical ensemble in statistical mechanics, which is usually infinite, a machine learning ensemble consists of only a concrete finite set of alternative models, but typically allows for much more flexible structure to exist among those alternatives.
