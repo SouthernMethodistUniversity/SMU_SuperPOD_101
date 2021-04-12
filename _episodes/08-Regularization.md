@@ -22,14 +22,14 @@ keypoints:
 - A simple Multi-Linear Regression look like this:
 ![image](https://user-images.githubusercontent.com/43855029/114416230-766d6f00-9b7e-11eb-800b-2b7a65782859.png)
 
-=> in which: β represents the coefficient estimates for different variables or predictors(x)
+=> in which: **β** represents the coefficient estimates for different variables or predictors(x)
 
 The residual sum of squares **RSS** is the loss function of the fitting procedure.
-And we need to determine the optimal coefficients 𝛽 to minimize the loss function
+And we need to determine the optimal coefficients **𝛽** to minimize the loss function
 
 ![image](https://user-images.githubusercontent.com/43855029/114417635-c39e1080-9b7f-11eb-8465-cbb9e0dff39e.png)
 
-This procedure will adjust the 𝛽 based on the training data. 
+This procedure will adjust the **β** based on the training data. 
 If there is any noise in training data, the model will not perform well for testing data. Thus, Regularization comes in and regularizes/shrinkage these 𝛽 towards zero.
 
 There are 3 main types of Regularization. 
@@ -75,4 +75,29 @@ plot(cvfit_Ridge)
 
 log(cvfit_Ridge$lambda.min)
 log(cvfit_Ridge$lambda.1se)
+coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)
 ```
+![image](https://user-images.githubusercontent.com/43855029/114437356-70828880-9b94-11eb-9463-ca9d33b20746.png)
+
+The plot shows the Mean Square Error based on training model with **𝜆** variation. Top of the chart shows number of predictors used.
+There are 2 **𝜆** valuesL (1) **𝜆** min which can be computed using log(cvfit_Ridge$lambda.min) and (2) **𝜆** 1se (1 standard error from min value) which can be computed using log(cvfit_Ridge$lambda.1se)
+The **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)`
+
+```r
+Fit_Ridge <- glmnet(x,y,alpha=0,standardize = TRUE)
+plot_glmnet(Fit_Ridge,label=TRUE,xvar="lambda",
+            col=seq(1,8),grid.col = 'lightgray')
+
+xtest <- testing[,-c(9,10)]
+xtest <- as.matrix(xtest)
+predict_Ridge <- predict(cvfit_Ridge,newx=xtest,s="lambda.1se")
+cor.test(predict_Ridge,testing$lpsa)
+postResample(predict_Ridge,testing$lpsa)
+```
+
+![image](https://user-images.githubusercontent.com/43855029/114437734-ef77c100-9b94-11eb-94ac-df2794777c81.png)
+
+The plot shows different coefficients for all predictors with **𝜆** variation.
+Using **𝜆.1se**, we obtain reasonable result.
+
+
