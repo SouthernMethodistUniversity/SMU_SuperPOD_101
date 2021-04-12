@@ -38,7 +38,8 @@ There are 3 main types of Regularization.
 - Elastics Nets
 
 ### Ridge Regression
-![image](https://user-images.githubusercontent.com/43855029/114420842-b171a180-9b82-11eb-92a8-16c873b564c7.png)
+![image](https://user-images.githubusercontent.com/43855029/114440609-58ad0380-9b98-11eb-8dd5-643428f60c31.png)
+
 **𝜆**: Regularization Penalty, to be selected that the model minimized the error
 
 The Ridge Regression loss function contains 2 elements: (1) RSS is actually the Ordinary Least Square (OLS) function for MLR and (2) The regularization term with **𝜆**:
@@ -91,7 +92,6 @@ plot_glmnet(Fit_Ridge,label=TRUE,xvar="lambda",
 
 xtest <- testing[,-c(9,10)]
 xtest <- as.matrix(xtest)
-predict_Ridge <- predict(cvfit_Ridge,newx=xtest,s="lambda.1se")
 ```
 
 ![image](https://user-images.githubusercontent.com/43855029/114437734-ef77c100-9b94-11eb-94ac-df2794777c81.png)
@@ -100,6 +100,7 @@ The plot shows different coefficients for all predictors with **𝜆** variation
 Using **𝜆.1se**, we obtain reasonable result.
 
 ```r
+> predict_Ridge <- predict(cvfit_Ridge,newx=xtest,s="lambda.1se")
 > cor.test(predict_Ridge,testing$lpsa)
 
 	Pearson's product-moment correlation
@@ -117,5 +118,9 @@ sample estimates:
      RMSE  Rsquared       MAE 
 0.7365551 0.5240725 0.5499648
 ```
+- Ridge Regression's pros: the pros of RR method over OLS is rooted in the bias variance trade-off. As when **𝜆** increases, the flexibility of RR fit decreases, hence decrease the variance but increase the bias
+- Ridge Regression's cons: **β** never be 0, so all predictors are included in the final model. Therefore, it is not good for best feature selection.
 
+### LASSO: Least Absolute Shrinkage & Selection Operator
+![image](https://user-images.githubusercontent.com/43855029/114440016-a4ab7880-9b97-11eb-8a57-b112cd78f785.png)
 
