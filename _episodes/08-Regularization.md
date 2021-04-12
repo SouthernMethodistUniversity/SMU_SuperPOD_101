@@ -92,13 +92,30 @@ plot_glmnet(Fit_Ridge,label=TRUE,xvar="lambda",
 xtest <- testing[,-c(9,10)]
 xtest <- as.matrix(xtest)
 predict_Ridge <- predict(cvfit_Ridge,newx=xtest,s="lambda.1se")
-cor.test(predict_Ridge,testing$lpsa)
-postResample(predict_Ridge,testing$lpsa)
 ```
 
 ![image](https://user-images.githubusercontent.com/43855029/114437734-ef77c100-9b94-11eb-94ac-df2794777c81.png)
 
 The plot shows different coefficients for all predictors with **𝜆** variation.
 Using **𝜆.1se**, we obtain reasonable result.
+
+```r
+> cor.test(predict_Ridge,testing$lpsa)
+
+	Pearson's product-moment correlation
+
+data:  predict_Ridge and testing$lpsa
+t = 5.5527, df = 28, p-value = 6.138e-06
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4919694 0.8599222
+sample estimates:
+      cor 
+0.7239285 
+
+> postResample(predict_Ridge,testing$lpsa)
+     RMSE  Rsquared       MAE 
+0.7365551 0.5240725 0.5499648
+```
 
 
