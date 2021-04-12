@@ -59,15 +59,6 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114234661-117f0280-994d-11eb-950f-d07ed91cda09.png)
 
-## Train model using Ensemble Approach
-Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
-Unlike a statistical ensemble in statistical mechanics, which is usually infinite, a machine learning ensemble consists of only a concrete finite set of alternative models, but typically allows for much more flexible structure to exist among those alternatives.
-Here we will be learning several ensemble models:
-- Random Forest
-- Bagging
-- Boosting with AdaBoost
-- Boosting with Gradient Boosting Machine
-
 ## Train model using Random Forest
 - Random Forest is considered to be a panacea of all data science problems. On a funny note, when you can’t think of any algorithm (irrespective of situation), use random forest!
 - Opposite to Decision Tree, Random Forest use bootstrapping technique to grow multiple tree
