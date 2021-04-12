@@ -146,3 +146,17 @@ coef(cvfit_LASSO,s=cvfit_LASSO$lambda.1se)
 - Top of the chart shows number of predictors used. Now instead of showing all **8** predictors as in Ridge Regression, LASSO shows the different number of predictors as MSE values change. 
 - Similar to RR, there are 2 **𝜆** values: (1) **𝜆.min** which can be computed using `log(cvfit_LASSO$lambda.min)` and (2) **𝜆.1se** (1 standard error from min value) which can be computed using `log(cvfit_LASSO$lambda.1se)`
 - The corresponding **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_LASSO$lambda.1se) or coef(cvfit_LASSO,s=cvfit_Ridge$lambda.min) `
+
+```r
+Fit_LASSO <- glmnet(x,y,alpha=1)
+plot_glmnet(Fit_LASSO,label=TRUE,xvar="lambda",
+            col=seq(1,8),,grid.col = 'lightgray')
+```
+![image](https://user-images.githubusercontent.com/43855029/114453819-e80de300-9ba7-11eb-876c-fba761a277ef.png)
+The plot shows different coefficients for all predictors with **𝜆** variation. Depending on **𝜆** values that the **β** varying and it can be 0 at certain point.
+
+Using **𝜆.1se**, we obtain reasonable result:
+```r
+predict_LASSO <- predict(cvfit_LASSO,newx=xtest,s="lambda.1se")
+postResample(predict_LASSO,testing$lpsa)
+```
