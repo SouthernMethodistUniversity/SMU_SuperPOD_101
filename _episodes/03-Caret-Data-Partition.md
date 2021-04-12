@@ -39,7 +39,7 @@ The procedure has a single parameter called k that refers to the number of group
 ![image](https://user-images.githubusercontent.com/43855029/114211785-103edd00-992f-11eb-89d0-bbd7bd0c0178.png)
 ```r
 train_fold <- createFolds(y=iris$Species,k=10,list=TRUE,returnTrain=TRUE)
-testi_fold  <- createFolds(y=iris$Species,k=10,list=TRUE,returnTrain=FALSE)
+test_fold  <- createFolds(y=iris$Species,k=10,list=TRUE,returnTrain=FALSE)
 sapply(train_fold,length)
 sapply(test_fold,length)
 train_fold1 <- iris[train_fold$Fold01,]
