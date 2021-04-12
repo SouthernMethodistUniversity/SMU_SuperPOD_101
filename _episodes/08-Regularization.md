@@ -44,6 +44,35 @@ There are 3 main types of Regularization.
 The Ridge Regression loss function contains 2 elements: (1) RSS is actually the Ordinary Least Square (OLS) function for MLR and (2) The regularization term with **𝜆**:
 
 ![image](https://user-images.githubusercontent.com/43855029/114422155-04982400-9b84-11eb-9f87-65a3d7aec3f3.png)
-
+- Selecting good **𝜆** is essential. In this case, Cross Validation method should be used
+- Ridge Regression enforces **β** to be lower but not 0. By doing so, it will not get rid of irrelevant features but rather minimize their impact on the trained model.
+- It is good practice to normalize predictors to the same sacle before performing Ridge Regression (Because in OLS, the coefficients are scale equivalent)
 
 ### Implementation
+Setting up training/testing model:
+```r
+library(caret)
+library(ElemStatLearn)
+data(prostate)
+set.seed(123)
+indT <- which(prostate$train==TRUE)
+training <- prostate[indT,]
+testing  <- prostate[-indT,]
+
+library(PerformanceAnalytics)
+chart.Correlation(training[,-10])
+```
+Predict using Ridge Regression method:
+```r
+library(glmnet)
+library(plotmo)
+y <- training$lpsa
+x <- training[,-c(9,10)]
+x <- as.matrix(x)
+
+cvfit_Ridge    <- cv.glmnet(x,y,alpha=0)
+plot(cvfit_Ridge)
+
+log(cvfit_Ridge$lambda.min)
+log(cvfit_Ridge$lambda.1se)
+```
