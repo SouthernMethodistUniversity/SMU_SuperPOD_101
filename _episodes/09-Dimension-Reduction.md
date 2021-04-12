@@ -38,3 +38,67 @@ in which, the covariance value between 2 data sets can be computed as:
 **Eigenvector with the largest eigenvalue forms the first principal component of the data set
 … and so on …***
 
+### Implementation
+#### Compute PCA using eigenvector:
+```r
+library(PerformanceAnalytics)
+data(mtcars)
+#Ignore vs & am (PCA works good with numeric data )
+datain <- mtcars[,c(1:7,10:11)]
+chart.Correlation(datain)
+cin <- cov(scale(datain))
+ein <- eigen(cin)
+newpca <-   -scale(datain) %*% ein$vectors
+```
+
+#### Compute PCA using built-in function:
+```r
+mtcars.pca <- prcomp(datain,center=TRUE,scale=TRUE)
+summary(mtcars.pca)
+```
+
+#### A nice way to plot PCA:
+Install `ggbiplot` package:
+```r
+library(devtools)
+install_github("vqv/ggbiplot")
+``` 
+
+```r
+library(ggbiplot)
+ggbiplot(mtcars.pca)
+ggbiplot(mtcars.pca, labels=rownames(mtcars))
+ggbiplot(mtcars.pca,ellipse=TRUE,  labels=rownames(mtcars))
+
+mtcars.country <- c(rep("Japan", 3), rep("US",4), rep("Europe", 7),rep("US",3), "Europe", rep("Japan", 3), rep("US",4), rep("Europe", 3), "US", rep("Europe", 3))
+
+ggbiplot(mtcars.pca,ellipse=TRUE,labels=rownames(mtcars),groups = mtcars.country)
+```
+![image](https://user-images.githubusercontent.com/43855029/114462147-aa618800-9bb0-11eb-8123-919e89fdfc0c.png)
+
+#### Application of PCA model in Machine Learning:
+
+```r
+data(mtcars)
+set.seed(123)
+datain <- mtcars[,c(1:7,10:11)]
+
+indT <- createDataPartition(y=datain$mpg,p=0.6,list=FALSE)
+training <- datain[indT,]
+testing  <- datain[-indT,]
+
+preProc <- preProcess(training[,-1],method="pca",pcaComp = 1)
+trainPC <- predict(preProc,training[,-1])
+testPC  <- predict(preProc,testing[,-1])
+
+traindat<- cbind(training$mpg,trainPC)
+testdat <- cbind(testing$mpg,testPC)
+
+names(traindat) <- c("mpg","PC1")
+names(testdat)  <- names(traindat) 
+
+modFitPC<- train(mpg~.,method="lm",data=traindat)
+
+predictand <- predict(modFitPC,testdat)
+postResample(testing$mpg,as.vector(predictand))
+```
