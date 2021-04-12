@@ -37,4 +37,13 @@ There are 3 main types of Regularization.
 - LASSO
 - Elastics Nets
 
+### Ridge Regression
+![image](https://user-images.githubusercontent.com/43855029/114420842-b171a180-9b82-11eb-92a8-16c873b564c7.png)
+**𝜆**: Regularization Penalty, to be selected that the model minimized the error
+
+The Ridge Regression loss function contains 2 elements: (1) RSS is actually the Ordinary Least Square (OLS) function for MLR and (2) The regularization term with **𝜆**:
+
+![image](https://user-images.githubusercontent.com/43855029/114422155-04982400-9b84-11eb-9f87-65a3d7aec3f3.png)
+
+
 ### Implementation
