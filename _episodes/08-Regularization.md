@@ -27,7 +27,9 @@ keypoints:
 - The fitting procedure involves a loss function, known as residual sum of squares or RSS. 
 The coefficients are chosen, such that they minimize this loss function.
 
-![image](https://user-images.githubusercontent.com/43855029/114342821-92dfbc00-9b2a-11eb-8ddd-5337ef9b92a6.png)
+![image](https://user-images.githubusercontent.com/43855029/114417549-af5a1380-9b7f-11eb-9e5e-b0048fc38e71.png)
+
+
 
 There are 3 main types of Regularization. Please see details in [here](https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a)
 - Ridge Regression
