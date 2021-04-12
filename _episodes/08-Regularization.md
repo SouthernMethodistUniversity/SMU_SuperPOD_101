@@ -157,6 +157,8 @@ The plot shows different coefficients for all predictors with **𝜆** variation
 
 Using **𝜆.1se**, we obtain reasonable result:
 ```r
-predict_LASSO <- predict(cvfit_LASSO,newx=xtest,s="lambda.1se")
-postResample(predict_LASSO,testing$lpsa)
+> predict_LASSO <- predict(cvfit_LASSO,newx=xtest,s="lambda.1se")
+> postResample(predict_LASSO,testing$lpsa)
+     RMSE  Rsquared       MAE 
+0.6783357 0.6096333 0.5030956 
 ```
