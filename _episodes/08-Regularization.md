@@ -47,9 +47,10 @@ The Ridge Regression loss function contains 2 elements: (1) RSS is actually the 
 ![image](https://user-images.githubusercontent.com/43855029/114422155-04982400-9b84-11eb-9f87-65a3d7aec3f3.png)
 - Selecting good **𝜆** is essential. In this case, Cross Validation method should be used
 - Ridge Regression enforces **β** to be lower but not 0. By doing so, it will not get rid of irrelevant features but rather minimize their impact on the trained model.
+- In statistics the coefficient esimated produced by this method is know as **L2 norm**
 - It is good practice to normalize predictors to the same sacle before performing Ridge Regression (Because in OLS, the coefficients are scale equivalent)
 
-### Implementation
+#### Implementation
 Setting up training/testing model:
 ```r
 library(caret)
@@ -83,7 +84,7 @@ coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)
 - The plot shows the Mean Square Error based on training model with **𝜆** variation. 
 - Top of the chart shows number of predictors used.
 - There are 2 **𝜆** values: (1) **𝜆.min** which can be computed using `log(cvfit_Ridge$lambda.min)` and (2) **𝜆.1se** (1 standard error from min value) which can be computed using `log(cvfit_Ridge$lambda.1se)`
-- The **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)`
+- The **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se) or coef(cvfit_Ridge,s=cvfit_Ridge$lambda.min)`
 
 ```r
 Fit_Ridge <- glmnet(x,y,alpha=0,standardize = TRUE)
@@ -126,3 +127,22 @@ sample estimates:
 
 - In order to overcome the cons issue in Ridge Regression, the LASSO is introduced with the similar shrinkage parameter, but the different is not in square term of the coefficient but only absolute value
 - Similar to Ridge Regression, LASSO also shrink the coefficient, but **force** coefficients to be equal to 0. Making it ability to perform **feature selection**
+- In statistics the coefficient esimated produced by this method is know as **L1 norm**
+
+#### Implementation 
+```r
+cvfit_LASSO    <- cv.glmnet(x,y,alpha=1)
+plot(cvfit_LASSO)
+
+log(cvfit_LASSO$lambda.min)
+log(cvfit_LASSO$lambda.1se)
+
+coef(cvfit_LASSO,s=cvfit_LASSO$lambda.min)
+coef(cvfit_LASSO,s=cvfit_LASSO$lambda.1se)
+```
+![image](https://user-images.githubusercontent.com/43855029/114452867-eb549f00-9ba6-11eb-9cb4-fddb2a3d69c2.png)
+
+- The plot shows the Mean Square Error based on training model with **𝜆** variation. 
+- Top of the chart shows number of predictors used. Now instead of showing all **8** predictors as in Ridge Regression, LASSO shows the different number of predictors as MSE values change. 
+- Similar to RR, there are 2 **𝜆** values: (1) **𝜆.min** which can be computed using `log(cvfit_LASSO$lambda.min)` and (2) **𝜆.1se** (1 standard error from min value) which can be computed using `log(cvfit_LASSO$lambda.1se)`
+- The corresponding **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_LASSO$lambda.1se) or coef(cvfit_LASSO,s=cvfit_Ridge$lambda.min) `
