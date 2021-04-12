@@ -79,9 +79,10 @@ coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114437356-70828880-9b94-11eb-9463-ca9d33b20746.png)
 
-The plot shows the Mean Square Error based on training model with **𝜆** variation. Top of the chart shows number of predictors used.
-There are 2 **𝜆** valuesL (1) **𝜆** min which can be computed using log(cvfit_Ridge$lambda.min) and (2) **𝜆** 1se (1 standard error from min value) which can be computed using log(cvfit_Ridge$lambda.1se)
-The **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)`
+- The plot shows the Mean Square Error based on training model with **𝜆** variation. 
+- Top of the chart shows number of predictors used.
+- There are 2 **𝜆** values: (1) **𝜆.min** which can be computed using `log(cvfit_Ridge$lambda.min)` and (2) **𝜆.1se** (1 standard error from min value) which can be computed using `log(cvfit_Ridge$lambda.1se)`
+- The **β** values for each predictors can be found using `coef(cvfit_Ridge,s=cvfit_Ridge$lambda.1se)`
 
 ```r
 Fit_Ridge <- glmnet(x,y,alpha=0,standardize = TRUE)
