@@ -162,3 +162,18 @@ Using **𝜆.1se**, we obtain reasonable result:
      RMSE  Rsquared       MAE 
 0.6783357 0.6096333 0.5030956 
 ```
+### Elastic Nets
+Elastic Nets Regularization is a method that includes both LASSO and Ridge Regression. Its formulation for the loss function is as following:
+![image](https://user-images.githubusercontent.com/43855029/114456877-615b0500-9bab-11eb-9298-028fcffc03ab.png)
+
+- 𝛼=0: pure Ridge Regression
+- 𝛼=1: pure LASSO
+- 0<𝛼<1: Elastic Nets
+
+#### Implementation 
+```r
+cvfit_ELN    <- cv.glmnet(x,y,alpha=0.5)
+plot(cvfit_ELN)
+```
+
+
