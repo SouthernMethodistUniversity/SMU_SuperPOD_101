@@ -59,10 +59,13 @@ testNN <- as.data.frame(scale(testing,center=smin,scale=smax-smin))
 set.seed(123)
 ModNN <- neuralnet(mpg~cyl+disp+hp+drat+wt+qsec+carb,trainNN, hidden=10,linear.output = T)
 plot(ModNN)
-
+```
+![image](https://user-images.githubusercontent.com/43855029/114492632-f0d1d980-9be6-11eb-89c5-196f9f3546d9.png)
+```r
 #Predict using Neural Network
 predictNN <- compute(ModNN,testNN[,c(2:7,11)])
 predictmpg<- predictNN$net.result*(smax-smin)[1]+smin[1]
 postResample(testing$mpg,predictmpg)
-qplot(testing$mpg,predictmpg)
+     RMSE  Rsquared       MAE 
+3.0444857 0.8543388 2.3276645 
 ```
