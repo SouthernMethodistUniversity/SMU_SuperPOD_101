@@ -54,7 +54,7 @@ trainNN <- as.data.frame(scale(training,center=smin,scale=smax-smin))
 testNN <- as.data.frame(scale(testing,center=smin,scale=smax-smin))
 ```
 
-- Fit the Neural Network using **10** hidden layer:
+- Fit the Neural Network using **10** hidden layer using backpropagation:
 ```r
 set.seed(123)
 ModNN <- neuralnet(mpg~cyl+disp+hp+drat+wt+qsec+carb,trainNN, hidden=10,linear.output = T)
