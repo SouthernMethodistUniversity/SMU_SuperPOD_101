@@ -95,7 +95,7 @@ E*n: expectation under a sample size of n from the reference distribution
 
 ```r
 library(cluster)
-
+# B is number of Monte Carlo bootstrap samples
 gap_stat <- clusGap(iris[,3:4], FUN = kmeans, nstart=20, K.max = 10, B = 50)
 fviz_gap_stat(gap_stat)
 ```
