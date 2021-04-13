@@ -78,4 +78,5 @@ plot(Fit_SVM_rbg,training[,3:5])
 ![image](https://user-images.githubusercontent.com/43855029/114579624-0c230000-9c4c-11eb-85ab-840a6ec09912.png)
 
 
+![image](https://user-images.githubusercontent.com/43855029/114580300-bb5fd700-9c4c-11eb-8d92-dc2138f0e6c2.png)
 
