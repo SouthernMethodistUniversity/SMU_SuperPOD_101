@@ -73,8 +73,8 @@ fviz_cluster(km,data=iris[,3:4])
 #### Elbow approach
 - Similar to KNN method for supervised learning, for K-means approach, we are able to use Elbow approach to find the optimal K values.
 - The Elbow approach ues the Within-Cluster Sum of Square (WSS) to measure the compactness of the clusters:
+![image](https://user-images.githubusercontent.com/43855029/114587068-4d6ade00-9c53-11eb-932d-0de0c9edef83.png)
 
-![image](https://user-images.githubusercontent.com/43855029/114586120-5313f400-9c52-11eb-9329-e84c17bf3598.png)
 The optimal K-values can be found from the Elbow using **method="wss"**:
 ```r
 fviz_nbclust(iris[,3:4], kmeans, method = "wss")
