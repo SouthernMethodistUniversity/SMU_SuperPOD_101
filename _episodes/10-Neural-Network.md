@@ -15,6 +15,7 @@ keypoints:
 ![image](https://user-images.githubusercontent.com/43855029/114472756-dd137c80-9bc0-11eb-863d-7c4d054efa89.png)
 
 - Formulation of Neural Network
+
 ![image](https://user-images.githubusercontent.com/43855029/114472776-e997d500-9bc0-11eb-9f70-450389c912df.png)
 ```
 Here, x1,x2....xn are input variables. w1,w2....wn are weights of respective inputs.
@@ -25,12 +26,18 @@ The output of a neuron can range from -inf to +inf.
 The neuron doesn’t know the boundary. So we need a mapping mechanism between the input and output of the neuron. 
 This mechanism of mapping inputs to output is known as Activation Function.
 ```
-![image](https://user-images.githubusercontent.com/43855029/114472956-485d4e80-9bc1-11eb-9db8-19072c5ea8ba.png)
-![image](https://user-images.githubusercontent.com/43855029/114472972-51e6b680-9bc1-11eb-9e78-90ec739844ee.png)
-![image](https://user-images.githubusercontent.com/43855029/114472978-557a3d80-9bc1-11eb-9be3-7f49a54850cc.png)
+- Activation functions:
+![image](https://user-images.githubusercontent.com/43855029/114575672-6752f380-9c48-11eb-8d53-c78d052cdf17.png)
 
-- Type of Neural Network:
-![image](https://user-images.githubusercontent.com/43855029/114473007-5f9c3c00-9bc1-11eb-9923-7be372bd23f5.png)
+- Neural Network formulation
+![image](https://user-images.githubusercontent.com/43855029/114472972-51e6b680-9bc1-11eb-9e78-90ec739844ee.png)
+
+![image](https://user-images.githubusercontent.com/43855029/114575549-48546180-9c48-11eb-8c9c-c5eac3180df1.png)
+
+
+- Basic Type of Neural Network:
+
+![image](https://user-images.githubusercontent.com/43855029/114575945-aaad6200-9c48-11eb-96c2-12fd28866f48.png)
 
 ### Implementation
 ```r
