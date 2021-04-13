@@ -56,7 +56,5 @@ ggplot(ModFit_KNN$results,aes(k,AccuracySD))+
 predict_KNN<- predict(ModFit_KNN,newdata=testing)
 confusionMatrix(testing$Species,predict_KNN)
 ```
-
-![image](https://user-images.githubusercontent.com/43855029/114583269-6ec9cb00-9c4f-11eb-9a77-c4b1e6686ef7.png)
-
+![image](https://user-images.githubusercontent.com/43855029/114583370-86a14f00-9c4f-11eb-96a0-59b3c5376952.png)
 
