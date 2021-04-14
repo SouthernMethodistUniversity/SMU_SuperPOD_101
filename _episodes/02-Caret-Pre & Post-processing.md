@@ -53,7 +53,6 @@ library(caret)
 
 ## Pre-processing using `caret`
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
-- Visualize important variables
 - Preprocessing with missing value
 - Preprocessing: transform data
 - Data partition: training and testing
@@ -73,7 +72,6 @@ ggpairs(data=iris,aes(colour=Species))
 - There are several ways to treat the missing values:
 - Method 1: remove all missing `NA` values
 ```r
-library(base)
 data("airquality") # Here we use this sample data because it contains missing value
 new_airquality1 <- na.omit(airquality)
 ``` 
