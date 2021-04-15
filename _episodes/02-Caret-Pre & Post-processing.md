@@ -90,7 +90,7 @@ PreImputeBag <- preProcess(airquality,method="bagImpute")
 DataImputeBag <- predict(PreImputeBag,airquality)
 ```
 In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
-`knnImpute` can also be used to normalized the data
+`knnImpute` can also be used to impute missing value
 ```r
 library(gridExtra)
 PreImpute <- preProcess(airquality[,-c(5,6)],method="knnImpute")
@@ -100,8 +100,6 @@ plot1 <- ggplot(airquality,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Ori
 plot2 <- ggplot(TraImpute,aes(Ozone)) + geom_histogram(bins=30)+labs(title="KnnImpute Transform to Normal Distribution")
 grid.arrange(plot1,plot2,nrow=2)
 ```
-![image](https://user-images.githubusercontent.com/43855029/114202025-cd780780-9924-11eb-999f-b89c9080cfdf.png)
-
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
