@@ -47,10 +47,11 @@ Step 3: Lastly, you use an average value to combine the predictions of all the c
 
 Bagging in R can be used in many different model:
 
-ctreebag: used for Decision Tree
-bagFDA: used for Flexible Discriminant Analysis
-ldaBag: Bagging for Linear Discriminant Analysis
-plsBag: Bagging for Principal Linear Regression
+- ctreebag: used for Decision Tree
+- bagFDA: used for Flexible Discriminant Analysis
+- ldaBag: Bagging for Linear Discriminant Analysis
+- plsBag: Bagging for Principal Linear Regression
+
 ### Implementation of Bagging
 ```r
 library(ElemStatLearn)
