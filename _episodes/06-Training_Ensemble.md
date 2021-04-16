@@ -30,13 +30,19 @@ Here we will be learning several ensemble models:
 
 ## Train model using Bagging (Bootstrap Aggregation)
 - The bootstrap method is a resampling technique used to estimate statistics on a population by sampling a dataset with replacement.
+- Bootstrap randomly create a small subsets of data from entire dataset
+- The subset data has similar characteristic as the entire dataset.
+
+![image](https://user-images.githubusercontent.com/43855029/115078743-0f2d2300-9ece-11eb-8f2b-608b3c926877.png)
 
 ### Detail explaination of Bagging
 There are 3 steps in Bagging
 ![image](https://user-images.githubusercontent.com/43855029/114235631-74bd6480-994e-11eb-84d0-3b0378860294.png)
 
 Step 1: Here you replace the original data with new sub-sample data using bootstrapping.
+
 Step 2: Train each sub-sample data using ML algorithm
+
 Step 3: Lastly, you use an average value to combine the predictions of all the classifiers, depending on the problem. Generally, these combined values are more robust than a single model.
 
 Bagging in R can be used in many different model:
