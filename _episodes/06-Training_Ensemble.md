@@ -10,10 +10,14 @@ keypoints:
 - "Bagging, Boosting"
 ---
 ## Why Ensemble:
+Ensemble is a method in Machine Learning that **combine decision from several ML models** to obtain optimum output.
+
 ![image](https://user-images.githubusercontent.com/43855029/115078334-7b5b5700-9ecd-11eb-93fb-c3f69e740a5c.png)
 [Source: Patheos.com](https://www.patheos.com/blogs/driventoabstraction/2018/07/blind-men-elephant-folklore-knowledge/)
 
-Ensemble is a method in Machine Learning that **combine decision from several ML models** to obtain optimum output.
+Ensemble approaches can reduce variance & Avoid Overfitting by combining results of multiple classifiers on different sub-samples
+
+![image](https://user-images.githubusercontent.com/43855029/114235479-417ad580-994e-11eb-806b-2f73996f864d.png)
 
 ## Train model using Ensemble Approach
 Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
@@ -25,8 +29,6 @@ Here we will be learning several ensemble models:
 - Boosting with Gradient Boosting Machine
 
 ## Train model using Bagging (Bootstrap Aggregation)
-- Ensemble approaches can reduce variance & Avoid Overfitting by combining results of multiple classifiers on different sub-samples
-![image](https://user-images.githubusercontent.com/43855029/114235479-417ad580-994e-11eb-806b-2f73996f864d.png)
 - The bootstrap method is a resampling technique used to estimate statistics on a population by sampling a dataset with replacement.
 
 ### Detail explaination of Bagging
