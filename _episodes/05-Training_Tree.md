@@ -61,7 +61,6 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 
 ## Train model using Random Forest
 ![image](https://user-images.githubusercontent.com/43855029/115076000-f3278280-9ec9-11eb-89b4-b07f3713b105.png)
-![image](https://user-images.githubusercontent.com/43855029/115075969-e9058400-9ec9-11eb-9c0b-f18cd35929ea.png)
 
 - Random Forest is considered to be a panacea of all data science problems. On a funny note, when you can’t think of any algorithm (irrespective of situation), use random forest!
 - Opposite to Decision Tree, Random Forest use bootstrapping technique to grow multiple tree
