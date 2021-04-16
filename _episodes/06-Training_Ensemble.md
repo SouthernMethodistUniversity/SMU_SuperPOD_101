@@ -9,6 +9,11 @@ objectives:
 keypoints:
 - "Bagging, Boosting"
 ---
+## Why Ensemble:
+![image](https://user-images.githubusercontent.com/43855029/115078334-7b5b5700-9ecd-11eb-93fb-c3f69e740a5c.png)
+[Source: Patheos.com](https://www.patheos.com/blogs/driventoabstraction/2018/07/blind-men-elephant-folklore-knowledge/)
+
+Ensemble is a method in Machine Learning that **combine decision from several ML models** to obtain optimum output.
 
 ## Train model using Ensemble Approach
 Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
