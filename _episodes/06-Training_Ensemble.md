@@ -11,6 +11,7 @@ keypoints:
 ---
 ## Why Ensemble:
 Ensemble is a method in Machine Learning that **combine decision from several ML models** to obtain optimum output.
+This espisode get information from [here](https://www.pluralsight.com/guides/ensemble-methods:-bagging-versus-boosting)
 
 ![image](https://user-images.githubusercontent.com/43855029/115078334-7b5b5700-9ecd-11eb-93fb-c3f69e740a5c.png)
 [Source: Patheos.com](https://www.patheos.com/blogs/driventoabstraction/2018/07/blind-men-elephant-folklore-knowledge/)
