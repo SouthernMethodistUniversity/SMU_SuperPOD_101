@@ -28,6 +28,9 @@ Here we will be learning several ensemble models:
 - Boosting with AdaBoost
 - Boosting with Gradient Boosting Machine
 
+![image](https://user-images.githubusercontent.com/43855029/115079289-f6713d00-9ece-11eb-90cb-7084e8d7a536.png)
+
+
 ## Train model using Bagging (Bootstrap Aggregation)
 - The bootstrap method is a resampling technique used to estimate statistics on a population by sampling a dataset with replacement.
 - Bootstrap randomly create a small subsets of data from entire dataset
@@ -37,7 +40,8 @@ Here we will be learning several ensemble models:
 
 ### Detail explaination of Bagging
 There are 3 steps in Bagging
-![image](https://user-images.githubusercontent.com/43855029/114235631-74bd6480-994e-11eb-84d0-3b0378860294.png)
+
+![image](https://user-images.githubusercontent.com/43855029/115079407-202a6400-9ecf-11eb-9c9c-7f3a0bbf1c28.png)
 
 Step 1: Here you replace the original data with new sub-sample data using bootstrapping.
 
@@ -86,7 +90,14 @@ plot(varImp(ModFit_bag))
 ```
 
 ## Train model using Boosting
-Boosting is an approach to convert weak predictors to get stronger predictors.
+- Boosting is an approach to convert weak predictors to get stronger predictors.
+- Boosting follows a sequential order: output of base learner will be input to another
+- If a base classifier is misclassifier (red box), its weight is increased and the next base learner will classify more correctly.
+- Finally combine the classifier to predict result
+
+![image](https://user-images.githubusercontent.com/43855029/115079476-39331500-9ecf-11eb-9af5-cb3cb2948cf0.png)
+
+
 ### Adaptive Boosting: Adaboost
 - Adaptive: weaker learners are tweaked by misclassify from previous classifier
 - AdaBoost is best used to boost the performance of decision trees on binary classification problems.
