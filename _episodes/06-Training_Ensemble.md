@@ -137,4 +137,3 @@ confusionMatrix(testing$Species,predict_GBM)
 ## Conclusions
 - Ensemble overcome the limitation of using only single model
 - Between bagging and boosting, there is no better approach without trial & error.
-- 
