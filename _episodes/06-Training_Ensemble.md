@@ -130,3 +130,11 @@ ModFit_GBM$finalModel
 predict_GBM <- predict(ModFit_GBM,newdata=testing)
 confusionMatrix(testing$Species,predict_GBM)
 ```
+
+## Compare Bagging and Boosting technique:
+![image](https://user-images.githubusercontent.com/43855029/115079914-e443ce80-9ecf-11eb-8b19-622abbfe026c.png)
+
+## Conclusions
+- Ensemble overcome the limitation of using only single model
+- Between bagging and boosting, there is no better approach without trial & error.
+- 
