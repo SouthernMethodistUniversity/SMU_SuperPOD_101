@@ -26,19 +26,6 @@ keypoints:
 - Euclide distance:
 
 ![image](https://user-images.githubusercontent.com/43855029/114582319-7a68c200-9c4e-11eb-93f2-37324c034784.png)
-- Manhattan distance:
-
-![image](https://user-images.githubusercontent.com/43855029/114582389-8a80a180-9c4e-11eb-8147-c6fb4a5a8ca9.png)
-- Hamming distance:
-
-![image](https://user-images.githubusercontent.com/43855029/114582423-91a7af80-9c4e-11eb-8e84-0981899f5000.png)
-
-Other distances: **Mahalanobis, Minkowski, Tanimoto, Jaccard, etc.**
-
-### How to find the optimum number of K?
-In general practice, the **Elbow approach** should be used to compute the RMSE/MAE with corresponding K-value.
-Letting K running, we have the following graph for  the **Elbow approach**:
-![image](https://user-images.githubusercontent.com/43855029/114583036-2f02e380-9c4f-11eb-81e3-6f82e4ea943c.png)
 
 ### Implementation
 ```r
