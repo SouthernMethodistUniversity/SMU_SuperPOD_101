@@ -10,13 +10,13 @@ keypoints:
 - "SVM"
 ---
 
-## 12.1 Support Vector Machine
+## 12 Support Vector Machine
 The objective of the support vector machine (SVM) algorithm is to find a hyperplane in an N-dimensional space that distinctly classifies the data points.
 
-### 12.1.1 Applications of Support Vector Machine:
+### 12.1 Applications of Support Vector Machine:
 ![image](https://user-images.githubusercontent.com/43855029/114576381-1394da00-9c49-11eb-95b1-cff9d87c6029.png)
 
-### 12.1.2 Explanation
+### 12.2 Explanation
 - To separate the two classes of data points, there are many possible hyperplanes that could be chosen
 
 ![image](https://user-images.githubusercontent.com/43855029/114577032-af264a80-9c49-11eb-8e6c-b45120743f0d.png)
@@ -36,7 +36,7 @@ Removing **SVs** will change the position of the hyperplane. These are the point
 
 ![image](https://user-images.githubusercontent.com/43855029/114577489-09271000-9c4a-11eb-8b4a-b7837463288f.png)
 
-### 12.1.3 Implementation
+### 12.3 Implementation
 - Using `caret` package:
 
 ```r
