@@ -38,16 +38,19 @@ training1 <- iris[ind1,]
 testing1  <- iris[-ind1,] 
 ```
 
-## Data spliting using `K-fold`
+## Data spliting using `K-fold`: Cross validation approach
 The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
 ![image](https://user-images.githubusercontent.com/43855029/114211785-103edd00-992f-11eb-89d0-bbd7bd0c0178.png)
-```r
-train_fold <- createFolds(y=iris$Species,k=10,list=TRUE,returnTrain=TRUE)
-test_fold  <- createFolds(y=iris$Species,k=10,list=TRUE,returnTrain=FALSE)
-sapply(train_fold,length)
-sapply(test_fold,length)
-train_fold1 <- iris[train_fold$Fold01,]
-test_fold1  <- iris[test_fold$Fold01,]
-```
-`returnTrain`: is logical. When true, the values returned are the sample positions corresponding to the data used during training. This argument only works in conjunction with list = TRUE
 
+```r
+fitControl <- trainControl(method="cv", number=10)
+# train the model
+model <- train(Species~., data=training1, 
+               trControl=fitControl, method="nb")
+# summarize results
+print(model)
+predict1 <- predict(model,testing1)
+```
+
+## Other Cross-Validation approach
+method: The resampling method: "boot", "cv", "LOOCV", "LGOCV", "repeatedcv", "timeslice", "none" and "oob"
