@@ -45,11 +45,11 @@ The procedure has a single parameter called k that refers to the number of group
 ```r
 fitControl <- trainControl(method="cv", number=10)
 # train the model
-model <- train(Species~., data=training1, 
+model <- train(Species~., data=training, 
                trControl=fitControl, method="nb")
 # summarize results
 print(model)
-predict1 <- predict(model,testing1)
+predict1 <- predict(model,testing)
 ```
 
 ## Other Cross-Validation approach
