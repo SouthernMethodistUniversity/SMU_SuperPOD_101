@@ -13,7 +13,7 @@ keypoints:
 - One of the major aspects of training your machine learning model is to avoid overfitting (Using more parameter to best fit the training but on the other hand, failed to evaluate the testing).
 - The concept of balancing bias and variance, is helpful in understanding the phenomenon of overfitting
 
-## Regularization
+## 9.1 Regularization
 - In order to reduce the Model Complexity or to avoid Multi-Collinearity, one needs to reduce the number of covariates 
 (or set the coefficient to be zero).
 - If the coefficients are too large, let’s penalize them to enforce them to be smaller
@@ -37,7 +37,7 @@ There are 3 main types of Regularization.
 - LASSO
 - Elastics Nets
 
-### Ridge Regression
+### 9.1.1 Ridge Regression
 ![image](https://user-images.githubusercontent.com/43855029/114440609-58ad0380-9b98-11eb-8dd5-643428f60c31.png)
 
 **𝜆**: Regularization Penalty, to be selected that the model minimized the error
@@ -50,7 +50,7 @@ The Ridge Regression loss function contains 2 elements: (1) RSS is actually the 
 - In statistics the coefficient esimated produced by this method is know as **L2 norm**
 - It is good practice to normalize predictors to the same sacle before performing Ridge Regression (Because in OLS, the coefficients are scale equivalent)
 
-#### Implementation
+#### 9.1.2 Implementation
 Setting up training/testing model:
 ```r
 library(caret)
@@ -122,14 +122,14 @@ sample estimates:
 - Ridge Regression's pros: the pros of RR method over OLS is rooted in the bias variance trade-off. As when **𝜆** increases, the flexibility of RR fit decreases, hence decrease the variance but increase the bias
 - Ridge Regression's cons: **β** never be 0, so all predictors are included in the final model. Therefore, it is not good for best feature selection.
 
-### LASSO: Least Absolute Shrinkage & Selection Operator
+### 9.2 LASSO: Least Absolute Shrinkage & Selection Operator
 ![image](https://user-images.githubusercontent.com/43855029/114440016-a4ab7880-9b97-11eb-8a57-b112cd78f785.png)
 
 - In order to overcome the cons issue in Ridge Regression, the LASSO is introduced with the similar shrinkage parameter, but the different is not in square term of the coefficient but only absolute value
 - Similar to Ridge Regression, LASSO also shrink the coefficient, but **force** coefficients to be equal to 0. Making it ability to perform **feature selection**
 - In statistics the coefficient esimated produced by this method is know as **L1 norm**
 
-#### Implementation 
+#### 9.2.1 Implementation 
 ```r
 cvfit_LASSO    <- cv.glmnet(x,y,alpha=1)
 plot(cvfit_LASSO)
@@ -162,7 +162,7 @@ Using **𝜆.1se**, we obtain reasonable result:
      RMSE  Rsquared       MAE 
 0.6783357 0.6096333 0.5030956 
 ```
-### Elastic Nets
+### 9.3 Elastic Nets
 Elastic Nets Regularization is a method that includes both LASSO and Ridge Regression. Its formulation for the loss function is as following:
 ![image](https://user-images.githubusercontent.com/43855029/114456877-615b0500-9bab-11eb-9298-028fcffc03ab.png)
 
@@ -170,7 +170,7 @@ Elastic Nets Regularization is a method that includes both LASSO and Ridge Regre
 - 𝛼=1: pure LASSO
 - 0<𝛼<1: Elastic Nets
 
-#### Implementation 
+#### 9.3.1 Implementation 
 ```r
 cvfit_ELN    <- cv.glmnet(x,y,alpha=0.5)
 plot(cvfit_ELN)
