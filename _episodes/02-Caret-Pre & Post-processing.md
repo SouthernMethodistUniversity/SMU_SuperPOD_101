@@ -126,6 +126,7 @@ apply(TestStd,2,sd)
 - A Box Cox transformation is a transformation of a non-normal dependent variables into a normal shape. 
 - Normality is an important assumption for many statistical techniques; if your data isn’t normal, applying a Box-Cox means that you are able to run a broader number of tests.
 - The Box Cox transformation is named after statisticians George Box and Sir David Roxbee Cox who collaborated on a 1964 paper and developed the technique.
+
 ```r
 PreBxCx <- preProcess(training[,-c(5,6)],method="BoxCox")
 TrainBxCx <- predict(PreBxCx,training[,-c(5,6)])
@@ -135,6 +136,7 @@ plot2 <- ggplot(TrainBxCx,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Box-
 library(gridExtra)
 grid.arrange(plot1,plot2,nrow=2)
 ```
+
 ![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
  
  ### Pre-processing as argument:
