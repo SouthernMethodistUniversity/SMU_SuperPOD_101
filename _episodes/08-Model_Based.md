@@ -10,7 +10,7 @@ keypoints:
 - "Naive Bayes, Linear Discriminent Analyst"
 ---
 
-## Naive Bayes
+## 8.1 Naive Bayes
 - Assuming data follow a probabilistic model
 - Assuming all predictors are independent (Naïve assumption)
 - Use Bayes’s theorem to identify optimal classifiers
@@ -19,7 +19,7 @@ keypoints:
 
 ![image](https://user-images.githubusercontent.com/43855029/114339516-6f654300-9b23-11eb-838c-aaf600ca922a.png)
 
-### Implementation Naive Bayes
+### 8.1.1 Implementation Naive Bayes
 ```r
 ModFit_NB <- train(Species~., data=training, method="nb")
 
@@ -27,14 +27,14 @@ predict_NB <- predict(ModFit_NB,testing)
 confusionMatrix(testing$Species,predict_NB)
 ```
 
-## Linear Discriminent Analysis
+## 8.2 Linear Discriminent Analysis
 - LDA is a supervised learning model that is similar to logistic regression in that the outcome variable is categorical and can therefore be used for classification.
 - LDA is useful with two or more class of objects
 
 ![image](https://user-images.githubusercontent.com/43855029/114339862-3bd6e880-9b24-11eb-9f4f-8f3af989c724.png)
 
 
-### Implementation LDA
+### 8.2.1 Implementation LDA
 ```r
 ModFit_LDA <- train(Species~., data=training, method="lda")
 
