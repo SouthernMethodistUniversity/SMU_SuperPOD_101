@@ -10,7 +10,7 @@ keypoints:
 - "Caret"
 ---
 
-## What is Caret
+## 2.1 What is Caret
 ![image](https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png)
 
 The caret package (short for **C**lassification **A**nd **RE**gression **T**raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for:
@@ -30,14 +30,14 @@ Here only touch some of the very basic command that is useful for our Machine Le
 
 [caret cheatsheet](https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf)
 
-## Why using Caret
+## 2.2 Why using Caret
 - R has so many ML algorithms, challenge to keep track, different syntax for different packages
 - Possibly the biggest project in R
 - All in one supervised learning problem
 - Uniform interface
 - Standard pre & post processing
 
-## Install `caret`
+## 2.3 Install `caret`
 In R console:
 ```r
 install.packages("caret", dependencies = c("Depends", "Suggests"))
@@ -51,13 +51,13 @@ Once installed, load the caret package to make sure that it works:
 library(caret)
 ```
 
-## Pre-processing using `caret`
+## 2.4 Pre-processing using `caret`
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
 - Preprocessing with missing value
 - Preprocessing: transform data
 - Data partition: training and testing
 
-### Visualize important variables
+### 2.4.1 Visualize important variables
 Here we introduce the library `GGally`  with function `ggpairs` to help user in visualizing the input data
 ```r
 library(GGally)
@@ -65,7 +65,7 @@ ggpairs(data=iris,aes(colour=Species))
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114196055-01e8c500-991f-11eb-8eaf-816f25e6c534.png)
 
-### Pre-processing with missing value
+### 2.4.2 Pre-processing with missing value
 - Most of the time the input data has missing values (`NA, NaN, Inf`) due to data collection issue (power, sensor, personel). 
 - There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency
 - These missing values need to be treated/cleaned before we can use because "Garbage in => Garbage out".
@@ -103,7 +103,7 @@ grid.arrange(plot1,plot2,nrow=2)
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
-### Pre-processing with Transforming data
+### 2.4.3 Pre-processing with Transforming data
 #### Using Standardization
 ![image](https://user-images.githubusercontent.com/43855029/114231774-df6ba180-9948-11eb-9c61-3d2e0d3df889.png)
 
@@ -139,7 +139,7 @@ grid.arrange(plot1,plot2,nrow=2)
 
 ![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
  
- ### Pre-processing as argument:
+ ### 2.4.4 Pre-processing as argument:
  When using Preprocessing as argument in the training process in caret, the method is changed to preProcess, for example:
 ```r
 modelFit <- train(Ozone~Temp,data=training,
