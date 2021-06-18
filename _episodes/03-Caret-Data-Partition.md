@@ -11,6 +11,10 @@ keypoints:
 ---
 
 # Data partition: training and testing
+
+![image](https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png)
+
+
 - In Machine Learning, it is mandatory to have training and testing set. Some time a verification set is also recommended.
 Here are some functions for spliting training/testing set in `caret`:
 
