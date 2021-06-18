@@ -19,7 +19,7 @@ keypoints:
 
 ![image](https://user-images.githubusercontent.com/43855029/114339516-6f654300-9b23-11eb-838c-aaf600ca922a.png)
 
-### 8.1.1 Implementation Naive Bayes
+### 8.1 Implementation Naive Bayes
 ```r
 ModFit_NB <- train(Species~., data=training, method="nb")
 
