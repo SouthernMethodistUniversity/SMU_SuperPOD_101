@@ -10,7 +10,7 @@ keypoints:
 - "KNN"
 ---
 
-## 13.1 K-Nearest Neighbour
+## 13 K-Nearest Neighbour
 - Simplicity but powerful and fast for certain task
 - Work for both classification and regression
 - Named as Instance Based Learning; Non-parametrics; Lazy learner
@@ -18,7 +18,7 @@ keypoints:
 
 ![image](https://user-images.githubusercontent.com/43855029/114582045-3d043480-9c4e-11eb-8698-e1c31840401a.png)
 
-### 13.1.1 Explanation
+### 13.1 Explanation
 
 ![image](https://user-images.githubusercontent.com/43855029/114582162-573e1280-9c4e-11eb-8a17-e0d91a38452e.png)
 
@@ -27,7 +27,7 @@ keypoints:
 
 ![image](https://user-images.githubusercontent.com/43855029/114582319-7a68c200-9c4e-11eb-93f2-37324c034784.png)
 
-### 13.1.2 Implementation
+### 13.2 Implementation
 ```r
 library(caret)
 data(iris)
