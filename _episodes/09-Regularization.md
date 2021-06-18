@@ -13,7 +13,7 @@ keypoints:
 - One of the major aspects of training your machine learning model is to avoid overfitting (Using more parameter to best fit the training but on the other hand, failed to evaluate the testing).
 - The concept of balancing bias and variance, is helpful in understanding the phenomenon of overfitting
 
-## 9.1 Regularization
+## 9 Regularization
 - In order to reduce the Model Complexity or to avoid Multi-Collinearity, one needs to reduce the number of covariates 
 (or set the coefficient to be zero).
 - If the coefficients are too large, let’s penalize them to enforce them to be smaller
@@ -37,7 +37,7 @@ There are 3 main types of Regularization.
 - LASSO
 - Elastics Nets
 
-### 9.1.1 Ridge Regression
+### 9.1 Ridge Regression
 ![image](https://user-images.githubusercontent.com/43855029/114440609-58ad0380-9b98-11eb-8dd5-643428f60c31.png)
 
 **𝜆**: Regularization Penalty, to be selected that the model minimized the error
