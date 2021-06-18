@@ -50,10 +50,6 @@ For binary output (classification problem with only 2 output type, also most pop
  ```r
  confusionMatrix(predict,testing)
  ```
-### 4.2.2 ROC-AUC curves
-
-![image](https://user-images.githubusercontent.com/43855029/122607985-6d4ec180-d049-11eb-954f-48cf4747ca7c.png)
-
 
 
 
