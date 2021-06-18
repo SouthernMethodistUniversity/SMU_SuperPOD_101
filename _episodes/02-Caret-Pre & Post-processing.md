@@ -142,10 +142,10 @@ grid.arrange(plot1,plot2,nrow=2)
  ### Pre-processing as argument:
  When using Preprocessing as argument in the training process in caret, the method is changed to preProcess, for example:
 ```r
-modelFit2 <- train(Ozone~Temp,data=training,
+modelFit <- train(Ozone~Temp,data=training,
                   preProcess=c("center","scale","BoxCox"),
                   method="lm")
-prediction2 <- predict(modelFit2,testing)
+prediction <- predict(modelFit,testing)
 ```
 
 ## Post-processing - Evaluate the test result
