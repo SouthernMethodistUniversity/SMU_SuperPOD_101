@@ -9,8 +9,9 @@ objectives:
 keypoints:
 - "Regression training"
 ---
-# Supervised Learning training
-## Train model using Linear Regression
+# 5 Supervised Learning training
+## 5.1 For Continuous output
+### 5.1.1 Train model using Linear Regression
 Pre-processing data and create partition
 ```r
 library(caret)
@@ -39,7 +40,7 @@ cor.test(prediction,testing$Ozone)
 postResample(prediction,testing$Ozone)
 ```
 
-## Train model using Multi-Linear Regression
+### 5.1.2 Train model using Multi-Linear Regression
 From the above model, the `postResample` only show the reasonable result:
 ```r
 > postResample(prediction,testing$Ozone)
@@ -65,7 +66,7 @@ Output is therefore better with smaller RMSE and higher Rsquared:
       RMSE   Rsquared        MAE 
 24.3388752  0.5512334 16.5798881 
 ```
-## Train model using Stepwise Linear Regression
+### 5.1.3 Train model using Stepwise Linear Regression
 It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:
 
 ```r
@@ -84,7 +85,7 @@ postResample(prediction_SLR,testing$Ozone)
 25.0004212  0.5239849 17.0977421 
 ```
 
-## Train model using Polynomial Regression
+### 5.1.4 Train model using Polynomial Regression
 
 ![image](https://user-images.githubusercontent.com/43855029/122609104-6c1e9400-d04b-11eb-984c-ed20f0926451.png)
 
@@ -108,7 +109,7 @@ postResample(prediction_poly,testing$Ozone)
 20.8369196  0.6611866 13.7168643 
 ```
 
-## Train model using Principal Component Regression
+### 5.1.5 Train model using Principal Component Regression
 Linear Regression using the output of a Principal Component Analysis (PCA). 
 PCR is skillful when data has lots of highly correlated predictors
 
@@ -121,8 +122,8 @@ prediction_PCR <- predict(modFit_PCR,testing)
 cor.test(prediction_PCR,testing$Ozone)
 postResample(prediction_PCR,testing$Ozone)
 ```
-
-## Train model using Logistic Regression
+## 5.2 For categorical output
+### 5.2.1 Train model using Logistic Regression
 - Logistic regression is another technique borrowed by machine learning from the field of statistics. It is the go-to method for binary classification problems (problems with two class values).
 - Typical binary classification: True/False, Yes/No, Pass/Fail, Spam/No Spam, Male/Female
 - Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
