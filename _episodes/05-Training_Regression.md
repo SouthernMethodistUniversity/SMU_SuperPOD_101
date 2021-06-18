@@ -84,6 +84,30 @@ postResample(prediction_SLR,testing$Ozone)
 25.0004212  0.5239849 17.0977421 
 ```
 
+## Train model using Polynomial Regression
+
+![image](https://user-images.githubusercontent.com/43855029/122609104-6c1e9400-d04b-11eb-984c-ed20f0926451.png)
+
+In this study, let use polynomial regression with degree of freedom=3
+
+```r
+modFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=training,
+                     preProcess=c("center","scale"),
+                     method="lm")
+summary(modFit_poly$finalModel)
+
+prediction_poly <- predict(modFit_poly,testing)
+
+cor.test(prediction_poly,testing$Ozone)
+postResample(prediction_poly,testing$Ozone)
+```
+
+```r
+> postResample(prediction_poly,testing$Ozone)
+      RMSE   Rsquared        MAE 
+20.8369196  0.6611866 13.7168643 
+```
+
 ## Train model using Principal Component Regression
 Linear Regression using the output of a Principal Component Analysis (PCA). 
 PCR is skillful when data has lots of highly correlated predictors
@@ -102,10 +126,11 @@ postResample(prediction_PCR,testing$Ozone)
 - Logistic regression is another technique borrowed by machine learning from the field of statistics. It is the go-to method for binary classification problems (problems with two class values).
 - Typical binary classification: True/False, Yes/No, Pass/Fail, Spam/No Spam, Male/Female
 - Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
-- The standard logistic function has formulation: ![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
+- The standard logistic function has formulation:
+ 
+![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
 
 ![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png)
-
 
 In this example, we use `spam` data set from package `kernlab`.
 This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
