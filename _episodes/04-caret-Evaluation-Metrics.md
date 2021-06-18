@@ -21,10 +21,21 @@ keypoints:
 
 ![image](https://user-images.githubusercontent.com/43855029/120700259-72274900-c47f-11eb-8959-a4bbe4eafccc.png)
 
+```r
+cor(prediction,testing)
+cor.test(prediction,testing)
+```
 
 ### 4.1.2 Root Mean Square Error (RMSE) or Mean Square Error (MSE)
 
 ![image](https://user-images.githubusercontent.com/43855029/120700533-c5010080-c47f-11eb-8050-b1cd8c63746e.png)
+
+The postResample function gives RMSE, R2 and MAE at the same time:
+
+```r
+postResample(prediction,testing$Ozone)
+
+```
 
 ## 4.2. Classification model Evaluation Metrics
 
@@ -33,3 +44,5 @@ keypoints:
 - You can learn more about Confusion Matrix [here](https://www.analyticsvidhya.com/blog/2020/04/confusion-matrix-machine-learning/)
 
 For binary output (classification problem with only 2 output type, also most popular):
+![image](https://user-images.githubusercontent.com/43855029/120687356-efe35880-c46f-11eb-950f-5feef237a4c1.png)
+
