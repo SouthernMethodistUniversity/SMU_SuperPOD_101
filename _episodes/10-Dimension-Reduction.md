@@ -10,13 +10,13 @@ keypoints:
 - "PCA"
 ---
 
-## Principal Component Analysis
+## 10.1 Principal Component Analysis
 - Handy with large data
 - Where many variables correlate with one another, they will all contribute strongly to the same principal component
 - Each principal component sums up a certain percentage of the total variation in the dataset
 - More Principal Components, more summarization of the original data sets
 
-### Explanation
+### 10.1.1 Explanation
 - For example, we have 3 data sets: `X, Y, Z`
 - We need to compute the covariance matrix **M** for the 3 data set:
 ![image](https://user-images.githubusercontent.com/43855029/114459677-d67c0980-9bae-11eb-85b2-758a98f0cd29.png)
@@ -38,8 +38,8 @@ in which, the covariance value between 2 data sets can be computed as:
 **Eigenvector with the largest eigenvalue forms the first principal component of the data set
 … and so on …***
 
-### Implementation
-#### Compute PCA using eigenvector:
+### 10.1.2 Implementation
+#### 10.1.2.1 Compute PCA using eigenvector:
 ```r
 library(PerformanceAnalytics)
 data(mtcars)
@@ -51,13 +51,13 @@ ein <- eigen(cin)
 newpca <-   -scale(datain) %*% ein$vectors
 ```
 
-#### Compute PCA using built-in function:
+#### 10.1.2.2 Compute PCA using built-in function:
 ```r
 mtcars.pca <- prcomp(datain,center=TRUE,scale=TRUE)
 summary(mtcars.pca)
 ```
 
-#### A nice way to plot PCA:
+#### 10.1.2.3 A nice way to plot PCA:
 Install `ggbiplot` package:
 ```r
 library(devtools)
@@ -76,7 +76,7 @@ ggbiplot(mtcars.pca,ellipse=TRUE,labels=rownames(mtcars),groups = mtcars.country
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114462147-aa618800-9bb0-11eb-8123-919e89fdfc0c.png)
 
-#### Application of PCA model in Machine Learning:
+#### 10.1.2.4 Application of PCA model in Machine Learning:
 
 ```r
 data(mtcars)
