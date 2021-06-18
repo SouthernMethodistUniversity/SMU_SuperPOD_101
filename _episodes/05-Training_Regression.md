@@ -154,3 +154,24 @@ Predict based on testing data and evaluate model output:
 predictions <- predict(ModFit_glm,testing)
 confusionMatrix(predictions, testing$type)
 ```
+
+Plotting ROC and computing AUC:
+
+```r
+
+pred_prob <- predict(ModFit_glm,testing, type = "prob")
+head(pred_prob)
+data_roc <- data.frame(pred_prob = pred_prob[,'spam'],
+                           actual_label = ifelse(testing$type == 'spam', 1, 0))
+
+roc <- prediction(predictions = data_roc$pred_prob,
+                      labels = data_roc$actual_label)
+
+plot(performance(roc, "tpr", "fpr"))
+abline(0, 1, lty = 2) # garis diagonal, yaitu performa ketika asal tebak
+auc <- performance(roc, measure = "auc")
+auc@y.values
+
+```
+
+![image](https://user-images.githubusercontent.com/43855029/122612391-07fece80-d051-11eb-9ab0-2f130ea10c59.png)
