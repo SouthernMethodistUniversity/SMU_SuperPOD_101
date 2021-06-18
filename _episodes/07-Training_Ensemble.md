@@ -37,8 +37,6 @@ Here we will be learning several ensemble models:
 - Bootstrap randomly create a small subsets of data from entire dataset
 - The subset data has similar characteristic as the entire dataset.
 
-![image](https://user-images.githubusercontent.com/43855029/115078743-0f2d2300-9ece-11eb-8f2b-608b3c926877.png)
-
 ### Detail explaination of Bagging
 There are 3 steps in Bagging
 
