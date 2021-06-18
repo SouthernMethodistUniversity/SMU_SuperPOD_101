@@ -10,7 +10,7 @@ keypoints:
 - "ANN"
 ---
 
-## Neural Network
+## 11.1 Neural Network
 ![image](https://user-images.githubusercontent.com/43855029/114472746-da188c00-9bc0-11eb-913c-9dcd14f872ac.png)
 ![image](https://user-images.githubusercontent.com/43855029/114472756-dd137c80-9bc0-11eb-863d-7c4d054efa89.png)
 
@@ -40,7 +40,7 @@ This mechanism of mapping inputs to output is known as Activation Function.
 
 ![image](https://user-images.githubusercontent.com/43855029/114575945-aaad6200-9c48-11eb-96c2-12fd28866f48.png)
 
-### Implementation
+### 11.1.1 Implementation
 ```r
 install.packages("neuralnet")
 ```
