@@ -55,30 +55,9 @@ Bagging in R can be used in many different model:
 - ldaBag: Bagging for Linear Discriminant Analysis
 - plsBag: Bagging for Principal Linear Regression
 
-### Implementation of Bagging
-```r
-library(ElemStatLearn)
-dozone <- data.frame(ozone$ozone)
-temperature <- ozone$temperature
-treebag <- bag(dozone,temperature,B=10,
-               bagControl = bagControl(fit=ctreeBag$fit,
-                                       pred=ctreeBag$pred,
-                                       aggregate=ctreeBag$aggregate))
-predict_bag1 <- predict(treebag$fits[[1]]$fit,dozone)
-predict_bag2 <- predict(treebag$fits[[2]]$fit,dozone)
-predict_bag  <- predict(treebag,dozone)
+### Implementation of Bagging using decision Tree
 
-p1 <- ggplot(ozone,aes(ozone,temperature))+
-      geom_point(color="grey")
-p1
-p2 <- p1+geom_point(aes(ozone,predict_bag1),color="blue")
-p2
-p3 <- p2+geom_point(aes(ozone,predict_bag2),color="green")
-p3
-p4 <- p3+geom_point(aes(ozone,predict_bag),color="red")
-p4
-```
-Treebag for `iris`
+
 ```r
 ModFit_bag <- train(as.factor(Species) ~ .,data=training,
                    method="treebag",
