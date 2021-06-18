@@ -34,8 +34,8 @@ Here we use `createDataPartition` to randomly split 60% data for training and th
 ind1 <- createDataPartition(y=iris$Species,p=0.6,list=FALSE,times=1)
 #list=FALSE, prevent returning result as a list
 #times=1 to create the resample size. Default value is 1.
-training1 <- iris[ind1,]
-testing1  <- iris[-ind1,] 
+training <- iris[ind1,]
+testing  <- iris[-ind1,] 
 ```
 
 ## Data spliting using `K-fold`: Cross validation approach
