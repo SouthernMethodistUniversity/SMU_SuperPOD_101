@@ -91,69 +91,17 @@ PreImputeBag <- preProcess(airquality,method="bagImpute")
 DataImputeBag <- predict(PreImputeBag,airquality)
 ```
 In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
-`knnImpute` can also be used to impute missing value
-```r
-library(gridExtra)
-PreImpute <- preProcess(airquality[,-c(5,6)],method="knnImpute")
-TraImpute <- predict(PreImpute,airquality[,-c(5,6)])
+`knnImpute` can also be used to impute missing value, however, it standardize the data after Imputing:
 
-plot1 <- ggplot(airquality,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Original Probability")
-plot2 <- ggplot(TraImpute,aes(Ozone)) + geom_histogram(bins=30)+labs(title="KnnImpute Transform to Normal Distribution")
-grid.arrange(plot1,plot2,nrow=2)
+```r
+MData <- airquality[,-c(1,5,6)]
+PreImputeKNN <- preProcess(MData,method="knnImpute",k=5)
+DataImputeKNN <- predict(PreImputeKNN,MData)
+
+#Convert back to original scale
+RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
 ```
+
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
-### 2.4.3 Pre-processing with Transforming data
-
-#### Using Standardization
-
-![image](https://user-images.githubusercontent.com/43855029/114231774-df6ba180-9948-11eb-9c61-3d2e0d3df889.png)
-
-
-- Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units for example: rainfall (0-1000mm), temperature (-10 to 40oC), humidity (0-100%), etc.
-- Standardition Convert all independent variables into the same scale (mean=0, std=1) 
-- These differences in the ranges of initial features causes trouble to many machine learning models. For example, for the models that are based on distance computation, if one of the features has a broad range of values, the distance will be governed by this particular feature.
-- The example below use data from above:
-
-
-```r
-PreStd <- preProcess(training[,-c(1,5,6)],method=c("center","scale")) 
-TrainStd <- predict(PreStd,training[,-c(1,5,6)])
-apply(TrainStd,2,mean)
-apply(TrainStd,2,sd)
-
-TestStd <- predict(PreStd,testing[,-c(1,5,6)])
-apply(TestStd,2,mean)
-apply(TestStd,2,sd)
-```
-
-
-#### Using Box-Cox Transformation
-
-- A Box Cox transformation is a transformation of a non-normal dependent variables into a normal shape. 
-- Normality is an important assumption for many statistical techniques; if your data isn’t normal, applying a Box-Cox means that you are able to run a broader number of tests.
-- The Box Cox transformation is named after statisticians George Box and Sir David Roxbee Cox who collaborated on a 1964 paper and developed the technique.
-
-```r
-PreBxCx <- preProcess(training[,-c(5,6)],method="BoxCox")
-TrainBxCx <- predict(PreBxCx,training[,-c(5,6)])
-
-plot1 <- ggplot(training,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Original Probability")
-plot2 <- ggplot(TrainBxCx,aes(Ozone)) + geom_histogram(bins=30)+labs(title="Box-Cox Transform to Normal")
-library(gridExtra)
-grid.arrange(plot1,plot2,nrow=2)
-```
-
-![image](https://user-images.githubusercontent.com/43855029/114201422-298e5c00-9924-11eb-9e40-0b8b45138f46.png)
- 
- ### 2.4.4 Pre-processing as argument:
- 
- When using Preprocessing as argument in the training process in caret, the method is changed to preProcess, for example:
- 
-```r
-modelFit <- train(Ozone~Temp,data=training,
-                  preProcess=c("center","scale","BoxCox"),
-                  method="lm")
-prediction <- predict(modelFit,testing)
-```
