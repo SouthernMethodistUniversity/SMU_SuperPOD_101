@@ -46,7 +46,7 @@ The procedure has a single parameter called k that refers to the number of group
 fitControl <- trainControl(method="cv", number=10)
 # train the model
 model <- train(Species~., data=training, 
-               trControl=fitControl, method="nb")
+               trControl=fitControl, method="lda")
 # summarize results
 print(model)
 predict1 <- predict(model,testing)
