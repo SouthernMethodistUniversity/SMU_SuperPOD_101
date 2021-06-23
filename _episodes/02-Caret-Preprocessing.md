@@ -55,7 +55,6 @@ library(caret)
 
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
 - Preprocessing with missing value
-- Preprocessing: transform data
 - Data partition: training and testing
 
 ### 2.4.1 Visualize important variables
