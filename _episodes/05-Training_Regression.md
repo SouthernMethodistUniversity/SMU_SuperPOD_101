@@ -159,7 +159,8 @@ confusionMatrix(predictions, testing$type)
 Plotting ROC and computing AUC:
 
 ```r
-
+#Need to install package ROCR
+library(ROCR)
 pred_prob <- predict(ModFit_glm,testing, type = "prob")
 head(pred_prob)
 data_roc <- data.frame(pred_prob = pred_prob[,'spam'],
@@ -169,7 +170,7 @@ roc <- prediction(predictions = data_roc$pred_prob,
                       labels = data_roc$actual_label)
 
 plot(performance(roc, "tpr", "fpr"))
-abline(0, 1, lty = 2) # garis diagonal, yaitu performa ketika asal tebak
+abline(0, 1, lty = 2)
 auc <- performance(roc, measure = "auc")
 auc@y.values
 
