@@ -48,7 +48,7 @@ library(rattle)
 fancyRpartPlot(ModFit_rpart$finalModel)
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114234603-ff04c900-994c-11eb-9999-0c5d5f85b76e.png)
-Apply decision tree model to predic output of testing data
+Apply decision tree model to predict output of testing data
 ```r
 predict_rpart <- predict(ModFit_rpart,testing)
 confusionMatrix(predict_rpart, testing$Species)
