@@ -38,7 +38,7 @@ There are 3 main types of Regularization.
 - Elastics Nets
 
 ### 9.1 Ridge Regression
-![image](https://user-images.githubusercontent.com/43855029/114440609-58ad0380-9b98-11eb-8dd5-643428f60c31.png)
+![image](https://user-images.githubusercontent.com/43855029/121278968-b496be80-c8a1-11eb-9117-250db80ca4d8.png)
 
 **𝜆**: Regularization Penalty, to be selected that the model minimized the error
 
@@ -123,7 +123,7 @@ sample estimates:
 - Ridge Regression's cons: **β** never be 0, so all predictors are included in the final model. Therefore, it is not good for best feature selection.
 
 ### 9.2 LASSO: Least Absolute Shrinkage & Selection Operator
-![image](https://user-images.githubusercontent.com/43855029/114440016-a4ab7880-9b97-11eb-8a57-b112cd78f785.png)
+![image](https://user-images.githubusercontent.com/43855029/121297875-f5ea9680-c8c0-11eb-96c7-b52291a7adbc.png)
 
 - In order to overcome the cons issue in Ridge Regression, the LASSO is introduced with the similar shrinkage parameter, but the different is not in square term of the coefficient but only absolute value
 - Similar to Ridge Regression, LASSO also shrink the coefficient, but **force** coefficients to be equal to 0. Making it ability to perform **feature selection**
