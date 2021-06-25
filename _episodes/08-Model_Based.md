@@ -43,6 +43,8 @@ confusionMatrix(testing$Species,predict_LDA)
 ```
 
 - Ensemble approach (Bagging) with LDA
+
+
 ```r
 ModFit_ldabag <- train(training[,-5],training$Species,method="bag",B=500,
                        bagControl=bagControl(fit=ldaBag$fit,
