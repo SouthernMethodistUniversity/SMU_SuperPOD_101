@@ -54,8 +54,10 @@ The Ridge Regression loss function contains 2 elements: (1) RSS is actually the 
 Setting up training/testing model:
 ```r
 library(caret)
-library(ElemStatLearn)
-data(prostate)
+#library(ElemStatLearn)=> available for R package > 3.6.2
+prostate=read.csv("https://raw.githubusercontent.com/vuminhtue/Machine-Learning-Python/master/data/prostate_data.csv")
+
+
 set.seed(123)
 indT <- which(prostate$train==TRUE)
 training <- prostate[indT,]
