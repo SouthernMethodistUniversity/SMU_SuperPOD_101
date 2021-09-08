@@ -21,7 +21,7 @@ keypoints:
 
 ## Requirement:
 - You can write the script in RStudio (on Palmetto's Open OnDemand or your PCs/Macs) and save it as your_username.R and send it to my email: **tuev@clemson.edu**. You can also upload to your github page and share to me
-- **Note**: in order to get the **Certificate of Attendence**, you should send me the R script on or before **07/15/2021**.
+- **Note**: in order to get the **Certificate of Attendence**, you should send me the R script on or before **09/30/2021**.
 
 ## Data
 - You can use *any* data in your field of expertise (most preferred method). If so, please send along the dataset with the Rscript
