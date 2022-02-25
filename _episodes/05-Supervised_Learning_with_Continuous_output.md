@@ -1,5 +1,5 @@
 ---
-title: "Training Machine Learning model using Regression Method"
+title: "Supervised Learning with Continuous Output"
 teaching: 20
 exercises: 0
 questions:
