@@ -91,7 +91,7 @@ yann=data.frame("yhat"=ifelse(max.col(predict_ann$net.result)==1, "setosa",
                               ifelse(max.col(predict_ann$net.result)==2, "versicolor", "virginica")))      
 ```
 
-![image](https://user-images.githubusercontent.com/43855029/156043689-bcf75a49-c671-4c51-bad8-a40315109900.png)
+![image](https://user-images.githubusercontent.com/43855029/156047814-3722097f-176d-4745-a2a5-454fe2b80c78.png)
 
 ### Evaluate model output
 
