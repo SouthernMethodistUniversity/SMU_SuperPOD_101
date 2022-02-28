@@ -11,34 +11,51 @@ keypoints:
 ---
 # 5 Supervised Learning training
 ## 5.1 For Continuous output
-### 5.1.1 Train model using different models:
 
-#### Pre-processing data and create partition
+Here we use the R sampled data named airquality with some missing values.
 
 ```r
-library(caret)
 data(airquality)
+```
 
-set.seed(123)
-#Impute missing value using Bagging approach
+### Pre-processing data and treat missing value
+
+Check missing value
+
+```r
+sum(is.na(airquality))
+```
+
+Impute missing value using Bagging approach
+
+```r
 PreImputeBag <- preProcess(airquality,method="bagImpute")
 airquality_imp <- predict(PreImputeBag,airquality)
+```
 
+### Visualize the important data
+
+```r
+library(GGally)
+ggpairs(airquality_imp,aes(colour=factor(Month)))
+```
+
+![image](https://user-images.githubusercontent.com/43855029/156043017-4fa675b1-d840-45b3-a637-54ad342c5e89.png)
+
+### Split data into training and testing
+
+```r
 indT <- createDataPartition(y=airquality_imp$Ozone,p=0.6,list=FALSE)
 training <- airquality_imp[indT,]
 testing  <- airquality_imp[-indT,]
 ```
 
-#### Select the best variables:
-
-```r
-
-```
+Let's use all inputs data (except Month/Day) for modeling
 
 #### Train model using Linear modeling: 'method=lm'
 
 ```{r}
-modFit_ml <- train(Ozone~Solar.R+Wind+Temp,data=training,
+ModFit_lm <- train(Ozone~Solar.R+Wind+Temp,data=training,
                  preProcess=c("center","scale"),
                  method="lm")
 ```
@@ -46,7 +63,7 @@ modFit_ml <- train(Ozone~Solar.R+Wind+Temp,data=training,
 #### Train model using Stepwise Linear Regression
 
 ```r
-modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
+ModFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
 ```
 
 #### Train model using Polynomial Regression
@@ -56,7 +73,7 @@ modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
 In this study, let use polynomial regression with degree of freedom=3
 
 ```r
-modFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=training,
+ModFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=training,
                      preProcess=c("center","scale"),
                      method="lm")
 ```
@@ -67,26 +84,41 @@ Linear Regression using the output of a Principal Component Analysis (PCA).
 PCR is skillful when data has lots of highly correlated predictors
 
 ```r
-modFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
+ModFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
 ```
 
 #### Train model using Decision Tree
 
 ```r
-ModFit_rpart <- train(Species~.,data=training,method="rpart",
+ModFit_rpart <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rpart",
                       parms = list(split = "gini"))
 ```
 
 #### Train model using Random Forest
 
 ```r
-ModFit_rf <- train(Species~.,data=training,method="rf",prox=TRUE)
+ModFit_rf <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rf",prox=TRUE)
 ```
-
-#### Train model using Support Vector Machine
 
 #### Train model using Artificial Neural Network
 
+```r
+library(neuralnet)
+smax <- apply(training,2,max)
+smin <- apply(training,2,min)
+trainNN <- as.data.frame(scale(training,center=smin,scale=smax-smin))
+testNN <- as.data.frame(scale(testing,center=smin,scale=smax-smin))
+ModNN <- neuralnet(Ozone~Solar.R+Wind+Temp,trainNN, hidden=3,linear.output = T)
+plot(ModNN)
+```
+
+![image](https://user-images.githubusercontent.com/43855029/156043689-bcf75a49-c671-4c51-bad8-a40315109900.png)
 
 
+#### Train model using Support Vector Machine
 
+```r
+library(e1071)
+ModFit_SVM_rbg <- svm(Ozone~Solar.R+Wind+Temp,
+                   data=training,kernel="radial",gamma=0.1)
+````
