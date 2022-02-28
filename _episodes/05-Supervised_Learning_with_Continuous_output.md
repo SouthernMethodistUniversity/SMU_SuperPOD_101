@@ -83,4 +83,10 @@ ModFit_rpart <- train(Species~.,data=training,method="rpart",
 ModFit_rf <- train(Species~.,data=training,method="rf",prox=TRUE)
 ```
 
-Many other model ... ()
+#### Train model using Support Vector Machine
+
+#### Train model using Artificial Neural Network
+
+
+
+
