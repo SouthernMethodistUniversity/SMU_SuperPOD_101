@@ -10,9 +10,5 @@ from [The Carpentries](https://carpentries.org/).
 ## Authors
 ```
 Tue M. Vu, Ph.D. 
-HPC Research Facilitator,
-Advanced Computing and Data Science,
-CyberInfrastructure and Technology Integration (CCIT/CITI)
-Research Assistant Professor, Glenn Department of Civil Engineering
-2119 Barre Hall, Clemson University
+
 ```
