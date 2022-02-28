@@ -91,6 +91,7 @@ PCR is skillful when data has lots of highly correlated predictors
 
 ```r
 ModFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
+predict_PCR <- predict(ModFit_PCR,testing)  
 ```
 
 #### Train model using Decision Tree
@@ -133,6 +134,7 @@ For continuous, we use postResample:
 ```r
 postResample(predict_lm,testing$Ozone)
 postResample(predict_SLR,testing$Ozone)
+postResample(predict_PCR,testing$Ozone)
 postResample(predict_poly,testing$Ozone)
 postResample(predict_rpart,testing$Ozone)
 postResample(predict_rf,testing$Ozone)
