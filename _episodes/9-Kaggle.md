@@ -76,4 +76,9 @@ There are 4 files in this folder:
 
 ```
 
- 
+### Step 6: Knit the documentation
+
+```r
+
+```
+
