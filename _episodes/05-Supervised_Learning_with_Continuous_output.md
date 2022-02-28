@@ -52,18 +52,23 @@ testing  <- airquality_imp[-indT,]
 
 Let's use all inputs data (except Month/Day) for modeling
 
+### Train model and predict with different algorithm
+
 #### Train model using Linear modeling: 'method=lm'
 
 ```{r}
 ModFit_lm <- train(Ozone~Solar.R+Wind+Temp,data=training,
                  preProcess=c("center","scale"),
                  method="lm")
+predict_lm <- predict(ModFit_lm,testing)                 
 ```
 
 #### Train model using Stepwise Linear Regression
 
 ```r
 ModFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
+predict_SLR <- predict(ModFit_SLR,testing)                 
+
 ```
 
 #### Train model using Polynomial Regression
@@ -76,6 +81,7 @@ In this study, let use polynomial regression with degree of freedom=3
 ModFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=training,
                      preProcess=c("center","scale"),
                      method="lm")
+predict_poly <- predict(ModFit_poly,testing)                                      
 ```
 
 #### Train model using Principal Component Regression
@@ -92,12 +98,14 @@ ModFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
 ```r
 ModFit_rpart <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rpart",
                       parms = list(split = "gini"))
+predict_rpart <- predict(ModFit_rpart,testing)                                                            
 ```
 
 #### Train model using Random Forest
 
 ```r
 ModFit_rf <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rf",prox=TRUE)
+predict_rf <- predict(ModFit_rf,testing)                                                            
 ```
 
 #### Train model using Artificial Neural Network
@@ -110,15 +118,23 @@ trainNN <- as.data.frame(scale(training,center=smin,scale=smax-smin))
 testNN <- as.data.frame(scale(testing,center=smin,scale=smax-smin))
 ModNN <- neuralnet(Ozone~Solar.R+Wind+Temp,trainNN, hidden=3,linear.output = T)
 plot(ModNN)
+
+predict_ann <- compute(ModNN,testNN)
+# Rescale to original:
+predict_ann_rescale <- predict_ann$net.result*(smax-smin)[1]+smin[1]
 ```
 
 ![image](https://user-images.githubusercontent.com/43855029/156043689-bcf75a49-c671-4c51-bad8-a40315109900.png)
 
+### Evaluate model output
 
-#### Train model using Support Vector Machine
+For continuous, we use postResample:
 
 ```r
-library(e1071)
-ModFit_SVM_rbg <- svm(Ozone~Solar.R+Wind+Temp,
-                   data=training,kernel="radial",gamma=0.1)
-````
+postResample(predict_lm,testing$Ozone)
+postResample(predict_SLR,testing$Ozone)
+postResample(predict_poly,testing$Ozone)
+postResample(predict_rpart,testing$Ozone)
+postResample(predict_rf,testing$Ozone)
+postResample(predict_ann_rescale,testing$Ozone)
+```
