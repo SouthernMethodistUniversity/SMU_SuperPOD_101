@@ -57,15 +57,8 @@ There are several steps that we will use `caret` for. For preprocessing raw data
 - Preprocessing with missing value
 - Data partition: training and testing
 
-### 2.4.1 Visualize important variables
-Here we introduce the library `GGally`  with function `ggpairs` to help user in visualizing the input data
-```r
-library(GGally)
-ggpairs(data=iris,aes(colour=Species))
-```
-![image](https://user-images.githubusercontent.com/43855029/114196055-01e8c500-991f-11eb-8eaf-816f25e6c534.png)
+### Pre-processing with missing value
 
-### 2.4.2 Pre-processing with missing value
 - Most of the time the input data has missing values (`NA, NaN, Inf`) due to data collection issue (power, sensor, personel). 
 - There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency
 - These missing values need to be treated/cleaned before we can use because "Garbage in => Garbage out".
