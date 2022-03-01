@@ -74,3 +74,4 @@ The dataset contains six columns:
 
 ```
 
+!> [Solution](https://github.com/vuminhtue/SMU_Data_Science_workflow_R/blob/master/files/Heights/Kmeans.Rmd)
