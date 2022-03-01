@@ -82,3 +82,6 @@ There are 4 files in this folder:
 
 ```
 
+[Solution](https://github.com/vuminhtue/SMU_Data_Science_workflow_R/blob/master/files/house-prices/Kaggle_house_price.Rmd)
+
+>! Spoiler text
