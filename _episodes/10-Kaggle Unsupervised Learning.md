@@ -25,7 +25,7 @@ For simpilicity: I downloaded the data for you and put it here:
 https://github.com/vuminhtue/SMU_Data_Science_workflow_R/tree/master/data/Heights
 
 
-## 9.1 Understand the data
+## 10.1 Understand the data
 
 There is only 1 csv file: Height of Male and Female by Country 2022
 
@@ -42,7 +42,7 @@ The dataset contains six columns:
 - We will use Unsupervised ML to classify the groups of countries having similar heights of male and female
 - Visualize the output
 
-## 9.2 Create the Rmd format with following Data Science workflow:
+## 10.2 Create the Rmd format with following Data Science workflow:
 
 ### Step 1: Load library, Load data
 
