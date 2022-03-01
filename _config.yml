@@ -29,7 +29,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "tuev@clemson.edu"
+email: "tuev@smu.edu"
 
 # Sites.
 csc_site: "https://www.smu.edu/OIT/Services/DataScience"
