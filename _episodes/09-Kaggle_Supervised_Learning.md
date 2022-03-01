@@ -85,3 +85,11 @@ There are 4 files in this folder:
 [Solution](https://github.com/vuminhtue/SMU_Data_Science_workflow_R/blob/master/files/house-prices/Kaggle_house_price.Rmd)
 
 >! Spoiler text
+
+[comment]: <> (This is a comment, it will not be included)
+[comment]: <> (in  the output file unless you use it in)
+[comment]: <> (a reference style link.)
+
+[//]: <> (This is also a comment.)
+
+[//]: # (This may be the most platform independent comment)
