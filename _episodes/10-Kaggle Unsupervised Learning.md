@@ -1,5 +1,5 @@
 ---
-title: "Participating in Kaggle online competition"
+title: "Kaggle online competition: Unsupervised Learning"
 teaching: 20
 exercises: 0
 questions:
