@@ -21,8 +21,8 @@ _**Project description:**_
 The metric system is used in most nations to measure height.Despite the fact that the metric system is the most widely used measurement method, we will offer average heights in both metric and imperial units for each country.To be clear, the imperial system utilises feet and inches to measure height, whereas the metric system uses metres and centimetres.Although switching between these measurement units is not difficult, countries tend to choose one over the other in order to maintain uniformity.
 
 
-For simpilicity: I downloaded the data for you and put it here:
-https://github.com/vuminhtue/SMU_Data_Science_workflow_R/tree/master/data/Heights
+For simpilicity: I downloaded the data for you and put the data table here:
+https://raw.githubusercontent.com/vuminhtue/SMU_Data_Science_workflow_R/master/data/Heights/Height%20of%20Male%20and%20Female%20by%20Country%202022.csv
 
 
 ## 10.1 Understand the data
