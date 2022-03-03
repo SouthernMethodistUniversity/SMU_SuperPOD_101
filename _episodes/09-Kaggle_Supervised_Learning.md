@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Kaggle"
 ---
-# 9. Kaggle online competition
+# 9. Kaggle online competition: Supervised Learning
  
 This is a perfect competition for data science students who have completed an online course in machine learning and are looking to expand their skill set before trying a featured competition. 
 
