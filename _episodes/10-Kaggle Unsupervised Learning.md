@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Kaggle"
 ---
-# 10. Kaggle online competition
+# 10. Kaggle online competition: Unsupervised Learning
 
 In previous chapter, you have worked with Supervised Learning data, now in this chapter, let's confront with another type of ML problem, which is Unsupervised Learning
 
