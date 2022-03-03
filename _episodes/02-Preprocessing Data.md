@@ -97,3 +97,13 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
+### Visualize the input data using corrplot
+
+We can also quickly visualize the cross correlation between the input data to see the relationship:
+
+```r
+dmatrix <- cor(DataImputeBag[,1:4])
+corrplot(dmatrix)
+```
+
+![image](https://user-images.githubusercontent.com/43855029/156621306-b297c977-1f5c-4e3c-9d6c-08673bed95d5.png)
