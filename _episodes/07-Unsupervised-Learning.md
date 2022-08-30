@@ -69,8 +69,8 @@ fviz_cluster(km,data=iris[,3:4])
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114585677-e567c800-9c51-11eb-8cb4-6db443f0698b.png)
 
-### 7.1.4 How to find optimal K values:
-#### 7.1.4.1 Elbow approach
+## 7.2 How to find optimal K values:
+### 7.2.1 Elbow approach
 - Similar to KNN method for supervised learning, for K-means approach, we are able to use Elbow approach to find the optimal K values.
 - The Elbow approach ues the Within-Cluster Sum of Square (WSS) to measure the compactness of the clusters:
 ![image](https://user-images.githubusercontent.com/43855029/114587068-4d6ade00-9c53-11eb-932d-0de0c9edef83.png)
@@ -81,7 +81,7 @@ fviz_nbclust(iris[,3:4], kmeans, method = "wss")
 ```
 ![image](https://user-images.githubusercontent.com/43855029/114586165-5e671f80-9c52-11eb-9ad1-e9170fd6b5ef.png)
 
-#### 7.1.4.2 Gap-Statistics approach
+### 7.2.2 Gap-Statistics approach
 - Developed by Prof. Tibshirani et al in Stanford
 - Applied to any clustering method (K-means, Hierarchical)
 - Maximize the Gap function:
