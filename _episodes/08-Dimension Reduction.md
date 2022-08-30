@@ -47,6 +47,31 @@ For simplicity, I only introduce LASSO for Regularization method
 - Similar to Ridge Regression, LASSO also shrink the coefficient, but **force** coefficients to be equal to 0. Making it ability to perform **feature selection**
 - In statistics the coefficient esimated produced by this method is know as **L1 norm**
 
+Setting up training/testing model:
+```r
+library(caret)
+#library(ElemStatLearn)=> available for R package > 3.6.2
+prostate=read.csv("https://raw.githubusercontent.com/vuminhtue/Machine-Learning-Python/master/data/prostate_data.csv")
+
+
+set.seed(123)
+indT <- which(prostate$train==TRUE)
+training <- prostate[indT,]
+testing  <- prostate[-indT,]
+
+library(PerformanceAnalytics)
+chart.Correlation(training[,-10])
+```
+Predict using Ridge Regression method:
+```r
+library(glmnet)
+library(plotmo)
+y <- training$lpsa
+x <- training[,-c(9,10)]
+x <- as.matrix(x)
+```
+
+LASSO computation
 
 ```r
 cvfit_LASSO    <- cv.glmnet(x,y,alpha=1)
