@@ -62,7 +62,9 @@ testing  <- prostate[-indT,]
 library(PerformanceAnalytics)
 chart.Correlation(training[,-10])
 ```
-Predict using Ridge Regression method:
+
+Splitting to training/testing
+
 ```r
 library(glmnet)
 library(plotmo)
