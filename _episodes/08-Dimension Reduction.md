@@ -40,7 +40,7 @@ There are 3 main types of Regularization.
 
 For simplicity, I only introduce LASSO for Regularization method
 
-### 8.1 LASSO: Least Absolute Shrinkage & Selection Operator
+### LASSO: Least Absolute Shrinkage & Selection Operator
 ![image](https://user-images.githubusercontent.com/43855029/121297875-f5ea9680-c8c0-11eb-96c7-b52291a7adbc.png)
 
 - In order to overcome the cons issue in Ridge Regression, the LASSO is introduced with the similar shrinkage parameter, but the different is not in square term of the coefficient but only absolute value
