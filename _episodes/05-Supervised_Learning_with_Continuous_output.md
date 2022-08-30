@@ -9,8 +9,7 @@ objectives:
 keypoints:
 - "Regression training"
 ---
-# 5 Supervised Learning training
-## 5.1 For Continuous output
+# 5 Supervised Learning training with Continuous output
 
 Here we use the R sampled data named airquality with some missing values.
 
@@ -18,7 +17,7 @@ Here we use the R sampled data named airquality with some missing values.
 data(airquality)
 ```
 
-### 5.1.1 Pre-processing data and treat missing value
+## 5.1 Pre-processing data and treat missing value
 
 Check missing value
 
@@ -33,7 +32,7 @@ PreImputeBag <- preProcess(airquality,method="bagImpute")
 airquality_imp <- predict(PreImputeBag,airquality)
 ```
 
-### 5.1.2 Visualize the important data
+## 5.2 Visualize the important data
 
 ```r
 library(GGally)
@@ -42,7 +41,7 @@ ggpairs(airquality_imp,aes(colour=factor(Month)))
 
 ![image](https://user-images.githubusercontent.com/43855029/156043017-4fa675b1-d840-45b3-a637-54ad342c5e89.png)
 
-### 5.1.3 Split data into training and testing
+## 5.3 Split data into training and testing
 
 ```r
 indT <- createDataPartition(y=airquality_imp$Ozone,p=0.6,list=FALSE)
@@ -52,9 +51,9 @@ testing  <- airquality_imp[-indT,]
 
 Let's use all inputs data (except Month/Day) for modeling
 
-### 5.1.4 Train model and predict with different algorithm
+## 5.4 Train model and predict with different algorithm
 
-#### 5.1.4.1 Train model using Multi Linear Regression modeling: 'method=lm'
+### 5.4.1 Train model using Multi Linear Regression modeling: 'method=lm'
 
 Here we will use 3 input variables as inputs to predict the output. We will need to standardize the input using flag **preProcess=c("center","scale")**
 
@@ -65,7 +64,7 @@ ModFit_lm <- train(Ozone~Solar.R+Wind+Temp,data=training,
 predict_lm <- predict(ModFit_lm,testing)                 
 ```
 
-#### 5.1.4.2 Train model using Stepwise Linear Regression
+### 5.4.2 Train model using Stepwise Linear Regression
 
 Stepwise linear regression is a method of regressing multiple variables while simultaneously removing those that aren't important.
 
@@ -78,7 +77,7 @@ ModFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
 predict_SLR <- predict(ModFit_SLR,testing)                
 ```
 
-#### 5.1.4.3 Train model using Polynomial Regression
+### 5.4.3 Train model using Polynomial Regression
 
 Polynomial regression is a form of regression analysis in which the relationship between the independent variable x and the dependent variable y is modelled as an n^th degree polynomial in x. 
 
@@ -95,7 +94,7 @@ ModFit_poly <- train(Ozone~poly(Solar.R,3)+poly(Wind,3)+poly(Temp,3),data=traini
 predict_poly <- predict(ModFit_poly,testing)                                      
 ```
 
-#### 5.1.4.4 Train model using Principal Component Regression
+### 5.4.4 Train model using Principal Component Regression
 
 Linear Regression using the output of a Principal Component Analysis (PCA). 
 PCR is skillful when data has lots of highly correlated predictors
@@ -105,7 +104,7 @@ ModFit_PCR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="pcr")
 predict_PCR <- predict(ModFit_PCR,testing)  
 ```
 
-#### 5.1.4.5 Train model using Decision Tree
+### 5.4.5 Train model using Decision Tree
 
 -   Tree based learning algorithms are considered to be one of the best and mostly used supervised learning methods.
 -   Tree based methods empower predictive models with high accuracy, stability and ease of interpretation
@@ -113,13 +112,13 @@ predict_PCR <- predict(ModFit_PCR,testing)
 -   Types: Categorical and Continuous
 ![image](https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png)
 
-##### Spliting algorithm
+#### Spliting algorithm
 - Gini Impurity: (Categorical)
 - Chi-Square index (Categorical)
 - Cross-Entropy & Information gain (Categorical)
 - Reduction Variance (Continuous)
 
-##### Pros & Cons
+#### Pros & Cons
 ![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png)
 
 ```r
@@ -128,14 +127,14 @@ ModFit_rpart <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rpart",
 predict_rpart <- predict(ModFit_rpart,testing)                                                            
 ```
 
-##### Want fancier plot?
+#### Want fancier plot?
 
 ```r
 library(rattle)
 fancyRpartPlot(ModFit_rpart$finalModel)
 ```
 
-#### 5.1.4.6 Train model using Random Forest
+### 5.4.6 Train model using Random Forest
 
 ![image](https://user-images.githubusercontent.com/43855029/115076000-f3278280-9ec9-11eb-89b4-b07f3713b105.png)
 
@@ -145,14 +144,14 @@ fancyRpartPlot(ModFit_rpart$finalModel)
 - It is a type of ensemble learning method, where a group of weak models combine to form a powerful model.
 - The end output of the model is like a black box and hence should be used judiciously.
 
-##### Detail explaination
+#### Detail explaination
 
 - If there are M input variables, a number m<M is specified such that at each node, m variables are selected at random out of the M. The best split on these m is used to split the node. The value of m is held constant while we grow the forest.
 - Each tree is grown to the largest extent possible and  there is no pruning.
 - Predict new data by aggregating the predictions of the ntree trees (i.e., majority votes for classification, average for regression).
 ![image](https://user-images.githubusercontent.com/43855029/114235192-d16c4f80-994d-11eb-9732-571463c2f3f5.png)
 
-##### Pros & Cons of Random Forest
+#### Pros & Cons of Random Forest
 ![image](https://user-images.githubusercontent.com/43855029/114235213-daf5b780-994d-11eb-83f8-ac7520749dbe.png)
 
 ```r
@@ -160,7 +159,7 @@ ModFit_rf <- train(Ozone~Solar.R+Wind+Temp,data=training,method="rf",prox=TRUE)
 predict_rf <- predict(ModFit_rf,testing)                                                            
 ```
 
-#### 5.1.4.7 Train model using Artificial Neural Network
+### 5.4.7 Train model using Artificial Neural Network
 
 ![image](https://user-images.githubusercontent.com/43855029/114472746-da188c00-9bc0-11eb-913c-9dcd14f872ac.png)
 ![image](https://user-images.githubusercontent.com/43855029/114472756-dd137c80-9bc0-11eb-863d-7c4d054efa89.png)
@@ -208,7 +207,7 @@ predict_ann_rescale <- predict_ann$net.result*(smax-smin)[1]+smin[1]
 
 ![image](https://user-images.githubusercontent.com/43855029/156043689-bcf75a49-c671-4c51-bad8-a40315109900.png)
 
-#### Evaluate model output
+### 5.5 Evaluate model output
 
 For continuous, we use postResample:
 
