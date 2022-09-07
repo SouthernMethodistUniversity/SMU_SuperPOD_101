@@ -14,7 +14,6 @@ keypoints:
 
 ![Slide2](https://user-images.githubusercontent.com/43855029/156212342-af7c10bc-5b29-4df6-90c2-e9130b3af8ca.PNG)
 
-![Slide3](https://user-images.githubusercontent.com/43855029/156212349-166c6957-69d5-47c5-820e-61565062c42a.PNG)
 
 ![Slide4](https://user-images.githubusercontent.com/43855029/156212352-29b21a9d-46b3-4ee0-b141-a65d5af3a412.PNG)
 
