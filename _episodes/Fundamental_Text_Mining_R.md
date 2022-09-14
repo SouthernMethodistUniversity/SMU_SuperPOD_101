@@ -25,7 +25,7 @@ setwd('/users/tuev/SMU/Workshop/SMU/R_Text_Mining/')
 ```{r}
 library(tm)
 library(ggplot2)
-mytxt <- readLines('monster_mash.txt')
+mytxt <- readLines('https://raw.githubusercontent.com/vuminhtue/SMU_Machine_Learning_R/master/data/monster_mash.txt')
 ```
 
 ## Library tm
