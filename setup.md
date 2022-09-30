@@ -38,3 +38,83 @@ Once done, you will be placed in the login node:
 ```
 
 {% include links.md %}
+
+## 3. Request a compute node
+
+You should not use login node to do computation. Instead you can request from **any** of M2 compute node using one of the following command:
+
+Example: requesting 1 node with 10 cpus, 16gb of memory for 12 hours in queue name **standard-mem-s**
+
+```
+$ srun -N1 -c10 --mem=16gb -p standard-mem-s --time=12:00:00 --pty $SHELL
+```
+
+Example: requesting 1 node with 10 cpus, 16gb of memory for 12 hours using Tesla P100 GPU in queue name **gpgpu-1**. Notice the flag **-G1** to request 1 GPU
+
+```
+$ srun -N1 -G1 -c10 --mem=16gb -p gpgpu-1 --time=12:00:00 --pty $SHELL
+```
+
+
+Example: requesting 1 node with 10 cpus, 16gb of memory for 12 hours using Tesla V100 GPU in queue name **v100x8**. Notice the flag **--gres=gpu:1** to request 1 GPU
+
+```
+$ srun -N1 --gres=gpu:1 -c10 --mem=16gb -p v100x8 --time=12:00:00 --pty $SHELL
+```
+
+You can view any of the available nodes using the following command:
+
+```
+$ cat /hpc/motd/m2_queue_status
+```
+
+Once done, you will be placed in the compute node, for example node name **b001**
+
+```
+[yourM2username@b001 ~]$ 
+```
+
+## 4. Load python module and install Kaggle
+
+Once you are in the compute node, load python/3 module:
+
+```
+$ module load python/3
+```
+
+And install Kaggle
+
+```
+$ pip install Kaggle
+```
+
+## 5. Using Kaggle API
+
+- First, you need to Register an account in kaggle.com
+- Sign in to your kaggle.com account
+- Click on your Profile on top right and select Account
+- Scroll down and select to Create API Token
+
+![image](https://user-images.githubusercontent.com/43855029/193325895-5212e8fa-4b82-406b-a6ac-793abd702fd8.png)
+
+- The API Token **kaggle.json** is downloaded to your computer
+- Upload the **kaggle.json** to your M2 account under ~/.kaggle (**~** means home directory and **.** means hidden folder)
+
+```
+scp kaggle.json yourusername@m2.smu.edu:/users/yourusername/.kaggle
+```
+
+## 6. Download a sample project
+
+Now everything is setup, I will go to kaggle.com and select a sample dataset, for example: [House price](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
+
+Select Data Tab and scroll down you will see:
+
+![image](https://user-images.githubusercontent.com/43855029/193326858-c87a1a4d-26e6-4506-9595-cb8313ff0de2.png)
+
+You can **Download All** to download the entire data to your computer or Copy the link (button in red) and paste to M2 CLI:
+
+![image](https://user-images.githubusercontent.com/43855029/193326927-ee684760-ccbc-4c7e-b203-aafcfceedf91.png)
+
+
+
