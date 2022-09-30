@@ -128,3 +128,53 @@ $ unzip zipfile.zip -d folder1
 
 Now the data is ready for you to work on it on M2
 
+# 2. Create scikit-learn Conda environment for Python workflow
+
+The following instruction shows step by step conda installation using CLI (Command Line Interface). You can use any terminal from your Windows/MacOS/Linux system.
+ 
+### Load neccesary library
+
+```
+$ module load python/3 
+```
+
+### Install Conda environment and scikit-learn to your home directory
+
+Install conda environment named **MyKaggle** to your M2 home directory **~** with python version 3.8 and pip. Flag **-y** allows to install
+
+```
+$ conda create --prefix ~/MyKaggle python=3.8 pip -y
+$ source activate ~/MyKaggle  
+$ pip install scikit-learn
+```
+
+### Create Jupyter kernel to work in HPC Open OnDemand
+
+```
+$ pip install ipykernel
+$ python3 -m ipykernel install --user --name MyKaggle --display-name MyKaggle
+```
+
+### Double check with Open OnDemand
+
+Login to you **hpc.smu.edu** and request a compute node:
+
+You can select: 
+- Partition: standard-mem-s
+- Select Python environment: python/3
+- Time (Hours): 12
+- Number of nodes: 1 
+- Cores per node: 4
+- Memory: 16
+ then hit Launch
+ 
+![image](https://user-images.githubusercontent.com/43855029/193330158-c5a9bc70-ae9b-49da-9632-db9b48c6269c.png)
+
+
+Double check if you are able to see MyKaggle kernel created:
+
+![image](https://user-images.githubusercontent.com/43855029/193330016-dcb2ed91-74d1-4dcd-957a-deccd3842f9d.png)
+
+If yes, select the MyKaggle notebook and check if your scikit-learn is installed correctly?
+
+![image](https://user-images.githubusercontent.com/43855029/193330643-46db22d6-4950-4cec-8871-fad69aa6bc61.png)
