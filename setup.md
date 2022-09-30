@@ -116,6 +116,14 @@ You can **Download All** to download the entire data to your computer or Copy th
 
 **Note:**: You must Accept Term and Condition prior to download the data, else 403 Forbidden will appear.
 
+## 7. Extract the zip file
 
+If the downloaded file is in zip format you can unzip to new folder:
 
+```
+$ mkdir folder1
+$ unzip zipfile.zip -d folder1
+```
+
+Now the data is ready for you to work on it on M2
 
