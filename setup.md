@@ -1,8 +1,9 @@
 ---
 title: Setup Platform for Kaggle Competition
 ---
+# 1. Download Kaggle data to M2 directory
 
-## 1. SMU M2 account request
+## 1.1 SMU M2 account request
 
 In SMU OIT RDSS Kaggle club, we will be using SMU M2 as a platform for all of the work.
 
@@ -10,7 +11,7 @@ Therefore, you must have a **FREE** M2 account prior to setting up your workflow
 
 To request for M2 account, you need to send email to help@smu.edu with HPC on the subject line to request for M2 account, you can put Eric Godat (egodat@smu.edu) or Tue Vu (tuev@smu.edu) as sponsor for your M2 account. The account is available for 1 year and renewable upon request
 
-## 2. Login to your M2 account using one of the following method:
+## 1.2 Login to your M2 account using one of the following method:
 - Via hpc.smu.edu => Shell Access (Preferable method)
 
 ![image](https://user-images.githubusercontent.com/43855029/193322149-f1940199-78aa-40b9-b125-c3a912c041c5.png)
@@ -39,7 +40,7 @@ Once done, you will be placed in the login node:
 
 {% include links.md %}
 
-## 3. Request a compute node
+## 1.3 Request a compute node
 
 You should not use login node to do computation. Instead you can request from **any** of M2 compute node using one of the following command:
 
@@ -74,7 +75,7 @@ Once done, you will be placed in the compute node, for example node name **b001*
 [yourM2username@b001 ~]$ 
 ```
 
-## 4. Load python module and install Kaggle
+## 1.4 Load python module and install Kaggle
 
 Once you are in the compute node, load python/3 module:
 
@@ -88,7 +89,7 @@ And install Kaggle
 $ pip install Kaggle
 ```
 
-## 5. Using Kaggle API
+## 1.5 Using Kaggle API
 
 - First, you need to Register an account in kaggle.com
 - Sign in to your kaggle.com account
@@ -104,7 +105,7 @@ $ pip install Kaggle
 scp kaggle.json yourusername@m2.smu.edu:/users/yourusername/.kaggle
 ```
 
-## 6. Download a sample project
+## 1.6 Download a sample project
 
 Now everything is setup, I will go to kaggle.com and select a sample dataset, for example: [House price](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
 
@@ -116,7 +117,7 @@ You can **Download All** to download the entire data to your computer or Copy th
 
 **Note:**: You must Accept Term and Condition prior to download the data, else 403 Forbidden will appear.
 
-## 7. Extract the zip file
+## 1.7 Extract the zip file
 
 If the downloaded file is in zip format you can unzip to new folder:
 
