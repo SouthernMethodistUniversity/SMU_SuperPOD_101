@@ -108,13 +108,14 @@ scp kaggle.json yourusername@m2.smu.edu:/users/yourusername/.kaggle
 
 Now everything is setup, I will go to kaggle.com and select a sample dataset, for example: [House price](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview)
 
-Select Data Tab and scroll down you will see:
+Select Data Tab, **Accept Term & Condition**, and scroll down you will see:
 
 ![image](https://user-images.githubusercontent.com/43855029/193326858-c87a1a4d-26e6-4506-9595-cb8313ff0de2.png)
 
-You can **Download All** to download the entire data to your computer or Copy the link (button in red) and paste to M2 CLI:
+You can **Download All** to download the entire data to your computer or Copy the link (button in red) and paste to M2 CLI.
 
-![image](https://user-images.githubusercontent.com/43855029/193326927-ee684760-ccbc-4c7e-b203-aafcfceedf91.png)
+**Note:**: You must Accept Term and Condition prior to download the data, else 403 Forbidden will appear.
+
 
 
 
