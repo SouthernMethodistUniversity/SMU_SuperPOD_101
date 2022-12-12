@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Kaggle"
 ---
-# 10. Kaggle online competition: Unsupervised Learning
+# 3. Kaggle online competition: Unsupervised Learning
 
 In previous chapter, you have worked with Supervised Learning data, now in this chapter, let's confront with another type of ML problem, which is Unsupervised Learning
 
@@ -25,7 +25,7 @@ For simpilicity: I downloaded the data for you and put the data table here:
 https://raw.githubusercontent.com/vuminhtue/SMU_Data_Science_workflow_R/master/data/Heights/Height%20of%20Male%20and%20Female%20by%20Country%202022.csv
 
 
-## 10.1 Understand the data
+## 3.1 Understand the data
 
 There is only 1 csv file: Height of Male and Female by Country 2022
 
@@ -42,7 +42,7 @@ The dataset contains six columns:
 - We will use Unsupervised ML to classify the groups of countries having similar heights of male and female
 - Visualize the output
 
-## 10.2 Create the Rmd format with following Data Science workflow:
+## 3.2 Create the Rmd format with following Data Science workflow:
 
 ### Step 1: Load library, Load data
 
