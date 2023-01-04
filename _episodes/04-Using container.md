@@ -69,3 +69,8 @@ enroot start godlovedc+lolcow
 ```
 
 ![image](https://user-images.githubusercontent.com/43855029/180532404-60f32edc-489a-4ed1-bfa8-ae4f6fbaa566.png)
+
+## Download Tensorflow container and start using in interactive mode
+
+- Now, let's start downloading Tensorflow container from NGC. By browsing the [NGC Catalog](https://catalog.ngc.nvidia.com/containers) and search for Tensorflow, I got the link:
+https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
