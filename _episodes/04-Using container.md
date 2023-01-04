@@ -68,4 +68,4 @@ enroot create godlovedc+lolcow.sqsh
 enroot start godlovedc+lolcow
 ```
 
-https://user-images.githubusercontent.com/43855029/180532404-60f32edc-489a-4ed1-bfa8-ae4f6fbaa566.png
+![image](https://user-images.githubusercontent.com/43855029/180532404-60f32edc-489a-4ed1-bfa8-ae4f6fbaa566.png)
