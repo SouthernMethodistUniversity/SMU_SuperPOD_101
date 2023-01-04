@@ -57,3 +57,5 @@ python /workspace/nemo/examples/nlp/text_classification/text_classification_with
 ```       
 
 Check the GPU usage with **nvidia-smi** command
+
+Output of the model training is text_classification_model.nemo
