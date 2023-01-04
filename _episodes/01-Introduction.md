@@ -34,6 +34,10 @@ keypoints:
 
 ## Storage 
 
+Note that: 
+- SuperPOD's home & scratch directory is different from M2's home.
+- However, both SuperPOD and M2 share the same $WORK storage
+
 Variable       | Path                       | Quota  | Usage                      |
 -------------- | -------------------------- | ------ | -------------------------  |
 ${HOME}        | /users/${USER}             | 200 GB | Home directory, backed up  |
@@ -60,3 +64,18 @@ If you do not use VPN off campus, you can login to ManeFrame II and then ssh to 
 $ ssh username@m2.smu.edu
 $ ssh username@slogin-01.superpod.smu.edu
 ```
+
+SuperPOD is using the same module system as M2 so nearly all commands are similar.
+
+## Requesting a compute node
+
+SuperPOD uses SLURM as scheduler so it is no different from M2 when requesting an interactive node:
+
+For example, requesting a node with 1 GPU, 10 CPUs, 128gb memory for 12 hours:
+
+```
+$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
+$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
+```
+
+
