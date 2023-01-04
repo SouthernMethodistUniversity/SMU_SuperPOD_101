@@ -114,3 +114,5 @@ The following batch script is used to submit the training job using 8 GPUs and T
 
 srun --container-image=$WORK/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --container-mounts=$WORK mpirun -np 8 --allow-run-as-root --oversubscribe python /work/users/tuev/cv1/cifar100/multi/cifar100spod-hvod.py
 ```
+
+Make sure to use nvidia-smi to check the usage of all 8 GPUs
