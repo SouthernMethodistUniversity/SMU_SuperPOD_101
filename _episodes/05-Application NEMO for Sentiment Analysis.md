@@ -64,8 +64,8 @@ python /workspace/nemo/examples/nlp/text_classification/text_classification_with
       model.train_ds.file_path=train_nemo_format.tsv \
       model.validation_ds.file_path=dev_nemo_format.tsv \
       trainer.num_nodes=1 \
-      trainer.max_epochs=20 \      
-      trainer.precision=16 \      
+      trainer.max_epochs=20 \
+      trainer.precision=16 \
       model.optim.name=adam \
       model.optim.lr=1e-4
 ```       
