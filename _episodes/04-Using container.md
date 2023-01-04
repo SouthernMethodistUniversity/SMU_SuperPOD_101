@@ -70,9 +70,7 @@ enroot start godlovedc+lolcow
 
 ![image](https://user-images.githubusercontent.com/43855029/180532404-60f32edc-489a-4ed1-bfa8-ae4f6fbaa566.png)
 
-## Download Tensorflow container and start using in interactive mode
-
-### Search and download container:
+## Download Tensorflow container
 
 - Now, let's start downloading Tensorflow container from NGC. By browsing the [NGC Catalog](https://catalog.ngc.nvidia.com/containers) and search for Tensorflow, I got the link:
 https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
@@ -102,7 +100,7 @@ The sqsh file **nvidia+tensorflow+22.12-tf2-py3.sqsh** is created.
 $ enroot create nvidia+tensorflow+22.12-tf2-py3.sqsh
 ```
 
-### Start loading container in SuperPOD
+## Working with NGC container in Interactive mode:
 
 Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
 
@@ -123,4 +121,33 @@ $ python
 >>> tf.config.list_physical_devices('GPU')
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
+
+Exit the container using **exit** command.
+
+## Working with NGC container in Batch mode
+
+- Similar to M2, container can be loaded and executed in batch mode.
+- Following is the sample content of a batch file named **spod_testing.sh** with a python file **testing.py**
+  
+```
+#!/bin/bash
+#SBATCH -J Testing       # job name to display in squeue
+#SBATCH -o output-%j.txt    # standard output file
+#SBATCH -e error-%j.txt     # standard error file
+#SBATCH -p batch -c 12 --mem=20G --gres=gpu:1     # requested partition
+#SBATCH -t 1440              # maximum runtime in minutes
+#SBATCH -D /link-to-your-folder/
+
+srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python testing.py
+```
+
+- Content of **testing.py**
+
+```python
+import tensorflow as tf
+print(tf.config.list_physical_devices('GPU'))
+```
+
+
+
 
