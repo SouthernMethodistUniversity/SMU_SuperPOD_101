@@ -115,5 +115,12 @@ $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidi
 
 - Note that in this example, I mounted the container to **$WORK** location only but you can always mount it to your own working directory
 
+### Check the GPU enable:
 
+```
+$ python
+>>> import tensorflow as tf
+>>> tf.config.list_physical_devices('GPU')
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+```
 
