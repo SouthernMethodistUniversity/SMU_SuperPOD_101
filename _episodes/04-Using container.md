@@ -81,25 +81,25 @@ https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
 
 ![image](https://user-images.githubusercontent.com/43855029/210624494-f3304104-32d6-4c02-bc2c-388b3f30caa7.png)
 
-The following information was copied to the memory:
+The following information was copied to the memory when selecting the 22.12-tf2 version:
 
 ```
-nvcr.io/nvidia/tensorflow:22.12-tf1-py3
+nvcr.io/nvidia/tensorflow:22.12-tf2-py3
 ```
 
-- Im gonna download the version 22.12 to my **work** location using **enroot**, pay attention to the syntax difference when pasting:
+- Im gonna download the version 22.12 tf2 to my **work** location using **enroot**, pay attention to the syntax difference when pasting:
 
 ```
 $ cd $WORK/sqsh
-$ enroot import docker://nvcr.io#nvidia/tensorflow:22.12-tf1-py3
+$ enroot import docker://nvcr.io#nvidia/tensorflow:22.12-tf2-py3
 ```
 
-The sqsh file **nvidia+tensorflow+22.12-tf1-py3.sqsh** is created.
+The sqsh file **nvidia+tensorflow+22.12-tf2-py3.sqsh** is created.
 
 - Next create the sqsh file:
 
 ```
-$ enroot create nvidia+tensorflow+22.12-tf1-py3.sqsh
+$ enroot create nvidia+tensorflow+22.12-tf2-py3.sqsh
 ```
 
 ### Start loading container in SuperPOD
@@ -107,11 +107,13 @@ $ enroot create nvidia+tensorflow+22.12-tf1-py3.sqsh
 Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
 
 ```
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf1-py3.sqsh --container-mounts=$WORK --pty $SHELL
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK --pty $SHELL
 
 ```
 
 - Once loaded, you are placed into **/workspace** which is the container local storage. You can navigate to your **$HOME or $WORK** folder freely.
 
-Note that in this example, I mounted the container to **$WORK** location so I can only access it from 
+- Note that in this example, I mounted the container to **$WORK** location only but you can always mount it to your own working directory
+
+
 
