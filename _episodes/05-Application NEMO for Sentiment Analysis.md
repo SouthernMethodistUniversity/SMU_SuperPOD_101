@@ -49,11 +49,22 @@ curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
 srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --pty bash -i
 ```
 
-## Let's run Sentiment Analysis using NeMo with model named 'bert-base-cased'
+## Let's run Sentiment Analysis using NeMo with model named 'bert-base-cased' on 1 GPU and 20 epochs
 
 ```
 cd $WORK/nemo/SST-2
-python /workspace/nemo/examples/nlp/text_classification/text_classification_with_bert.py trainer.num_nodes=1 trainer.max_epochs=20 model.dataset.num_classes=2      model.optim.lr=1e-4 model.dataset.max_seq_length=256 model.train_ds.batch_size=64 model.validation_ds.batch_size=64 trainer.precision=16    model.language_model.pretrained_model_name='bert-base-cased' model.train_ds.file_path=train_nemo_format.tsv model.validation_ds.file_path=dev_nemo_format.tsv
+python /workspace/nemo/examples/nlp/text_classification/text_classification_with_bert.py \ 
+       trainer.num_nodes=1 \
+       trainer.max_epochs=20 \
+       model.dataset.num_classes=2 \
+       model.optim.lr=1e-4 \
+       model.dataset.max_seq_length=256 \
+       model.train_ds.batch_size=64 \
+       model.validation_ds.batch_size=64 \
+       trainer.precision=16 \
+       model.language_model.pretrained_model_name='bert-base-cased' \
+       model.train_ds.file_path=train_nemo_format.tsv \
+       model.validation_ds.file_path=dev_nemo_format.tsv
 ```       
 
 Check the GPU usage with **nvidia-smi** command
