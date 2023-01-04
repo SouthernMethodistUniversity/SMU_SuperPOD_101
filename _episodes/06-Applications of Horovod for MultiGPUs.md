@@ -116,3 +116,5 @@ srun --container-image=$WORK/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --contain
 ```
 
 Make sure to use nvidia-smi to check the usage of all 8 GPUs
+
+![image](https://user-images.githubusercontent.com/43855029/210654404-48c2091c-7acf-4033-9141-6b3f3163a894.png)
