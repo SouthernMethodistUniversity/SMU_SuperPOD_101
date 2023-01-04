@@ -10,7 +10,11 @@ keypoints:
 
 # Introduction
 
-- SuperPOD is the latest SMU High Performance Computing cluster
+- The SMU SuperPOD is a high-performance computing (HPC) cluster, specifically tailored to meet the demands of cutting-edge research
+
+- This shared resource machine consists of 20 NVIDIA DGX A100 nodes, each with 8 advanced and powerful graphical processing units (GPUs) to accelerate calculations and train AI models.
+
+- The SMU Office of Information Technology (OIT) and the Center for Research Computing (CRC) jointly manage and provide both access and support for this top of the line machine.
 
 
 ## NVIDIA DGX SuperPOD Advantage Specifications
@@ -27,3 +31,32 @@ keypoints:
 | Scratch Storage             | 750 TB (Raw)                                  |
 | Archival Storage            | N/A                                           |
 | Operating System            | Ubuntu 20.04                                  |
+
+## Storage 
+
+Variable       | Path                       | Quota  | Usage                      |
+-------------- | -------------------------- | ------ | -------------------------  |
+${HOME}        | /users/${USER}             | 200 GB | Home directory, backed up  |
+${WORK}        | /work/users/${USER}        | 8 TB   | Long term storage          |
+${SCRATCH}     | /scratch/users/${USER}     | None   | Temporary scratch space    |
+${JOB_SCRATCH} | /scratch/_tmp/${USER:0:1}/  | None   | Per job scratch space,    |
+${JOB_SCRATCH} | ${USER}/${SLURM_JOB_ID}_   |        | ${SLURM_ARRAY_TASK_ID} is   |
+${JOB_SCRATCH} | ${SLURM_ARRAY_TASK_ID}     |        | zero for standard jobs     |
+
+## Login to SuperPOD
+
+- Make sure you have a SuperPOD account created for you. You can ask your supervisor to request for an account by submitting this [form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL)
+- There are several ways to login to SuperPOD: you can login directly or via login nodes (must be on VPN)
+
+```
+$ ssh username@superpod.smu.edu
+$ ssh username@slogin-01.superpod.smu.edu
+$ ssh username@slogin-02.superpod.smu.edu
+```
+
+If you do not use VPN off campus, you can login to ManeFrame II and then ssh to SuperPOD:
+
+```
+$ ssh username@m2.smu.edu
+$ ssh username@slogin-01.superpod.smu.edu
+```
