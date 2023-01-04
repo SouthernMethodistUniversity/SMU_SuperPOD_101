@@ -132,5 +132,5 @@ $ module avail
    ....
 ```
 
-
+As we are on installation process, if you do not see the modules that you needed available, please inform us so we can install that for you
 
