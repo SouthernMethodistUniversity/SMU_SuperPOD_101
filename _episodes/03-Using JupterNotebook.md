@@ -35,7 +35,7 @@ Open MobaXTerm and Select Tunneling tab:
     <SSH login>: $USERNAME
     <SSH port>: 22
 - Click Save
-      
+       
 ![image](https://user-images.githubusercontent.com/43855029/189715197-37ce44ee-b4f7-4b88-900c-dc9d2442168f.png)
 
 The Graphical port forwarding tool appears, Click on play button
@@ -66,6 +66,7 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
 
 ## Test Proxy
+        
 Go back to MobaXTerm and login into SuperPOD using regular SSH 
 Request a compute node with container
         
@@ -83,7 +84,7 @@ The following screen appears
         
 ![image](https://user-images.githubusercontent.com/43855029/189718392-0535d2a7-080c-4717-8f69-f25383263416.png)
         
-Copy the highlighted URLs to firefox, you will see Jupyter Notebook port forward to this:
+Copy the highlighted URLs to **Firefox**, you will see Jupyter Notebook port forward to this:
         
 ![image](https://user-images.githubusercontent.com/43855029/189718616-1e34e20e-9553-4b64-818c-fb8e998f62a5.png)
         
