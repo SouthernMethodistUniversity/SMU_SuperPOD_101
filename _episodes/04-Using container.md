@@ -72,5 +72,46 @@ enroot start godlovedc+lolcow
 
 ## Download Tensorflow container and start using in interactive mode
 
+### Search and download container:
+
 - Now, let's start downloading Tensorflow container from NGC. By browsing the [NGC Catalog](https://catalog.ngc.nvidia.com/containers) and search for Tensorflow, I got the link:
 https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
+
+- Copy the image path from website:
+
+![image](https://user-images.githubusercontent.com/43855029/210624494-f3304104-32d6-4c02-bc2c-388b3f30caa7.png)
+
+The following information was copied to the memory:
+
+```
+nvcr.io/nvidia/tensorflow:22.12-tf1-py3
+```
+
+- Im gonna download the version 22.12 to my **work** location using **enroot**, pay attention to the syntax difference when pasting:
+
+```
+$ cd $WORK/sqsh
+$ enroot import docker://nvcr.io#nvidia/tensorflow:22.12-tf1-py3
+```
+
+The sqsh file **nvidia+tensorflow+22.12-tf1-py3.sqsh** is created.
+
+- Next create the sqsh file:
+
+```
+$ enroot create nvidia+tensorflow+22.12-tf1-py3.sqsh
+```
+
+### Start loading container in SuperPOD
+
+Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
+
+```
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf1-py3.sqsh --container-mounts=$WORK --pty $SHELL
+
+```
+
+- Once loaded, you are placed into **/workspace** which is the container local storage. You can navigate to your **$HOME or $WORK** folder freely.
+
+Note that in this example, I mounted the container to **$WORK** location so I can only access it from 
+
