@@ -43,10 +43,10 @@ curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
  && sed 1d ./SST-2/dev.tsv > ./dev_nemo_format.tsv &
 ```
 
-## Requesting a compute node with NeMo container enable with 2 GPUs:
+## Requesting a compute node with NeMo container enable with a GPU:
 
 ```
-srun -N1 -G2 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --pty bash -i
+srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --pty bash -i
 ```
 
 ## Let's run Sentiment Analysis using NeMo
