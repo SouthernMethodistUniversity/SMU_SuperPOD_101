@@ -1,4 +1,4 @@
-# SMU OIT RDSS Kaggle club
+# SMU SUPERPOD 101
 
 ## Maintainer(s)
 
