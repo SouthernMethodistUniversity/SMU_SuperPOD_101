@@ -90,5 +90,17 @@ $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
 $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
 ```
 
+## Transfering data
+
+- It is no difference when transfering data to-from SuperPOD if you are familiar with M2, you can use scp for regular transfer
+
+```
+scp /link/fileA username@superpod.smu.edu:/users/username
+```
+
+or using WinSCP if you dont want to use CLI
+
+- Tips, since SuperPOD and M2 share the same work storage, you can utilize this share storage for both systems.
+
 
 
