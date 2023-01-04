@@ -32,6 +32,18 @@ keypoints:
 | Archival Storage            | N/A                                           |
 | Operating System            | Ubuntu 20.04                                  |
 
+## Specification for each compute node:
+
+| Specification               | Values                                        |
+|-----------------------------|-----------------------------------------------|
+| CPU Cores                   | 2,56                                          |
+| GPU number                  | 8                                             |
+| Memory                      | 748gb                                         |
+| Home Storage                | 200gb (Independence from M2)                  |
+| Scratch Storage             | Unlimited (Independence from M2)              |
+| Work Storage                | 8TB (shared with M2)                          |
+
+
 ## Storage 
 
 Note that: 
@@ -77,5 +89,6 @@ For example, requesting a node with 1 GPU, 10 CPUs, 128gb memory for 12 hours:
 $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
 $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
 ```
+
 
 
