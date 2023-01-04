@@ -47,6 +47,8 @@ $ module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluw
 $ conda create --prefix ~/tensorflow_2.9 python=3.8 pip --y
 ```
 
+The conda environment named **tensorflow_2.9** is created on your home directory
+
 ### (4) Activate the conda environment and Install Tensorflow 2.9.1
 
 ```
@@ -62,4 +64,7 @@ $  python
 >>> tf.config.list_physical_devices('GPU')
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
+
+Usage of conda environment manager is **no difference** compared to running in M2.
+
 
