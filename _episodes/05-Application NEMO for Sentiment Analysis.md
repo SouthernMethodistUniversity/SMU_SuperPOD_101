@@ -82,7 +82,7 @@ Output of the model training is text_classification_model.nemo
 
 ```python
 from nemo.collections.nlp.models.text_classification import TextClassificationModel
-model = TextClassificationModel.restore_from("text_classification_model.nemo.v1")
+model = TextClassificationModel.restore_from("text_classification_model.nemo")
 model.to("cuda")
 
 # define the list of queries for inference
