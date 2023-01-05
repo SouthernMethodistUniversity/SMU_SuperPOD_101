@@ -67,8 +67,8 @@ Tail of The output from model training:
                    all        128        929      0.905      0.805      0.902      0.736
 
 10 epochs completed in 0.031 hours.
-Optimizer stripped from runs/train/exp2/weights/last.pt, 154.9MB
-Optimizer stripped from runs/train/exp2/weights/best.pt, 154.9MB
+Optimizer stripped from runs/train/exp/weights/last.pt, 154.9MB
+Optimizer stripped from runs/train/exp/weights/best.pt, 154.9MB
 ```
 
 Here we see that there are 2 pretrained model created from the training process **last.pt and best.pt** from corresponding output location.
