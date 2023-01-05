@@ -17,7 +17,7 @@ YOLOv5 🚀 is the world's most loved vision AI, representing Ultralytics open-s
 To download YOLO, simply go to the github page and clone it to your home or work directory:
 
 ```bash
-git clone https://github.com/ultralytics/yolov5.git
+$ git clone https://github.com/ultralytics/yolov5.git
 ```
 
 **Suggestion:**: It is better to use $WORK directory to store the code and data to avoid jamming up your $HOME directory
@@ -33,8 +33,8 @@ $ srun -n1 --gres=gpu:1 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --co
 Go to yolov5 folder and install missing library
 
 ```bash
-cd yolov5
-pip install -r requirements.txt 
+$ cd yolov5
+$ pip install -r requirements.txt 
 ```
 
 ## Select Pretrained model
@@ -92,7 +92,7 @@ unzip the **open-images-2019-object-detection.zip** to get the **test** folder w
 The weight is used from pretrained model **best.pt**, 
 
 ```
-python detect.py --weights runs/train/exp/weights/best.pt --img 1280 --conf 0.25 --source ../test
+$ python detect.py --weights runs/train/exp/weights/best.pt --img 1280 --conf 0.25 --source ../test
 ```
 
 The model output can be found in /run/detect/exp.
