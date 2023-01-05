@@ -95,4 +95,9 @@ The weight is used from pretrained model **best.pt**,
 python detect.py --weights runs/train/exp/weights/best.pt --img 1280 --conf 0.25 --source ../test
 ```
 
-The model output can be found in /run/detect/exp
+The model output can be found in /run/detect/exp.
+
+Sample model result:
+
+![image](https://user-images.githubusercontent.com/43855029/210882960-04a62669-22b6-43b0-b885-98756f7f62cd.png)
+
