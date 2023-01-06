@@ -87,7 +87,7 @@ kaggle competitions download -c open-images-2019-object-detection
 
 unzip the **open-images-2019-object-detection.zip** to get the **test** folder with 100000 images.
 
-## Inference using NEMO for object detection with Kaggle data
+## Inference using YOLOv5 for object detection with Kaggle data
 
 The weight is used from pretrained model **best.pt**, 
 
