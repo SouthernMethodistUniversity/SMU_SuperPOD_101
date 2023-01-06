@@ -15,7 +15,7 @@ keypoints:
 - In many cases, you want to use Conda environment for many AI&ML application, just like you do in M2
 - First thing first, just load the conda module installed:
 
-```
+```bash
 $ module load conda
 $ conda env list
 
