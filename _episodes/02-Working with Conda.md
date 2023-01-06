@@ -79,7 +79,10 @@ $ source activate ~/pytorch_1.13
 $ conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
 $ python
 >>> import torch 
->>>
+>>> torch.cuda.is_available()
+True
+>>> torch.cuda.device_count()
+1
 ```
 
 
