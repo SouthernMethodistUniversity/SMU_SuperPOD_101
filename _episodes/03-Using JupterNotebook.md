@@ -79,7 +79,7 @@ Load cuda, cudnn and activate any of your conda environment, for example Tensorf
 ```bash
 $ module load spack conda
 $ module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluwegp
-$ source activate ~/Tensorflow_2.9   
+$ source activate ~/tensorflow_2.9   
 ``` 
    
 Make sure to install jupyter
