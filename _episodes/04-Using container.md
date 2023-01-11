@@ -177,4 +177,8 @@ http://bcm-dgxa100-0001:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f88937185
 
 ![image](https://user-images.githubusercontent.com/43855029/211891739-ecb6e633-6fbd-45f2-ba0c-7e917a716da1.png)
 
+**Tip**: Once forwarding to Jupter Lab, you are placed in container's root. It's recommended to create a symlink for your folder in order to navigate away:
 
+```bash
+$ ln -s $WORK work
+```
