@@ -36,9 +36,10 @@ keypoints:
 
 | Specification               | Values                                        |
 |-----------------------------|-----------------------------------------------|
-| CPU number                  | 128                                          |
+| CPU number                  | 128                                           |
 | GPU number                  | 8                                             |
-| Memory                      | 1910gb                                         |
+| Memory                      | 1910gb                                        |
+| Time Limit                  | 2 days                                        |
 | Home Storage                | 200gb (Independence from M2)                  |
 | Scratch Storage             | Unlimited (Independence from M2)              |
 | Work Storage                | 8TB (shared with M2)                          |
