@@ -36,13 +36,16 @@ keypoints:
 
 | Specification               | Values                                        |
 |-----------------------------|-----------------------------------------------|
-| CPU Cores                   | 2,56                                          |
+| CPU number                  | 128                                          |
 | GPU number                  | 8                                             |
-| Memory                      | 748gb                                         |
+| Memory                      | 1910gb                                         |
 | Home Storage                | 200gb (Independence from M2)                  |
 | Scratch Storage             | Unlimited (Independence from M2)              |
 | Work Storage                | 8TB (shared with M2)                          |
 
+```
+$ sinfo --Format="PartitionName,Nodes:10,CPUs:8,Memory:12,Time:15,Features:18,Gres:14
+```
 
 ## Storage 
 
