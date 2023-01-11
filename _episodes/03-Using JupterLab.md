@@ -10,7 +10,7 @@ keypoints:
 - "Jupter Lab, Port-Forwarding"
 ---
 
-# 3. Jupter Notebook on SuperPOD
+# 3. Jupter Lab on SuperPOD
 
 - There is no display config and Open OnDemand setup in SuperPOD, so it is not quite straighforward to use Jupter Lab
 
@@ -97,20 +97,18 @@ $ jupyter lab --ip=0.0.0.0 --no-browser
 ```
 
 The following screen appears
-        
-![image](https://user-images.githubusercontent.com/43855029/211874487-99ead2fa-83c9-457f-947b-e369b02ac713.png)
-        
+   
+![image](https://user-images.githubusercontent.com/43855029/211889136-0eb5ef90-b306-454b-8fd9-8fab290b79b4.png)
+   
+       
 Copy the highlighted URLs to **Firefox**, you will see Jupyter Notebook port forward to this:
         
-![image](https://user-images.githubusercontent.com/43855029/211874565-034ade54-349a-4025-a0f0-5f6a6434b0b5.png)        
-
-Select TensorflowGPU29 kernel
-
-![image](https://user-images.githubusercontent.com/43855029/211874741-3b5ddf7e-4ac9-4b8c-b822-a3520abb527d.png)
+![image](https://user-images.githubusercontent.com/43855029/211889462-ea4ebe65-9f2f-4bc4-9980-493ffe74bed7.png)
    
-Check GPU device:
+Select TensorflowGPU29 kernel notebook and Check GPU device:
    
-![image](https://user-images.githubusercontent.com/43855029/211874984-b0f0dd88-ff18-442e-b892-66537fe43bfa.png)
+![image](https://user-images.githubusercontent.com/43855029/211889805-da9d0740-3383-4b74-a347-b16525708ba3.png)
+
    
    
 
