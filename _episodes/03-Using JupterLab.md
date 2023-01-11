@@ -1,20 +1,20 @@
 ---
-title: "Using Jupyter Notebook in SuperPOD"
+title: "Using Jupyter Lab in SuperPOD"
 teaching: 20
 exercises: 0
 questions:
-- "How to use Jupter Notebook in SuperPOD?"
+- "How to use Jupter Lab in SuperPOD?"
 objectives:
-- "Learn port forwarding technique to enable Jupter Notebook"
+- "Learn port forwarding technique to enable Jupter Lab"
 keypoints:
-- "Jupter Notebook, Port-Forwarding"
+- "Jupter Lab, Port-Forwarding"
 ---
 
 # 3. Jupter Notebook on SuperPOD
 
-- There is no display config and Open OnDemand setup in SuperPOD, so it is not quite straighforward to use Jupter Notebook
+- There is no display config and Open OnDemand setup in SuperPOD, so it is not quite straighforward to use Jupter Lab
 
-- However, it is still possible to use Port-Forwarding in SuperPOD in order to run JupyterNotebook.
+- However, it is still possible to use Port-Forwarding in SuperPOD in order to run Jupyter Lab.
 
 The following procedure are for Window and MacOS
 
@@ -92,6 +92,8 @@ Next insert the following command:
         
 ```
 $ jupyter notebook --ip=0.0.0.0 --no-browser
+# or
+$ jupyter lab --ip=0.0.0.0 --no-browser   
 ```
 
 The following screen appears
