@@ -21,8 +21,8 @@ keypoints:
 The NGC for NeMo can be found here: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nemo
 
 ```
-$ enroot import docker://nvcr.io#nvidia/nemo:22.04
-$ enroot create nvidia+nemo+22.04.sqsh
+$ enroot import docker://nvcr.io#nvidia/nemo:22.09
+$ enroot create nvidia+nemo+22.09.sqsh
 ```
 
 ## Sentiment Analysis using NeMo
@@ -46,7 +46,7 @@ curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
 ## Requesting a compute node with NeMo container enable with a GPU:
 
 ```
-srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --pty bash -i
+srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.09.sqsh --container-mounts=$WORK --pty bash -i
 ```
 
 ## Let's run Sentiment Analysis using NeMo
