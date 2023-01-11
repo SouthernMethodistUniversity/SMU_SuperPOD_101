@@ -28,12 +28,12 @@ Open MobaXTerm and Select Tunneling tab:
 
 ![image](https://user-images.githubusercontent.com/43855029/189714886-2e90e9fc-123c-48ac-8c2d-c817441b5a09.png)
 
-- Select New SSH tunnel, then select Dynamic port forwarding (SOCKS proxy)
+- Select **New SSH tunnel**, then select **Dynamic port forwarding (SOCKS proxy)**
 - Filling the information as follows:
-    <Forwarded port>: 8080
-    <SSH server>: superpod.smu.edu
-    <SSH login>: $USERNAME
-    <SSH port>: 22
+    **<Forwarded port>**: 8080
+    **<SSH server>**: superpod.smu.edu
+    **<SSH login>**: $USERNAME
+    **<SSH port>**: 22
 - Click Save
        
 ![image](https://user-images.githubusercontent.com/43855029/189715197-37ce44ee-b4f7-4b88-900c-dc9d2442168f.png)
@@ -56,11 +56,11 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
         
 ![image](https://user-images.githubusercontent.com/43855029/189716620-973851c3-255c-4f21-9af3-ca156f16c980.png)
 
-- Select Manual Proxy Configuration
-- In the SOCKS Host, enter localhost, Port 8080
-- Check SOCKS v5.
-- Check Proxy DNS when using SOCKS v5.
-- Check Enable DNS over HTTPS.
+- Select **Manual Proxy Configuration**
+- In the **SOCKS Host**, enter localhost, **Port** 8080
+- Check **SOCKS v5**.
+- Check **Proxy DNS when using SOCKS v5**.
+- Check **Enable DNS over HTTPS**.
 - Make sure everything else is unchecked, then click OK.
 - Your screenshot should look like below:        
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
@@ -71,7 +71,7 @@ Go back to MobaXTerm and login into SuperPOD using regular SSH
 Request a compute node with container
         
 ```
-srun -N1 -G1 --pty $SHELL
+srun -N1 -G1 -c4 --time=4:00:00 --pty $SHELL
 ```        
 
 Next insert the following command:
