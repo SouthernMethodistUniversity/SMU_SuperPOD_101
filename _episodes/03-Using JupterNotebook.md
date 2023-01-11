@@ -70,10 +70,24 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 Go back to MobaXTerm and login into SuperPOD using regular SSH 
 Request a compute node with container
         
-```
-srun -N1 -G1 -c4 --time=4:00:00 --pty $SHELL
+```bash
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```        
 
+Load cuda, cudnn and activate any of your conda environment, for example Tensorflow_2.9
+   
+```bash
+$ module load spack conda
+$ module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluwegp
+$ source activate ~/Tensorflow_2.9   
+``` 
+   
+Make sure to install jupyter
+   
+```
+$ pip install jupyter   
+```   
+   
 Next insert the following command:
         
 ```
@@ -82,11 +96,22 @@ $ jupyter notebook --ip=0.0.0.0 --no-browser
 
 The following screen appears
         
-![image](https://user-images.githubusercontent.com/43855029/189718392-0535d2a7-080c-4717-8f69-f25383263416.png)
+![image](https://user-images.githubusercontent.com/43855029/211874487-99ead2fa-83c9-457f-947b-e369b02ac713.png)
         
 Copy the highlighted URLs to **Firefox**, you will see Jupyter Notebook port forward to this:
         
-![image](https://user-images.githubusercontent.com/43855029/189718616-1e34e20e-9553-4b64-818c-fb8e998f62a5.png)
-        
+![image](https://user-images.githubusercontent.com/43855029/211874565-034ade54-349a-4025-a0f0-5f6a6434b0b5.png)        
+
+Select TensorflowGPU29 kernel
+
+![image](https://user-images.githubusercontent.com/43855029/211874741-3b5ddf7e-4ac9-4b8c-b822-a3520abb527d.png)
+   
+Check GPU device:
+   
+![image](https://user-images.githubusercontent.com/43855029/211874984-b0f0dd88-ff18-442e-b892-66537fe43bfa.png)
+   
+   
+
+   
         
         
