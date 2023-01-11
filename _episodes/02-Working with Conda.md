@@ -53,7 +53,14 @@ The conda environment named **tensorflow_2.9** is created on your home directory
 
 ```bash
 $ source activate ~/tensorflow_2.9/  
-$ pip install tensorflow==2.9.1 --no-cache-dir
+$ pip install tensorflow==2.9.1
+```
+
+Install ipkernel and create the kernel for Notebook
+
+```bash
+$ pip install ipykernel
+$ python3 -m ipykernel install --user --name tensorflow_2.9 --display-name TensorflowGPU29
 ```
 
 ### (5) Once installation done, check if the conda environment is able to enable the GPU
