@@ -149,5 +149,32 @@ print(tf.config.list_physical_devices('GPU'))
 ```
 
 
+## Working with NGC container in Jupyter Lab
+
+- It is a little bit different if you want to use NGC container in Jupyter Lab
+- After requesting a node running with your container, you need to run the jupyter command with additional flag **--allow-root**:
+
+```bash
+root@bcm-dgxa100-0001:/workspace# jupyter lab --allow-root --no-browser --ip=0.0.0.0
+```
+
+The following URL appear with its token
+
+```bash
+Or copy and paste this URL:
+        http://hostname:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f8893718555d2
+```
+
+Note that you **must** replace **hostname** to the corresponding node that you are in, this case is *bcm-dgxa100-0001*.
+
+Therefore, you should change the above address to and paste to Firefox:
+
+```bash
+http://bcm-dgxa100-0001:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f8893718555d2
+```
+
+**Note**: you should select the default **Python 3 (ipykernel)** instead of any other kernels for running the container.
+
+![image](https://user-images.githubusercontent.com/43855029/211891739-ecb6e633-6fbd-45f2-ba0c-7e917a716da1.png)
 
 
