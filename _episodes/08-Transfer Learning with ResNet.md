@@ -22,6 +22,12 @@ As an example in deep learning, say we have a pre-trained model that is very goo
 
 Transfer learning is especially powerful when we do not have a large and varied dataset. In this case, a model trained from scratch would likely memorize the training data quickly, but not be able to generalize well to new data. With transfer learning, you can increase your chances of training an accurate and robust model on a small dataset.
 
+Here we just use a simple tensorflow conda environment or container:
+
+```bash
+$ srun -n1 -G1 --container-image $WORK/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --container-mounts=$WORK --time=12:00:00 --pty bash -i
+```
+
 ## Objective
 * Prepare a pretrained model for transfer learning
 * Perform transfer learning with your own small dataset on a pretrained model
