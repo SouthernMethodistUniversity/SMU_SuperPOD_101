@@ -101,3 +101,15 @@ Sample model result:
 
 ![image](https://user-images.githubusercontent.com/43855029/210882960-04a62669-22b6-43b0-b885-98756f7f62cd.png)
 
+
+## Inference using YOLOv5 for object detection with video
+
+We can also use YOLOv5 for video detection.
+From the sample video like this:
+
+
+
+https://user-images.githubusercontent.com/43855029/222775829-7e7f61c5-3896-4b16-9a21-4e7557a50f2f.mp4
+
+
+
