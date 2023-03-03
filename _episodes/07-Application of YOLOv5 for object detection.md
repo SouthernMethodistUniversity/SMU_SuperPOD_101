@@ -95,7 +95,31 @@ The weight is used from pretrained model **best.pt**,
 $ python detect.py --weights runs/train/exp/weights/best.pt --img 1280 --conf 0.25 --source ../test
 ```
 
-The model output can be found in /run/detect/exp.
+Output of the inference would look like:
+
+```
+detect: weights=['runs/train/exp/weights/best.pt'], source=../test, data=data/coco128.yaml, imgsz=[1280, 1280], conf_thres=0.25, iou_thres=0.45, max_det=1000, device=, view_img=False, save_txt=False, save_conf=False, save_crop=False, nosave=False, classes=None, agnostic_nms=False, augment=False, visualize=False, update=False, project=runs/detect, name=exp, exist_ok=False, line_thickness=3, hide_labels=False, hide_conf=False, half=False, dnn=False, vid_stride=1
+YOLOv5 🚀 v7.0-56-gc0ca1d2 Python-3.8.13 torch-1.13.0a0+d0d6b1f CUDA:0 (NVIDIA A100-SXM4-80GB, 81251MiB)
+
+Fusing layers... 
+Model summary: 157 layers, 7225885 parameters, 0 gradients, 16.4 GFLOPs
+image 1/17 /work/users/tuev/YOLO/test/000000000508.jpg: 960x1280 (no detections), 149.3ms
+image 2/17 /work/users/tuev/YOLO/test/000000000510.jpg: 960x1280 1 person, 2 benchs, 1 frisbee, 8.2ms
+image 3/17 /work/users/tuev/YOLO/test/000000000514.jpg: 1280x736 1 bed, 145.4ms
+image 4/17 /work/users/tuev/YOLO/test/000000000520.jpg: 960x1280 3 persons, 1 boat, 5 birds, 2 kites, 8.7ms
+image 5/17 /work/users/tuev/YOLO/test/000000000529.jpg: 1280x864 2 motorcycles, 144.1ms
+image 6/17 /work/users/tuev/YOLO/test/000000000531.jpg: 960x1280 9 persons, 1 bicycle, 1 tennis racket, 8.6ms
+image 7/17 /work/users/tuev/YOLO/test/000000000532.jpg: 960x1280 2 persons, 1 bus, 2 trucks, 2 handbags, 8.0ms
+image 8/17 /work/users/tuev/YOLO/test/000000000536.jpg: 960x1280 3 persons, 1 handbag, 1 mouse, 1 cell phone, 8.0ms
+image 9/17 /work/users/tuev/YOLO/test/000000000540.jpg: 864x1280 6 cars, 1 airplane, 1 truck, 145.7ms
+image 10/17 /work/users/tuev/YOLO/test/000000000542.jpg: 992x1280 11 persons, 145.7ms
+image 11/17 /work/users/tuev/YOLO/test/000000000544.jpg: 864x1280 14 persons, 1 sports ball, 1 baseball glove, 8.7ms
+image 12/17 /work/users/tuev/YOLO/test/000000000560.jpg: 896x1280 1 potted plant, 1 bed, 1 toilet, 1 vase, 146.1ms
+image 13/17 /work/users/tuev/YOLO/test/000000000562.jpg: 1280x864 3 toothbrushs, 8.6ms
+Speed: 0.5ms pre-process, 68.9ms inference, 6.7ms NMS per image at shape (1, 3, 1280, 1280)
+Results saved to runs/detect/exp
+```
+The model output images can be found in /run/detect/exp.
 
 Sample model result:
 
@@ -133,9 +157,11 @@ video 1/1 (7/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 3 trains,
 video 1/1 (8/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
 video 1/1 (9/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
 video 1/1 (10/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+Speed: 0.3ms pre-process, 9.4ms inference, 2.2ms NMS per image at shape (1, 3, 640, 640)
+Results saved to runs/detect/exp2
 ```
 
-and the output video is saved in run/exp folder:
+and the output video is saved in runs/detect/exp2 folder:
 
 https://user-images.githubusercontent.com/43855029/222778650-f68c4a4f-ad51-4237-92a8-bfb0ad37cd54.mp4
 
