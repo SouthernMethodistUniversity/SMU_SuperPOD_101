@@ -107,8 +107,38 @@ Sample model result:
 We can also use YOLOv5 for video detection.
 From the sample video like this:
 
+https://user-images.githubusercontent.com/43855029/222778747-b5312f6d-58c9-4f63-9233-93dfa65f8345.mp4
 
-https://user-images.githubusercontent.com/43855029/222778073-090aee4a-4619-4f02-a533-406564a995c0.mp4
+We run the inference with the best pretrained model using following command:
+
+```
+$ python detect.py --weights runs/train/exp/weights/best.pt --source  video.mp4
+```
+
+output of the inference would look like:
+
+```
+detect: weights=['runs/train/exp/weights/best.pt'], source=../test/before_short.mp4, data=data/coco128.yaml, imgsz=[640, 640], conf_thres=0.25, iou_thres=0.45, max_det=1000, device=, view_img=False, save_txt=False, save_conf=False, save_crop=False, nosave=False, classes=None, agnostic_nms=False, augment=False, visualize=False, update=False, project=runs/detect, name=exp, exist_ok=False, line_thickness=3, hide_labels=False, hide_conf=False, half=False, dnn=False, vid_stride=1
+YOLOv5 🚀 v7.0-56-gc0ca1d2 Python-3.8.13 torch-1.13.0a0+d0d6b1f CUDA:0 (NVIDIA A100-SXM4-80GB, 81251MiB)
+
+Fusing layers... 
+Model summary: 157 layers, 7225885 parameters, 0 gradients, 16.4 GFLOPs
+video 1/1 (1/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 156.8ms
+video 1/1 (2/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (3/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (4/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (5/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (6/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (7/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 3 trains, 8.1ms
+video 1/1 (8/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (9/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (10/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+```
+
+and the output video is saved in run/exp folder:
+
+https://user-images.githubusercontent.com/43855029/222778650-f68c4a4f-ad51-4237-92a8-bfb0ad37cd54.mp4
+
 
 
 
