@@ -107,12 +107,6 @@ Sample model result:
 We can also use YOLOv5 for video detection.
 From the sample video like this:
 
-https://user-images.githubusercontent.com/43855029/222777942-389c5c99-31c4-4bbf-85f4-e6548a5663a6.mp4
-
-
-
-
-
 
 https://user-images.githubusercontent.com/43855029/222778073-090aee4a-4619-4f02-a533-406564a995c0.mp4
 
