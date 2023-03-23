@@ -10,7 +10,7 @@ keypoints:
 
 # Introduction
 
-- The SMU SuperPOD is a high-performance computing (HPC) cluster, specifically tailored to meet the demands of cutting-edge research
+- The SMU SuperPOD is a high-performance computing (HPC) cluster, made by NVIDIA, specifically tailored to meet the demands of cutting-edge research
 
 - This shared resource machine consists of 20 NVIDIA DGX A100 nodes, each with 8 advanced and powerful graphical processing units (GPUs) to accelerate calculations and train AI models.
 
