@@ -12,7 +12,7 @@ keypoints:
 
 # 3. Jupter Lab on SuperPOD
 
-- There is no display config and Open OnDemand setup in SuperPOD, so it is not quite straighforward to use Jupter Lab
+- There is **NO display config and Open OnDemand setup in SuperPOD**, so it is not quite straighforward to use Jupter Lab
 
 - However, it is still possible to use Port-Forwarding in SuperPOD in order to run Jupyter Lab.
 
