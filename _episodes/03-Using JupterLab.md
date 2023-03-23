@@ -14,7 +14,7 @@ keypoints:
 
 - There is **NO display config and Open OnDemand setup in SuperPOD**, so it is not quite straighforward to use Jupter Lab
 
-- However, it is still possible to use Port-Forwarding in SuperPOD in order to run Jupyter Lab.
+- However, it is still possible to use **Port-Forwarding** in SuperPOD in order to run Jupyter Lab.
 
 The following procedure are for Window and MacOS
 
