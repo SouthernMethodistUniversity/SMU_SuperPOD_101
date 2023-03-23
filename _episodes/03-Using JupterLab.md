@@ -66,9 +66,10 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
 
 ## Test Proxy
+### Using conda environment:   
         
 Go back to MobaXTerm and login into SuperPOD using regular SSH 
-Request a compute node with container
+Request a compute node
         
 ```bash
 $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
@@ -109,8 +110,23 @@ Select TensorflowGPU29 kernel notebook and Check GPU device:
    
 ![image](https://user-images.githubusercontent.com/43855029/211889805-da9d0740-3383-4b74-a347-b16525708ba3.png)
 
+### Using docker container:   
    
+For docker container, the command line need to have 1 additional flag:
    
+```
+$ jupyter lab --ip=0.0.0.0 --no-browser --allow-root
+```   
+
+You will need to replace the hostname to the name of the node that you are having:
+   
+![image](https://user-images.githubusercontent.com/43855029/227258008-3fa4dc64-8b27-4aa3-9844-c476e212b78c.png)
+   
+For example in the previous command, you need to copy and paste the following line to Firefox browser:
+   
+```
+$ http://bcm-dgxa100-0016:8888/?token=daefb1c3e2754b37b6b94b619387cb3fd9710608e0152182 
+```
 
    
         
