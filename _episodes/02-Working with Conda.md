@@ -34,7 +34,7 @@ Next, let's create a conda environment for Tensorflow 2.9, here are the steps:
 $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```
 
-### (2) Load cuda and cudnn module
+### (2) Load cuda and cudnn module for GPU support
 
 ```bash
 $ module load spack conda
