@@ -16,7 +16,12 @@ SuperPOD uses SLURM as scheduler so there is no difference in running Batch scri
 
 Following are the instructions on how to run Batch script for a Computer Vision sample using [CIFAR10 data](https://www.cs.toronto.edu/~kriz/cifar.html). Here, I use a python file called model_CNN_CIFAR10.py. 
 
-The file can be downloaded from [here](https://github.com/SouthernMethodistUniversity/SMU_SuperPOD_101/blob/e6315c29ca0542351b79233729708dfa16161cdf/files/model_CNN_CIFAR10.py)
+The file can be downloaded from here to your $WORK folder:
+
+```bash
+$ cd $WORK
+$ wget https://raw.githubusercontent.com/SouthernMethodistUniversity/SMU_SuperPOD_101/e6315c29ca0542351b79233729708dfa16161cdf/files/model_CNN_CIFAR10.py
+```
 
 ## 5.1 Running Batch script with conda environment
 
