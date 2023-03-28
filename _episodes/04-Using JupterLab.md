@@ -49,6 +49,7 @@ Once you pass the Duo screen, the port forwarding tool enabled:
 
 Leave the port-forwarding screen opened and we switch to Firefox
 
+   
 ### Setup Firefox to enable proxy viewing (similar for MacOS as well)
 
 Open Firefox, my version is 104.0.2.
@@ -65,8 +66,8 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 - Your screenshot should look like below:        
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
 
-## Test Proxy
-### Using conda environment:   
+### Test Proxy
+#### Test Proxy using conda environment:   
         
 Go back to MobaXTerm and login into SuperPOD using regular SSH 
 Request a compute node
@@ -110,7 +111,7 @@ Select TensorflowGPU29 kernel notebook and Check GPU device:
    
 ![image](https://user-images.githubusercontent.com/43855029/211889805-da9d0740-3383-4b74-a347-b16525708ba3.png)
 
-### Using docker container:   
+#### Test Proxy using docker container:   
    
 For docker container, the command line need to have 1 additional flag:
    
