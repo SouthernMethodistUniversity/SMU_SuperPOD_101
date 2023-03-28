@@ -65,7 +65,7 @@ Prepare the batch script with name: **modelCNN_ngc.sh** using the following cont
 #SBATCH --mail-user tuev@smu.edu  # request to email to your emailID
 #SBATCH --mail-type=end           # request to mail when the model **end**
 
-srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --container-mounts=$WORK python $WORK/model_CNN_CIFAR10.py
+srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python $WORK/model_CNN_CIFAR10.py
 ```
 
 Be on login node to submit the batch script:
