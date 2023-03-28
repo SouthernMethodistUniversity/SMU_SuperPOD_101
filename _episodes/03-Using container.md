@@ -10,7 +10,7 @@ keypoints:
 - "NGC Container"
 ---
 
-# 4. Using NVIDIA NGC Container in SuperPOD
+# 3. Using NVIDIA NGC Container in SuperPOD
 
 ## What is Container?
 
