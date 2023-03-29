@@ -87,7 +87,7 @@ $ source activate ~/tensorflow_2.9
 Make sure to install jupyter
    
 ```
-$ pip install jupyter   
+$ pip install jupyterlab
 ```   
    
 Next insert the following command:
