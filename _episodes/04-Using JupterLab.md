@@ -58,8 +58,9 @@ $ ssh -C -D 8080 username@superpod.smu.edu
 ```   
 The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in Firefox
    
-## 4.3 Setup Firefox to enable proxy viewing (similar for MacOS/Linux as well)
-
+## 4.3 Setup browser to enable proxy viewing (similar for MacOS/Linux as well)
+### 4.3.1 Using Firefox as browser:
+   
 Open Firefox, my version is 104.0.2.
 Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select Settings from Network Settings:
         
@@ -74,6 +75,11 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 - Your screenshot should look like below:        
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
 
+### 4.3.2 Using Chrome/Safari as browser:
+
+Search for proxies and set a Socks proxy with sever localhost and port 8080.
+![image](https://user-images.githubusercontent.com/43855029/228646182-f376dbd2-f850-4ac0-b300-2269e7394321.png)
+   
 ## 4.4 Test Proxy
 #### 4.4.1. Test Proxy using conda environment:   
         
@@ -83,7 +89,6 @@ Request a compute node
 ```bash
 $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```        
-
 Load cuda, cudnn and activate any of your conda environment, for example Tensorflow_2.9
    
 ```bash
