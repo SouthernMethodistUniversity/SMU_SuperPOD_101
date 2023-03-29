@@ -56,7 +56,7 @@ Open terminal/vscode or similar and type in:
 ```bash
 $ ssh -C -D 8080 username@superpod.smu.edu
 ```   
-The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in Firefox
+The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in your browser
    
 ## 4.3 Setup browser to enable proxy viewing (similar for MacOS/Linux as well)
 ### 4.3.1 Using Firefox as browser:
