@@ -18,11 +18,9 @@ keypoints:
 
 The following procedure are for Window and MacOS
 
-## Using Window OS
+## 4.1 Using Window OS
 
 For Window, I use MobaXTerm (https://mobaxterm.mobatek.net/) and Firefox to configure port-forwarding
-
-### Setup in MobaXTerm
 
 Open MobaXTerm and Select Tunneling tab:
 
@@ -34,7 +32,9 @@ Open MobaXTerm and Select Tunneling tab:
     **<SSH server>**: superpod.smu.edu
     **<SSH login>**: $USERNAME
     **<SSH port>**: 22
+   
 - Click Save
+
        
 ![image](https://user-images.githubusercontent.com/43855029/189715197-37ce44ee-b4f7-4b88-900c-dc9d2442168f.png)
 
@@ -47,10 +47,18 @@ Once you pass the Duo screen, the port forwarding tool enabled:
       
 ![image](https://user-images.githubusercontent.com/43855029/189716103-1ac8f8b4-e822-4ed7-a7e8-a6d3e1f9c9c8.png)
 
-Leave the port-forwarding screen opened and we switch to Firefox
-
+ Leave the port-forwarding screen opened and we switch to Firefox
    
-### Setup Firefox to enable proxy viewing (similar for MacOS as well)
+### 4.2 Using MacsOS/Linux
+
+Open terminal/vscode or similar and type in:
+   
+```bash
+$ ssh -C -D 8181 username@superpod.smu.edu
+```   
+The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8181. Feel free to change the port and remember to set it up in Firefox
+   
+## 4.3 Setup Firefox to enable proxy viewing (similar for MacOS/Linux as well)
 
 Open Firefox, my version is 104.0.2.
 Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select Settings from Network Settings:
@@ -66,8 +74,8 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 - Your screenshot should look like below:        
 ![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
 
-### Test Proxy
-#### Test Proxy using conda environment:   
+## 4.4 Test Proxy
+#### 4.4.1. Test Proxy using conda environment:   
         
 Go back to MobaXTerm and login into SuperPOD using regular SSH 
 Request a compute node
@@ -111,7 +119,7 @@ Select TensorflowGPU29 kernel notebook and Check GPU device:
    
 ![image](https://user-images.githubusercontent.com/43855029/211889805-da9d0740-3383-4b74-a347-b16525708ba3.png)
 
-#### Test Proxy using docker container:   
+#### 4.4.2. Test Proxy using docker container:   
    
 For docker container, the command line need to have 1 additional flag:
    
