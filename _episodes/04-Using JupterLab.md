@@ -54,9 +54,9 @@ Once you pass the Duo screen, the port forwarding tool enabled:
 Open terminal/vscode or similar and type in:
    
 ```bash
-$ ssh -C -D 8181 username@superpod.smu.edu
+$ ssh -C -D 8080 username@superpod.smu.edu
 ```   
-The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8181. Feel free to change the port and remember to set it up in Firefox
+The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in Firefox
    
 ## 4.3 Setup Firefox to enable proxy viewing (similar for MacOS/Linux as well)
 
