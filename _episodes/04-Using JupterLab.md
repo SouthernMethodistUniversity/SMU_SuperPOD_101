@@ -142,6 +142,13 @@ For example in the previous command, you need to copy and paste the following li
 $ http://bcm-dgxa100-0016:8888/?token=daefb1c3e2754b37b6b94b619387cb3fd9710608e0152182 
 ```
 
+### Troubleshoot for notebook requesting password
+In certain case, your Jupyter Notebook requires password to be enable, you can setup the password using the command below prior to requesting jupyter lab instance:
+   
+```
+$ jupyter notebook password   
+```   
+   
    
         
         
