@@ -34,7 +34,7 @@ The screenshot below describes the model task from Hugging Face that covers many
 ```
 from transformers import pipeline
 clf = pipeline("image-classification")
-...
+```
 
 Display the image:
 
