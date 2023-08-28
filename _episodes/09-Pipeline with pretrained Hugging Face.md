@@ -25,6 +25,7 @@ The screenshot below describes the model task from Hugging Face that covers many
 ![image](https://github.com/vuminhtue/SMU_SuperPOD_101/assets/43855029/11f2feda-8dc8-4fe8-8d26-10bacd3cac53)
 
 # Pipeline for inference
+
 - The ```pipeline()``` makes it simple to use any model from the Hub for inference on any language, computer vision, speech, and multimodal tasks. 
 - Even if you don’t have experience with a specific modality or aren’t familiar with the underlying code behind the models, you can still use them for inference with the pipeline()!
 
@@ -37,8 +38,6 @@ clf = pipeline("image-classification")
 
 Display the image:
 
-![360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8](https://github.com/vuminhtue/SMU_SuperPOD_101/assets/43855029/36dcd87a-322e-461c-974c-ffd2d98a965b)
-
 ```
 import urllib.request
 from io import BytesIO
@@ -46,7 +45,11 @@ from io import BytesIO
 url = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg'
 with urllib.request.urlopen(url) as url:
     img = Image.open(BytesIO(url.read()))
+img
 ```
+
+![360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8](https://github.com/vuminhtue/SMU_SuperPOD_101/assets/43855029/6170fc20-3cec-4049-a363-9c4f3f85660f)
+
 
 ### Image classification model Inference
 
