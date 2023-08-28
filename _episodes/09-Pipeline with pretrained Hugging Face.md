@@ -51,7 +51,7 @@ img
 ![360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8](https://github.com/vuminhtue/SMU_SuperPOD_101/assets/43855029/6170fc20-3cec-4049-a363-9c4f3f85660f)
 
 
-### Image classification model Inference
+### Model Inference
 
 ```
 clf(img)
@@ -62,5 +62,6 @@ clf(img)
  {'score': 0.012556081637740135, 'label': 'lynx, catamount'},
  {'score': 0.00524393143132329, 'label': 'ping-pong ball'}]
 ```
+
 
 
