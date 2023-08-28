@@ -115,6 +115,28 @@ question_answerer(
 {'score': 0.3651700019836426, 'start': 32, 'end': 35, 'answer': 'SMU'}
 ```
 
+## Pipeline for Conversational
+
+```
+from transformers import pipeline, Conversation
+converse = pipeline("conversational")
+
+conversation_1 = Conversation("What do you think about using HPC SuperPOD")
+conversation_2 = Conversation("Do you believe in God?")
+converse([conversation_1, conversation_2])
+```
+
+Answer:
+
+```
+[Conversation id: 44cf473c-29f2-4b44-be6c-15352dab13a2 
+ user >> What do you think about using HPC SuperPOD 
+ bot >> I think it's a good idea, but I don't think it's a good idea to use it for a lot of things. ,
+ Conversation id: 489d923c-f127-4847-8cde-972c77470230 
+ user >> What do you do to optimize the Python workflow? 
+ bot >> I believe in the power of love.]
+```
+
 ## Pipeline for Computer Vision - Image Classification
 
 ```
