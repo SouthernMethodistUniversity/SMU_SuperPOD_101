@@ -29,6 +29,92 @@ The screenshot below describes the model task from Hugging Face that covers many
 - The ```pipeline()``` makes it simple to use any model from the Hub for inference on any language, computer vision, speech, and multimodal tasks. 
 - Even if you don’t have experience with a specific modality or aren’t familiar with the underlying code behind the models, you can still use them for inference with the pipeline()!
 
+## Pipeline for NLP Sentiment Analysis
+
+```
+from transformers import pipeline
+
+classifier = pipeline("sentiment-analysis")
+classifier("I am so excited to use the new SuperPOD from NVIDIA")
+
+[{'label': 'POSITIVE', 'score': 0.9995261430740356}]
+```
+
+```
+classifier(
+    ["I am so excited to use the new SuperPOD from NVIDIA", "I hate running late"])
+
+[{'label': 'POSITIVE', 'score': 0.9995261430740356},
+ {'label': 'NEGATIVE', 'score': 0.9943193197250366}]
+```
+
+## Pipeline Text Generation
+
+```
+from transformers import pipeline
+generator = pipeline("text-generation")
+generator("Using SMU latest HPC cluster NVIDIA SuperPOD,  you will be able to")
+
+[{'generated_text': 'Using SMU latest HPC cluster NVIDIA SuperPOD,  you will be able to connect to other SSE nodes such as the following and use them as a HPC node:\n\n[CPU: CPU1, GIGABYTE'}]
+```
+
+## Pipeline for Mask filling
+
+```
+from transformers import pipeline
+
+unmasker = pipeline("fill-mask")
+unmasker("This course will teach you all about <mask> models.", top_k=2)
+
+[{'score': 0.19619698822498322,
+  'token': 30412,
+  'token_str': ' mathematical',
+  'sequence': 'This course will teach you all about mathematical models.'},
+ {'score': 0.04052705690264702,
+  'token': 38163,
+  'token_str': ' computational',
+  'sequence': 'This course will teach you all about computational models.'}]
+```
+
+## Pipeline for Name Entity Recognition
+
+```
+from transformers import pipeline
+
+ner = pipeline("ner", grouped_entities=True)
+ner("My name is Tue Vu and I work at SMU in Dallas")
+
+[{'entity_group': 'PER',
+  'score': 0.9868829,
+  'word': 'Tue Vu',
+  'start': 11,
+  'end': 17},
+ {'entity_group': 'ORG',
+  'score': 0.9965092,
+  'word': 'SMU',
+  'start': 32,
+  'end': 35},
+ {'entity_group': 'LOC',
+  'score': 0.9950755,
+  'word': 'Dallas',
+  'start': 39,
+  'end': 45}]
+```
+
+## Pipeline for Question Answering
+
+```
+from transformers import pipeline
+
+question_answerer = pipeline("question-answering")
+question_answerer(
+    question="Where do I work?",
+    context="My name is Tue Vu and I work at SMU in Dallas",
+)
+
+{'score': 0.3651700019836426, 'start': 32, 'end': 35, 'answer': 'SMU'}
+```
+
 ## Pipeline for Computer Vision - Image Classification
 
 ```
@@ -62,6 +148,4 @@ clf(img)
  {'score': 0.012556081637740135, 'label': 'lynx, catamount'},
  {'score': 0.00524393143132329, 'label': 'ping-pong ball'}]
 ```
-
-
 
