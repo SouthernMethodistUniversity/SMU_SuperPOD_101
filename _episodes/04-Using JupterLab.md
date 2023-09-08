@@ -77,7 +77,7 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 
 ### 4.3.2 Using Chrome/Safari as browser:
 
-Search for proxies and set a Socks proxy with sever localhost and port 8080.
+Search for proxies and set a Socks proxy with sever localhost and port 8000.
 ![image](https://user-images.githubusercontent.com/43855029/228646182-f376dbd2-f850-4ac0-b300-2269e7394321.png)
    
 ## 4.4 Test Proxy
