@@ -54,7 +54,7 @@ Once you pass the Duo screen, the port forwarding tool enabled:
 Open terminal/vscode or similar and type in:
    
 ```bash
-$ ssh -C -D 8080 username@superpod.smu.edu
+$ ssh -C -D 8000 username@superpod.smu.edu
 ```   
 The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in your browser
    
@@ -67,7 +67,7 @@ Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select
 ![image](https://user-images.githubusercontent.com/43855029/189716620-973851c3-255c-4f21-9af3-ca156f16c980.png)
 
 - Select **Manual Proxy Configuration**
-- In the **SOCKS Host**, enter localhost, **Port** 8080
+- In the **SOCKS Host**, enter localhost, **Port 8000**
 - Check **SOCKS v5**.
 - Check **Proxy DNS when using SOCKS v5**.
 - Check **Enable DNS over HTTPS**.
