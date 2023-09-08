@@ -37,8 +37,9 @@ $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ### (2) Load cuda and cudnn module for GPU support
 
 ```bash
-$ module load spack conda
-$ module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluwegp
+$ module load conda gcc
+$ module load cuda
+$ module load cudnn
 ```
 
 ### (3) Create Tensorflow environment
