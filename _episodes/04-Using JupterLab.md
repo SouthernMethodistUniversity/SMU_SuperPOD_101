@@ -15,48 +15,12 @@ keypoints:
 - There is **NO display config and Open OnDemand setup in SuperPOD**, so it is not quite straighforward to use Jupter Lab
 
 - However, it is still possible to use **Port-Forwarding** in SuperPOD in order to run Jupyter Lab.
+- Please download and use VSCode for all OS (Windows/Macs/Linux). From VSCode terminal, ssh to superpod with specific port, for example port 8000:
 
-The following procedure are for Window and MacOS
-
-## 4.1 Using Window OS
-
-For Window, I use MobaXTerm (https://mobaxterm.mobatek.net/) and Firefox to configure port-forwarding
-
-Open MobaXTerm and Select Tunneling tab:
-
-![image](https://user-images.githubusercontent.com/43855029/189714886-2e90e9fc-123c-48ac-8c2d-c817441b5a09.png)
-
-- Select **New SSH tunnel**, then select **Dynamic port forwarding (SOCKS proxy)**
-- Filling the information as follows:
-    **<Forwarded port>**: 8080
-    **<SSH server>**: superpod.smu.edu
-    **<SSH login>**: $USERNAME
-    **<SSH port>**: 22
-   
-- Click Save
-
-       
-![image](https://user-images.githubusercontent.com/43855029/189715197-37ce44ee-b4f7-4b88-900c-dc9d2442168f.png)
-
-The Graphical port forwarding tool appears, Click on play button
-      
-![image](https://user-images.githubusercontent.com/43855029/189715476-66ca7a82-87d6-4230-8aca-e508d1db96ae.png)
-
-The Duo screen appears, enter 1 to authenticate the Duo
-Once you pass the Duo screen, the port forwarding tool enabled:
-      
-![image](https://user-images.githubusercontent.com/43855029/189716103-1ac8f8b4-e822-4ed7-a7e8-a6d3e1f9c9c8.png)
-
- Leave the port-forwarding screen opened and we switch to Firefox
-   
-### 4.2 Using MacsOS/Linux
-
-Open terminal/vscode or similar and type in:
-   
 ```bash
 $ ssh -C -D 8000 username@superpod.smu.edu
 ```   
-The C stands for Compression and D stands for Dynamic port-forwarding with SOCKS4/5 to port number 8080. Feel free to change the port and remember to set it up in your browser
+The **C** stands for Compression and **D** stands for Dynamic port-forwarding with SOCKS4/5 to port number 8000. Feel free to change the port and remember to set it up in your browser
    
 ## 4.3 Setup browser to enable proxy viewing (similar for MacOS/Linux as well)
 ### 4.3.1 Using Firefox as browser:
