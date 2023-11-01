@@ -33,15 +33,16 @@ Prepare the batch script with name: **modelCNN.sh** using the following content:
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
 #SBATCH -G 1                      # request 1 gpu a100
+#SBATCH -p workshop               # request queue name workshop (optional)
 #SBATCH -D /work/users/tuev       # link to your folder
 #SBATCH --mem=32gb                # request 32gb memory
 #SBATCH --mail-user tuev@smu.edu  # request to email to your emailID
 #SBATCH --mail-type=end           # request to mail when the model **end**
 
-module load conda spack
-module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluwegp
+module load conda gcc
+module load cuda cudnn
 
-source activate ~/tensorflow_2.9
+conda activate ~/tensorflow_2.9
 python model_CNN_CIFAR10.py
 ```
 
@@ -61,6 +62,7 @@ Prepare the batch script with name: **modelCNN_ngc.sh** using the following cont
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
 #SBATCH -G 1                      # request 1 gpu a100
+#SBATCH -p workshop               # request queue name workshop (optional)
 #SBATCH --mem=32gb                # request 32gb memory
 #SBATCH --mail-user tuev@smu.edu  # request to email to your emailID
 #SBATCH --mail-type=end           # request to mail when the model **end**
