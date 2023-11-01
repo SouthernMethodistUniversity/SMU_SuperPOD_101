@@ -41,8 +41,8 @@ Here are some basic SLURM commands for submitting, querying and deleting jobs in
 | ```sstat <job id>```                   | Check the status of the job given jobID                                         |
 |  ```sstat <job id> --format=AveCPU,AvePages,AveRSS,AveVMSize,JobID```             | Narrow some information on sstat                                       |
 | ```squeue -u <username>``` | Check the status of all jobs submitted by given username |
-| ```scontrol show job <job id>                | Check the detailed information for job with given job id                             |
-|```scancel <job id>           | Delete the queued or running job given job ID                                 |
+| ```scontrol show job <job id>```                | Check the detailed information for job with given job id                             |
+|```scancel <job id>```           | Delete the queued or running job given job ID                                 |
 | Archival Storage            | N/A                                           |
 | Operating System            | Ubuntu 20.04                                  |
 
