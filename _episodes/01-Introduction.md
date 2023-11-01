@@ -24,9 +24,8 @@ keypoints:
 | Computational Ability       | 1,644 TFLOPS                                  |
 | Number of Nodes             | 20                                            |
 | CPU Cores                   | 2,560                                         |
-| GPU Accelerator Cores       | 1,392,640                                     |
 | Total Memory                | 52.5 TB                                       |
-| Node Interconnect Bandwidth | 10 - 200 Gb/s Infiniband Connections Per Node |
+| Node Interconnect Bandwidth | 200 Gb/s Infiniband Connections Per Node |
 | Work Storage                | 768 TB (Shared)                               |
 | Scratch Storage             | 750 TB (Raw)                                  |
 | Archival Storage            | N/A                                           |
@@ -44,8 +43,10 @@ keypoints:
 | Scratch Storage             | Unlimited (Independence from M2)              |
 | Work Storage                | 8TB (shared with M2)                          |
 
+Command to check number the configuration of All nodes:
+
 ```
-$ sinfo --Format="PartitionName,Nodes:10,CPUs:8,Memory:12,Time:15,Features:18,Gres:14
+$ sinfo --Format="PartitionName,Nodes:10,CPUs:8,Memory:12,Time:15,Features:18,Gres:14"
 ```
 
 ## Storage 
@@ -62,6 +63,12 @@ ${SCRATCH}     | /scratch/users/${USER}     | None   | Temporary scratch space  
 ${JOB_SCRATCH} | /scratch/_tmp/${USER:0:1}/  | None   | Per job scratch space,    |
 ${JOB_SCRATCH} | ${USER}/${SLURM_JOB_ID}_   |        | ${SLURM_ARRAY_TASK_ID} is   |
 ${JOB_SCRATCH} | ${SLURM_ARRAY_TASK_ID}     |        | zero for standard jobs     |
+
+Command to check available data from your work storage:
+
+```
+$ lfs quota -h -u $USERNAME /work
+```
 
 # Login to SuperPOD
 
@@ -87,11 +94,17 @@ SuperPOD is using the same module system as M2 so nearly all commands are simila
 
 SuperPOD uses SLURM as scheduler so it is no different from M2 when requesting an interactive node:
 
-For example, requesting a node with 1 GPU, 10 CPUs, 128gb memory for 12 hours:
+For example, requesting a node with **1 GPU, 10 CPUs, 128gb memory for 12 hours**:
 
 ```
 $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
 $ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
+```
+
+For this workshop on campus, we do have available workshop queue (using flag **-p workshop**) for you (to speed up the process of requesting resources):
+
+```
+$ srun -N 1 -G 1 -c 10 --mem=64G -p workshop --time=12:00:00 --pty $SHELL
 ```
 
 # Transfering data
@@ -112,10 +125,12 @@ By default, very few modules available when using **module avail**
 ```
 $ module avail
 
------------------------------------------------------- /hpc/mp/modules -------------------------------------------------------  
-amber/16    gaussian/g16c02         hpcx/hpcx-debug      hpcx/hpcx-ompi         hpcx/hpcx-stack        singularity/1.0.2
-   conda       hpc-sdk/21.3            hpcx/hpcx-mt-ompi    hpcx/hpcx-prof-ompi    hpcx/hpcx       (D)    spack
-   dev/1       hpcx/hpcx-debug-ompi    hpcx/hpcx-mt         hpcx/hpcx-prof         lammps/may22
+------------------------------------------------------------------------- /hpc/mp/module_files/compilers -------------------------------------------------------------------------
+   amd/aocc/4.1.0    gcc/11.2.0    intel/oneapi/2023.2    nvidia/nvhpc/23.7
+
+--------------------------------------------------------------------------- /hpc/mp/module_files/apps ----------------------------------------------------------------------------
+   amber/22    apptainer/1.1.9    conda    gaussian/g16c02    julia/1.9.2    lammps/may22    spack
+
 ```
 
 Similar to M2, SuperPOD also uses [Spack](https://spack.io/) as its module manager. Therefore you can find all your needed modules after loading spack:
@@ -124,17 +139,23 @@ Similar to M2, SuperPOD also uses [Spack](https://spack.io/) as its module manag
 $ module load spack
 $ module avail
 
----------------------------------- /hpc/mp/spack/share/spack/modules/linux-ubuntu20.04-zen2 ----------------------------------   autoconf-2.69-gcc-9.4.0-ebln5y6                          libxml2-2.9.13-gcc-10.3.0-zirv7w5
-   autoconf-archive-2022.02.11-gcc-9.4.0-vl5t5da            libxml2-2.9.13-gcc-9.4.0-in2l3or
-   automake-1.16.5-gcc-9.4.0-5c2yujw                        llvm-12.0.1-gcc-9.4.0-r2q3sru
-   berkeley-db-18.1.40-gcc-10.3.0-mlszo5e                   lmod-8.7.2-gcc-10.3.0-uutt23p
-   berkeley-db-18.1.40-gcc-9.4.0-cxlb2jo                    lua-5.3.5-gcc-10.3.0-qw2i56f
-   binutils-2.38-gcc-9.4.0-bpjscr5                          lua-lpeg-1.0.2-1-gcc-10.3.0-ttjpelo
-   bison-3.8.2-gcc-10.3.0-yaxkxvj                           lua-luafilesystem-1_8_0-gcc-10.3.0-2dihlqw
-   blt-0.5.1-gcc-10.3.0-qcy3gp3                             lua-luajit-openresty-2.1-20220111-gcc-10.3.0-scft7rz
-   bzip2-1.0.8-gcc-10.3.0-vqphlps                           lua-luaposix-35.0-gcc-10.3.0-l4ljchh
+------------------------------------------------------------------ /hpc/mp/spack_modules/linux-ubuntu22.04-zen2 ------------------------------------------------------------------
+   aocc-4.1.0/aocl-sparse/4.0-t2kjb3u                               gcc-11.2.0/aocl-sparse/4.0-zczy7ug                          gcc-11.2.0/lz4/1.9.4-gtzsc3c
+   aocc-4.1.0/autoconf-archive/2023.02.20-inwkm6b                   gcc-11.2.0/autoconf-archive/2023.02.20-r5lazua              gcc-11.2.0/lzo/2.10-x6itbky
+   aocc-4.1.0/autoconf/2.69-x53b2ii                                 gcc-11.2.0/autoconf/2.69-xlmuzvq                            gcc-11.2.0/m4/1.4.19-sv4d5ah
+   aocc-4.1.0/automake/1.16.5-hfcjabg                               gcc-11.2.0/automake/1.16.5-nsy2ron                          gcc-11.2.0/mbedtls/2.28.2-xvf3rc3
+   aocc-4.1.0/berkeley-db/18.1.40-5po7n7c                           gcc-11.2.0/berkeley-db/18.1.40-hlnjdqn                      gcc-11.2.0/mbedtls/2.28.2-42lnomn         (D)     
+   aocc-4.1.0/binutils/2.40-eivqxcw                                 gcc-11.2.0/binutils/2.40-u6hr2wz                            gcc-11.2.0/meson/1.1.0-teqdfz5
+   aocc-4.1.0/bzip2/1.0.8-5ag7qmi                                   gcc-11.2.0/bison/3.8.2-tifozqf                              gcc-11.2.0/metis/5.1.0-coza6f3
+   aocc-4.1.0/cmake/3.26.3-p6v5a7t                                  gcc-11.2.0/boost/1.82.0-xpmd3v6                             gcc-11.2.0/mpfr/4.2.0-meodww2
+   aocc-4.1.0/diffutils/3.9-bzq7rzo                                 gcc-11.2.0/bzip2/1.0.8-qaxdt7f                              gcc-11.2.0/msgpack-c/3.1.1-d624eki
+   aocc-4.1.0/expat/2.5.0-kav5ad4                                   gcc-11.2.0/cmake/3.26.3-r23mmbq                             gcc-11.2.0/nasm/2.15.05-mdqravc
+   aocc-4.1.0/gdbm/1.23-6r6asdl                                     gcc-11.2.0/cmake/3.26.3-utseokk                      (D)    gcc-11.2.0/ncurses/6.4-rfw5ur5
+   aocc-4.1.0/gettext/0.21.1-dmnukqt                                gcc-11.2.0/curl/8.0.1-cp7iioq                               gcc-11.2.0/neovim/0.8.3-mdppjp3
    ....
 ```
+
+Note: Press **"q"** to quit checking module
 
 As we are on installation process, if you do not see the modules that you needed available, please inform us so we can install that for you
 
