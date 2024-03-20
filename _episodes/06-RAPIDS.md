@@ -23,11 +23,11 @@ There are several ways to install RAPIDS to HPC systems
 This is the simplest method and usable to both M2 and SuperPOD system.
 You can install interactively, first, you just need to request a GPU node and load the corresponding library:
 
-- In M2:
+- In M3:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 -p v100x8 --pty $SHELL
-$ module load python/3
+$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 -p gpu-dev --pty $SHELL
+$ module load conda
 ```
 
 In SuperPOD:
