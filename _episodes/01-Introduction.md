@@ -39,9 +39,9 @@ keypoints:
 | GPU number                  | 8                                             |
 | Memory                      | 1910gb                                        |
 | Time Limit                  | 2 days                                        |
-| Home Storage                | 200gb (Independence from M2)                  |
-| Scratch Storage             | Unlimited (Independence from M2)              |
-| Work Storage                | 8TB (shared with M2)                          |
+| Home Storage                | 200gb (Independence from M3)                  |
+| Scratch Storage             | Unlimited (Independence from M3)              |
+| Work Storage                | 8TB (shared with M3)                          |
 
 Command to check number the configuration of All nodes:
 
