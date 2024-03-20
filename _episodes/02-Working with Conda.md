@@ -12,7 +12,7 @@ keypoints:
 # 2. Conda Environment
  
 - Beside Spack module manager installed in SuperPOD, you can also use [Conda](https://conda.io/) for your own package manager.
-- In many cases, you want to use Conda environment for many AI&ML application, just like you do in M2
+- In many cases, you want to use Conda environment for many AI&ML application, just like you do in M3
 - First thing first, just load the conda module installed:
 
 ```bash
@@ -42,7 +42,7 @@ $ module load cuda
 $ module load cudnn
 ```
 
-### (3) Create Tensorflow environment
+### (3) Create Tensorflow environment with your prefered version of python
 
 ```bash
 $ conda create --prefix ~/tensorflow_2.9 python=3.8 pip --y
@@ -50,7 +50,7 @@ $ conda create --prefix ~/tensorflow_2.9 python=3.8 pip --y
 
 The conda environment named **tensorflow_2.9** is created on your home directory
 
-### (4) Activate the conda environment and Install Tensorflow 2.9.1
+### (4) Activate the conda environment and Install Tensorflow 2.9.1 (or your prefered TF version)
 
 ```bash
 $ source activate ~/tensorflow_2.9/  
@@ -73,7 +73,7 @@ $  python
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
 
-Usage of conda environment manager is **no difference** compared to running in M2.
+Usage of conda environment manager is **no difference** compared to running in M3.
 
 ## Create conda environment for Pytorch with GPUs support
 
