@@ -41,7 +41,7 @@ Here are some basic SLURM commands for submitting, querying and deleting jobs in
 | ```sstat <job id>```                   | Check the status of the job given jobID                                         |
 |  ```sstat <job id> --format=AveCPU,AvePages,AveRSS,AveVMSize,JobID```             | Narrow some information on sstat                                       |
 | ```squeue -u <username>``` | Check the status of all jobs submitted by given username |
-| ```scontrol show job <job id>```                | Check the detailed information for job with given job id                             |
+| ```scontrol show job <job id>```                | Check the detailed information for job with given job ID                             |
 |```scancel <job id>```           | Delete the queued or running job given job ID                                 |
 
 #### Check pending, working job:
@@ -53,10 +53,12 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON
 12345  workshop     bash     tuev  R      39:46      1 bcm-dgxa100-0002
 ```
 
+The above Job has a JOBID=12345, which will be used below:
+
 #### Check configuration of any requested job using JOBID:
 
 ```
-$ scontrol show job $JOBID grep ReqTRES
+$ scontrol show job 12345 grep ReqTRES
 
 ReqTRES=cpu=5,mem=30G,node=1,billing=5,gres/gpu=1
 ```
@@ -64,7 +66,7 @@ ReqTRES=cpu=5,mem=30G,node=1,billing=5,gres/gpu=1
 #### Delete any job
 
 ```
-$ scancel $JOBID
+$ scancel 12345
 ```
 
 #### Checking how your job is running in node
