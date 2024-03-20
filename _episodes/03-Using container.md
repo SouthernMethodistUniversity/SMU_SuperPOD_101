@@ -126,7 +126,7 @@ Exit the container using **exit** command.
 
 ## Working with NGC container in Batch mode
 
-- Similar to M2, container can be loaded and executed in batch mode.
+- Similar to M3, container can be loaded and executed in batch mode.
 - Following is the sample content of a batch file named **spod_testing.sh** with a python file **testing.py**
   
 ```
