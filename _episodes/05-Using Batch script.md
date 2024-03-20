@@ -12,7 +12,7 @@ keypoints:
 
 # 5. Using Batch script in SuperPOD
 
-SuperPOD uses SLURM as scheduler so there is no difference in running Batch script comparing to ManeFrame 2. However, there is some command you might need to pay attention when running Batch script using container.
+SuperPOD uses SLURM as scheduler so there is no difference in running Batch script comparing to ManeFrame 3. However, there are some commands you might need to pay attention when running Batch script using container.
 
 Following are the instructions on how to run Batch script for a Computer Vision sample using [CIFAR10 data](https://www.cs.toronto.edu/~kriz/cifar.html). Here, I use a python file called model_CNN_CIFAR10.py. 
 
