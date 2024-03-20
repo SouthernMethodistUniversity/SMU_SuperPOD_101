@@ -52,8 +52,8 @@ $ sinfo --Format="PartitionName,Nodes:10,CPUs:8,Memory:12,Time:15,Features:18,Gr
 ## Storage 
 
 Note that: 
-- SuperPOD's home & scratch directory is different from M2's home.
-- However, both SuperPOD and M2 share the same $WORK storage
+- SuperPOD's home & scratch directory is different from M3's home.
+- However, both SuperPOD and M3 share the same $WORK storage
 
 Variable       | Path                       | Quota  | Usage                      |
 -------------- | -------------------------- | ------ | -------------------------  |
@@ -73,26 +73,18 @@ $ lfs quota -h -u $USERNAME /work
 # Login to SuperPOD
 
 - Make sure you have a SuperPOD account created for you. You can ask your supervisor to request for an account by submitting this [form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL)
-- There are several ways to login to SuperPOD: you can login directly or via login nodes (must be on VPN)
+- There are several ways to login to SuperPOD: via 2 login nodes (must be on VPN)
 
 ```
 $ ssh username@superpod.smu.edu
 $ ssh username@slogin-01.superpod.smu.edu
 $ ssh username@slogin-02.superpod.smu.edu
 ```
-
-If you do not use VPN off campus, you can login to ManeFrame II and then ssh to SuperPOD:
-
-```
-$ ssh username@m2.smu.edu
-$ ssh username@slogin-01.superpod.smu.edu
-```
-
-SuperPOD is using the same module system as M2 so nearly all commands are similar.
+SuperPOD is using the same module system as M3 so nearly all commands are similar.
 
 # Requesting a compute node
 
-SuperPOD uses SLURM as scheduler so it is no different from M2 when requesting an interactive node:
+SuperPOD uses SLURM as scheduler so it is no different from M3 when requesting an interactive node:
 
 For example, requesting a node with **1 GPU, 10 CPUs, 128gb memory for 12 hours**:
 
@@ -109,15 +101,15 @@ $ srun -N 1 -G 1 -c 10 --mem=64G -p workshop --time=12:00:00 --pty $SHELL
 
 # Transfering data
 
-- It is no difference when transfering data to-from SuperPOD if you are familiar with M2, you can use scp for regular transfer
+- It is no difference when transfering data to-from SuperPOD if you are familiar with M3, you can use scp for regular transfer
 
 ```
 scp /link/fileA username@superpod.smu.edu:/users/username
 ```
 
-or using WinSCP if you dont want to use CLI
+or using WinSCP on Windows machine if you dont want to use CLI
 
-- Tips, since SuperPOD and M2 share the same work storage, you can utilize this share storage for both systems.
+- Tips, since SuperPOD and M3 share the same work storage, you can utilize this share storage for both systems.
 
 # Working with module
 By default, very few modules available when using **module avail**
@@ -133,7 +125,7 @@ $ module avail
 
 ```
 
-Similar to M2, SuperPOD also uses [Spack](https://spack.io/) as its module manager. Therefore you can find all your needed modules after loading spack:
+Similar to M3, SuperPOD also uses [Spack](https://spack.io/) as its module manager. Therefore you can find all your needed modules after loading spack:
 
 ```
 $ module load spack
