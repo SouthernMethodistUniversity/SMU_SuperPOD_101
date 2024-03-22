@@ -1,117 +1,184 @@
 ---
-title: "Using Jupyter Lab in SuperPOD"
+title: "Using NGC Container in SuperPOD"
 teaching: 20
 exercises: 0
 questions:
-- "How to use Jupter Lab in SuperPOD?"
+- "How to use NGC Container in SuperPOD?"
 objectives:
-- "Learn port forwarding technique to enable Jupter Lab"
+- "Learn how to master NGC Container useage in SuperPOD"
 keypoints:
-- "Jupter Lab, Port-Forwarding"
+- "NGC Container"
 ---
 
-# 3. Jupter Lab on SuperPOD
+# 3. Using NVIDIA NGC Container in SuperPOD
 
-- There is no display config and Open OnDemand setup in SuperPOD, so it is not quite straighforward to use Jupter Lab
+## What is Container?
 
-- However, it is still possible to use Port-Forwarding in SuperPOD in order to run Jupyter Lab.
+- Container demonstrates its efficiency in application deployment in HPC.
+- Containers can encapsulate complex programs with their dependencies in isolated environments making applications more portable.
+- A container is a portable unit of software that combines the application and all its dependencies into a single package that is agnostic to the underlying host OS.
+- Thereby, it removes the need to build complex environments and simplifies the process of application development to deployment.
 
-The following procedure are for Window and MacOS
+## Docker Container
 
-## Using Window OS
+- [Docker](docker.com) is the most popular container system at this time
+- It allows applications to be deployed inside a container on Linux systems. 
 
-For Window, I use MobaXTerm (https://mobaxterm.mobatek.net/) and Firefox to configure port-forwarding
+## NVIDIA NGC Container
 
-### Setup in MobaXTerm
+- NGC Stands for NVIDIA GPU Clouds
+- NGC providing a complete catalog of GPU-accelerated containers that can be deployed and maintained for artificial intelligence applications.
+- It enables users to run their projects on a reliable and efficient platform that respects confidentiality, reversibility and transparency.
+- NVIDIA NGC containers and their comprehensive catalog are an amazing suite of prebuilt software stacks (using the Docker backend) that simplifies the use of complex deep learning and HPC libraries that must leverage some sort of GPU-accelerated computing infrastructure.
+- Complete catalogs of NGC can be found [here](https://catalog.ngc.nvidia.com/containers), where you can find tons of containers for Tensorflow, Pytorch, NEMO, Merlin, TAO, etc...
 
-Open MobaXTerm and Select Tunneling tab:
+## ENROOT
+It is very convenient to download docker and NGC container to SuperPOD. Here I would like to introduce a very effective tool name **enroot**
 
-![image](https://user-images.githubusercontent.com/43855029/189714886-2e90e9fc-123c-48ac-8c2d-c817441b5a09.png)
+- A simple, yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.
+- This approach is generally preferred in high-performance environments or virtualized environments where portability and reproducibility is important, but extra isolation is not warranted.
 
-- Select **New SSH tunnel**, then select **Dynamic port forwarding (SOCKS proxy)**
-- Filling the information as follows:
-    **<Forwarded port>**: 8080
-    **<SSH server>**: superpod.smu.edu
-    **<SSH login>**: $USERNAME
-    **<SSH port>**: 22
-- Click Save
-       
-![image](https://user-images.githubusercontent.com/43855029/189715197-37ce44ee-b4f7-4b88-900c-dc9d2442168f.png)
+### Importing docker container to SuperPOD from docker hub
 
-The Graphical port forwarding tool appears, Click on play button
-      
-![image](https://user-images.githubusercontent.com/43855029/189715476-66ca7a82-87d6-4230-8aca-e508d1db96ae.png)
+- The following command import docker container **ubuntu** from https://hub.docker.com/_/ubuntu
+- It then create the squash file named ubuntu.sqsh at the same location
+- Finally, it start the ubuntu container
 
-The Duo screen appears, enter 1 to authenticate the Duo
-Once you pass the Duo screen, the port forwarding tool enabled:
-      
-![image](https://user-images.githubusercontent.com/43855029/189716103-1ac8f8b4-e822-4ed7-a7e8-a6d3e1f9c9c8.png)
+```
+$ enroot import docker://ubuntu
+$ enroot create ubuntu.sqsh
+$ enroot start ubuntu
 
-Leave the port-forwarding screen opened and we switch to Firefox
+#Type ls to see the content of container:
+# ls
 
-### Setup Firefox to enable proxy viewing (similar for MacOS as well)
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp    usr
+boot  etc  lib   lib64  media   opt  root  sbin  sys  users  var
+```
 
-Open Firefox, my version is 104.0.2.
-Use combination Alt+T+S to open up the settings tab. Scroll to bottom and select Settings from Network Settings:
-        
-![image](https://user-images.githubusercontent.com/43855029/189716620-973851c3-255c-4f21-9af3-ca156f16c980.png)
+- Type exit to quit container environment
 
-- Select **Manual Proxy Configuration**
-- In the **SOCKS Host**, enter localhost, **Port** 8080
-- Check **SOCKS v5**.
-- Check **Proxy DNS when using SOCKS v5**.
-- Check **Enable DNS over HTTPS**.
-- Make sure everything else is unchecked, then click OK.
-- Your screenshot should look like below:        
-![image](https://user-images.githubusercontent.com/43855029/189716896-4415fb80-9b1f-4287-9ecf-6adc2b1357ef.png)
+### Exercise
 
-## Test Proxy
-        
-Go back to MobaXTerm and login into SuperPOD using regular SSH 
-Request a compute node with container
-        
+Go to dockerhub, search for any container, for example lolcow then use enroot to contruct that container environment
+
+```
+enroot import docker://godlovedc/lolcow
+enroot create godlovedc+lolcow.sqsh
+enroot start godlovedc+lolcow
+```
+
+![image](https://user-images.githubusercontent.com/43855029/180532404-60f32edc-489a-4ed1-bfa8-ae4f6fbaa566.png)
+
+## Download Tensorflow container
+
+- Now, let's start downloading Tensorflow container from NGC. By browsing the [NGC Catalog](https://catalog.ngc.nvidia.com/containers) and search for Tensorflow, I got the link:
+https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
+
+- Copy the image path from website:
+
+![image](https://user-images.githubusercontent.com/43855029/210624494-f3304104-32d6-4c02-bc2c-388b3f30caa7.png)
+
+The following information was copied to the memory when selecting the 22.12-tf2 version:
+
+```
+nvcr.io/nvidia/tensorflow:22.12-tf2-py3
+```
+
+- Im gonna download the version 22.12 tf2 to my **work** location using **enroot**, pay attention to the syntax difference when pasting:
+
+```
+$ cd $WORK/sqsh
+$ enroot import docker://nvcr.io#nvidia/tensorflow:22.12-tf2-py3
+```
+
+The sqsh file **nvidia+tensorflow+22.12-tf2-py3.sqsh** is created.
+
+- Next create the sqsh file:
+
+```
+$ enroot create nvidia+tensorflow+22.12-tf2-py3.sqsh
+```
+
+## Working with NGC container in Interactive mode:
+
+Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
+
+```
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK --pty $SHELL
+
+```
+
+- Once loaded, you are placed into **/workspace** which is the container local storage. You can navigate to your **$HOME or $WORK** folder freely.
+
+- Note that in this example, I mounted the container to **$WORK** location only but you can always mount it to your own working directory
+
+### Check the GPU enable:
+
+```
+$ python
+>>> import tensorflow as tf
+>>> tf.config.list_physical_devices('GPU')
+[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+```
+
+Exit the container using **exit** command.
+
+## Working with NGC container in Batch mode
+
+- Similar to M3, container can be loaded and executed in batch mode.
+- Following is the sample content of a batch file named **spod_testing.sh** with a python file **testing.py**
+  
+```
+#!/bin/bash
+#SBATCH -J Testing       # job name to display in squeue
+#SBATCH -o output-%j.txt    # standard output file
+#SBATCH -e error-%j.txt     # standard error file
+#SBATCH -p batch -c 12 --mem=20G --gres=gpu:1     # requested partition
+#SBATCH -t 1440              # maximum runtime in minutes
+#SBATCH -D /link-to-your-folder/
+
+srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python testing.py
+```
+
+- Content of **testing.py**
+
+```python
+import tensorflow as tf
+print(tf.config.list_physical_devices('GPU'))
+```
+
+
+## Working with NGC container in Jupyter Lab
+
+- It is a little bit different if you want to use NGC container in Jupyter Lab
+- After requesting a node running with your container, you need to run the jupyter command with additional flag **--allow-root**:
+
 ```bash
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
-```        
+root@bcm-dgxa100-0001:/workspace# jupyter lab --allow-root --no-browser --ip=0.0.0.0
+```
 
-Load cuda, cudnn and activate any of your conda environment, for example Tensorflow_2.9
-   
+The following URL appear with its token
+
 ```bash
-$ module load spack conda
-$ module load cuda-11.4.4-gcc-10.3.0-ctldo35 cudnn-8.2.4.15-11.4-gcc-10.3.0-eluwegp
-$ source activate ~/tensorflow_2.9   
-``` 
-   
-Make sure to install jupyter
-   
-```
-$ pip install jupyter   
-```   
-   
-Next insert the following command:
-        
-```
-$ jupyter notebook --ip=0.0.0.0 --no-browser
-# or
-$ jupyter lab --ip=0.0.0.0 --no-browser   
+Or copy and paste this URL:
+        http://hostname:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f8893718555d2
 ```
 
-The following screen appears
-   
-![image](https://user-images.githubusercontent.com/43855029/211889136-0eb5ef90-b306-454b-8fd9-8fab290b79b4.png)
-   
-       
-Copy the highlighted URLs to **Firefox**, you will see Jupyter Notebook port forward to this:
-        
-![image](https://user-images.githubusercontent.com/43855029/211889462-ea4ebe65-9f2f-4bc4-9980-493ffe74bed7.png)
-   
-Select TensorflowGPU29 kernel notebook and Check GPU device:
-   
-![image](https://user-images.githubusercontent.com/43855029/211889805-da9d0740-3383-4b74-a347-b16525708ba3.png)
+Note that you **must** replace **hostname** to the corresponding node that you are in, this case is *bcm-dgxa100-0001*.
 
-   
-   
+Therefore, you should change the above address to and paste to Firefox:
 
-   
-        
-        
+```bash
+http://bcm-dgxa100-0001:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f8893718555d2
+```
+
+**Note**: you should select the default **Python 3 (ipykernel)** instead of any other kernels for running the container.
+
+![image](https://user-images.githubusercontent.com/43855029/211891739-ecb6e633-6fbd-45f2-ba0c-7e917a716da1.png)
+
+**Tip**: Once forwarding to Jupter Lab, you are placed in container's root. It's recommended to create a symlink for your folder in order to navigate away:
+
+```bash
+$ ln -s $WORK work
+```
