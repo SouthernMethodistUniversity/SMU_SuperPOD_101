@@ -112,6 +112,11 @@ In certain case, your Jupyter Notebook requires password to be enable, you can s
 $ jupyter notebook password   
 ```   
 
-In case changing password do not help, it might be the case that the forwarded port has some problems. In that case you should either: (1) change the default port 8888 to other (8889 for example), or (2) change the localhost port when you first login to SuperPOD 8000 in this case to other local port (5000 for example)
+In case changing password do not help, it might be the case that the forwarded port has some problems. In that case you should either: 
+
+```
+(1) change the default port 8888 to other (8889 for example), or
+(2) change the localhost port when you first login to SuperPOD 8000 in this case to other local port (5000 for example)
+```
         
         
