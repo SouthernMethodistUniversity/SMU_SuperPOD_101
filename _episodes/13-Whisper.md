@@ -25,3 +25,17 @@ The Whisper architecture is a simple end-to-end approach, implemented as an enco
 
 More information can be found [here](https://openai.com/index/whisper/)
 
+## How to run Whisper on SuperPOD
+Powered by GPU, we can run the Whisper inference using SMU SuperPOD with lightning inferencing.
+Given this [mp3 audio](https://github.com/vuminhtue/SMU_SuperPOD_101/blob/master/data/audio1.mp3)
+Here are the steps to convert this audio to text transcript:
+
+### Step 1: Install libraries:
+Load one of the conda environment in SuperPOD (also load corresponding cuda, cudnn library as in Step 2) and install whisper:
+
+```
+pip install git+https://github.com/openai/whisper.git
+pip install ffmpeg
+```
+
+`
