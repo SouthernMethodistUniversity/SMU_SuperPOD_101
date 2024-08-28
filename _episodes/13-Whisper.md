@@ -54,7 +54,7 @@ The file [audio1.mp3](https://github.com/vuminhtue/SMU_SuperPOD_101/blob/master/
 Let's run an Whisper API inference in the commandline interface (I change the directory of running to the same directory as audio1):
 
 ```
-$ whisper audio1.mp3 --device cuda --model small --language en --output_format txt > audio3.txt
+$ whisper audio1.mp3 --device cuda --model small --language en --output_format txt > audio1.txt
 ```
 
 In the example above, the run is less than 30s using GPU
