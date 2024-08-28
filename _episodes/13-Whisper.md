@@ -58,10 +58,10 @@ $ whisper audio1.mp3 --device cuda --model small --language en --output_format t
 ```
 
 In the example above, the run is less than 30s using GPU
-flag **--device cuda**: enable GPU processing
-flag **--model small**: use the model size 244M for processing
-the pipe **>**: to print out the output name
-to get more header for whisper, run the command:
+- flag **--device cuda**: enable GPU processing
+- flag **--model small**: use the model size 244M for processing
+- the pipe **>**: to print out the output name
+- to get more header for whisper, run the command:
 
 ```
 $ whisper -h
