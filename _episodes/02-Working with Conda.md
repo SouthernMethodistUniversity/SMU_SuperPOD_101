@@ -37,8 +37,8 @@ $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ### (2) Load cuda and cudnn module for GPU support
 
 ```bash
-$ module load conda gcc
-$ module load cuda
+$ module load conda gcc/11.2.0
+$ module load cuda/11.8.0-vbvgppx
 $ module load cudnn
 ```
 
@@ -53,7 +53,7 @@ The conda environment named **tensorflow_2.9** is created on your home directory
 ### (4) Activate the conda environment and Install Tensorflow 2.9.1 (or your prefered TF version)
 
 ```bash
-$ source activate ~/tensorflow_2.9/  
+$ conda activate ~/tensorflow_2.9/  
 $ pip install tensorflow==2.9.1
 ```
 
