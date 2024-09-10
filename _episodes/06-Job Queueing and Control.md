@@ -12,7 +12,7 @@ keypoints:
 
 The SuperPOD cluster uses the Simple Linux Utility for Resource Management system (SLURM) to manage jobs.
 
-# 5b. Job Queue and Control
+# 6. Job Queue and Control
 
 In SLURM there are several usefull commands for checking your job:
 
