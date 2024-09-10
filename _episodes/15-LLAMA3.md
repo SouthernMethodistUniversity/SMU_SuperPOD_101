@@ -47,7 +47,10 @@ $ jupyter lab --ip=0.0.0.0 --no-browser --allow-root
 
 Sometimes, it takes a day for you to get approval.
 
-### Step 3: Create HuggingFace Token
+### Step 3: Install HuggingFace Hub
+Following the guideline [here](https://huggingface.co/docs/huggingface_hub/en/quick-start) to install HuggingFace Hub into your SuperPOD home folder
+
+### Step 4: Create HuggingFace Token
 
 - Create a HuggingFace account and click on your account logo and choose setting:
 ![image](https://github.com/user-attachments/assets/60fd8665-6294-47ca-9cb8-ed33711b2961)
@@ -58,7 +61,16 @@ Sometimes, it takes a day for you to get approval.
 - Create new token:
 ![image](https://github.com/user-attachments/assets/caaf5237-ba16-4f10-8a7c-b2ac9711f1b1)
 
-- Save token into your huggingface folder:
+- Save token into your huggingface folder (created from Step 3). Note that a huggingface folder is hidden, so you need to use "." in front of that folder for access
+
+### Step 5: Get ready to load LLaMA3 model in your port-forwared JupyterLab env:
+
+
+![image](https://github.com/user-attachments/assets/5e1ce719-b7c7-4be2-ae88-412e48481e3f)
+
+
+
+
 
 
 
