@@ -64,11 +64,11 @@ Following the guideline [here](https://huggingface.co/docs/huggingface_hub/en/qu
 - Save token into your huggingface folder (created from Step 3). Note that a huggingface folder is hidden, so you need to use "." in front of that folder for access
 
 ### Step 5: Get ready to load LLaMA3 model in your port-forwared JupyterLab env:
-
-
 ![image](https://github.com/user-attachments/assets/5e1ce719-b7c7-4be2-ae88-412e48481e3f)
 
+Follow the example from HuggingFace, we have the following result:
 
+![image](https://github.com/user-attachments/assets/0a377a1f-c935-4488-93be-0bbd7c87e56d)
 
 
 
