@@ -23,17 +23,17 @@ There are several ways to install RAPIDS to HPC systems
 This is the simplest method and usable to both M2 and SuperPOD system.
 You can install interactively, first, you just need to request a GPU node and load the corresponding library:
 
-- In M3:
+#### In M3:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 -p gpu-dev --pty $SHELL
+$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 -p gpu-dev --pty $SHELL
 $ module load conda
 ```
 
-In SuperPOD:
+#### In SuperPOD:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 --pty $SHELL
+$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 --pty $SHELL
 $ module load conda
 ```
 
@@ -41,6 +41,15 @@ Once the necessary module has been loaded, you just need to create the conda env
 
 ```bash
 $ conda create -n rapids-23.02 -c rapidsai -c conda-forge -c nvidia  rapids=23.02 python=3.10 cudatoolkit=11.8
+```
+
+Activate the conda environment and Install jupyter kernel to jupyter lab:
+
+```bash
+$ conda activate rapids-23.02 
+$ pip install ipykernel
+$ python3 -m ipykernel install --user --name rapids-23.02 --display-name Rapids-23.02
+
 ```
 
 If you have more personalized version, you can select the corresponding option and copy the command from rapids website: rapids.ai:
@@ -65,7 +74,3 @@ $ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidi
 ```
 
 Your installation is done!
-
-
-
-
