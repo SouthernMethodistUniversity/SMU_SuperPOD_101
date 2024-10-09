@@ -26,14 +26,14 @@ You can install interactively, first, you just need to request a GPU node and lo
 #### In M3:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 -p gpu-dev --pty $SHELL
+$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 -p gpu-dev --pty $SHELL
 $ module load conda
 ```
 
 #### In SuperPOD:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c2 --mem=4gb --time=12:00:00 --pty $SHELL
+$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 --pty $SHELL
 $ module load conda
 ```
 
