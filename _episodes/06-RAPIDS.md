@@ -43,9 +43,10 @@ Once the necessary module has been loaded, you just need to create the conda env
 $ conda create -n rapids-23.02 -c rapidsai -c conda-forge -c nvidia  rapids=23.02 python=3.10 cudatoolkit=11.8
 ```
 
-Install jupyter kernel to jupyter lab:
+Activate the conda environment and Install jupyter kernel to jupyter lab:
 
 ```bash
+$ conda activate rapids-23.02 
 $ pip install ipykernel
 $ python3 -m ipykernel install --user --name rapids-23.02 --display-name Rapids-23.02
 
