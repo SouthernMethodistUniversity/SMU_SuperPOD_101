@@ -86,17 +86,11 @@ SuperPOD is using the same module system as M3 so nearly all commands are simila
 
 SuperPOD uses SLURM as scheduler so it is no different from M3 when requesting an interactive node:
 
-For example, requesting a node with **1 GPU, 10 CPUs, 128gb memory for 12 hours**:
+For example, requesting a node with **1 GPU, 10 CPUs, 128gb memory for 12 hours**: using my workshop Allocation **-A tuev_oitrts_workshop_0001**
 
 ```
-$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
-$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
-```
-
-For this workshop on campus, we do have available workshop queue (using flag **-p workshop**) for you (to speed up the process of requesting resources):
-
-```
-$ srun -N 1 -G 1 -c 10 --mem=64G -p workshop --time=12:00:00 --pty $SHELL
+$ srun -A tuev_oitrts_workshop_0001 -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
+$ srun -A tuev_oitrts_workshop_0001 -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
 ```
 
 # Transfering data
