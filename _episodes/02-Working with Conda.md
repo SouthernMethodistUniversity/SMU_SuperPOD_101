@@ -39,8 +39,8 @@ $ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty
 
 ```bash
 $ module load conda gcc/11
-$ module load cuda/10
-$ module load cudnn
+$ module load cuda/11
+$ module load cudnn/8
 ```
 
 ### (3) Create Tensorflow environment with your prefered version of python
