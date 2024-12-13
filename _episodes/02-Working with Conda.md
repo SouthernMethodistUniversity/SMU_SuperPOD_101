@@ -30,6 +30,7 @@ Next, let's create a conda environment for Tensorflow 2.9, here are the steps:
 
 ### (1) Request a compute node with 1 GPU
 
+Make sure you have your own allocation name 
 ```bash
 $ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```
@@ -37,8 +38,8 @@ $ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty
 ### (2) Load cuda and cudnn module for GPU support
 
 ```bash
-$ module load conda gcc
-$ module load cuda
+$ module load conda gcc/11
+$ module load cuda/10
 $ module load cudnn
 ```
 
