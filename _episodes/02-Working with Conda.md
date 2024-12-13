@@ -54,7 +54,7 @@ The conda environment named **tensorflow_2.9** is created on your home directory
 ### (4) Activate the conda environment and Install Tensorflow 2.9.1 (or your prefered TF version)
 
 ```bash
-$ source activate ~/tensorflow_2.9/  
+$ conda activate ~/tensorflow_2.9/  
 $ pip install tensorflow==2.9.1
 ```
 
