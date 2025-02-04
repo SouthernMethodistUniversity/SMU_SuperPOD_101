@@ -64,7 +64,15 @@ You should see the screen like this:
 
 If there are any other models that you want us to download, please email me: tuev@smu.edu
 
-### Step 6: Run Ollama model
+### Step 6: Download Ollama model
+
+You can download any LLM model that you downloaded previously to chat:
+
+```bash
+$ ollama pull llama3:70
+```
+
+### Step 7: Run Ollama model
 
 You can run any LLM model that you downloaded previously to chat:
 
@@ -75,7 +83,7 @@ $ ollama run llama3:70
 ![image](https://github.com/user-attachments/assets/1cd89849-03f6-4d50-acc4-b3c0252cac6d)
 
 
-### Step 7: Stop Ollama model
+### Step 8: Stop Ollama model
 
 ```bash
 $ killall ollama
