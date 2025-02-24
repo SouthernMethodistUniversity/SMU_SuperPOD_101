@@ -105,7 +105,7 @@ $ enroot create nvidia+tensorflow+22.12-tf2-py3.sqsh
 Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
 
 ```
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK --pty $SHELL
 
 ```
 
@@ -138,7 +138,7 @@ Exit the container using **exit** command.
 #SBATCH -t 1440              # maximum runtime in minutes
 #SBATCH -D /link-to-your-folder/
 
-srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python testing.py
+srun -A <Coldfront_Allocation> --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python testing.py
 ```
 
 - Content of **testing.py**
