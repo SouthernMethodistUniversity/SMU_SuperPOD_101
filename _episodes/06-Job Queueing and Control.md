@@ -36,7 +36,7 @@ Here are some basic SLURM commands for submitting, querying and deleting jobs in
 
 | Command                     | Actions                                       |
 |-----------------------------|-----------------------------------------------|
-| ```srun -N1 -G1 --pty $SHELL```      | Submit an interactive job (reserves 1 Node, 1GPU, 1CPU, 6gb RAM, 1 hour walltime)                                 |
+| ```srun -A <Coldfront_Allocation> -N1 -G1 --pty $SHELL```      | Submit an interactive job (reserves 1 Node, 1GPU, 1CPU, 6gb RAM, 1 hour walltime)                                 |
 | ```sbatch job.sh```             | submit the job script *job.sh*                                            |
 | ```sstat <job id>```                   | Check the status of the job given jobID                                         |
 |  ```sstat <job id> --format=AveCPU,AvePages,AveRSS,AveVMSize,JobID```             | Narrow some information on sstat                                       |
