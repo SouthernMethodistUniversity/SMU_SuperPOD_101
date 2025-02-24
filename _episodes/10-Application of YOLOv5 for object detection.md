@@ -27,7 +27,7 @@ $ git clone https://github.com/ultralytics/yolov5.git
 Prior to training YOLOv5 model, it's better to go to your own conda env and install the missing library. For simplicit, I use NEMO Container:
 
 ```bash
-$ srun -n1 --gres=gpu:1 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --time=12:00:00 --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N1 --gres=gpu:1 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --time=12:00:00 --pty $SHELL
 ```
 
 Go to yolov5 folder and install missing library
