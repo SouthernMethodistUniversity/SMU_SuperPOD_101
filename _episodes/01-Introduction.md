@@ -89,14 +89,14 @@ SuperPOD uses SLURM as scheduler so it is no different from M3 when requesting a
 For example, requesting a node with **1 GPU, 10 CPUs, 128gb memory for 12 hours**:
 
 ```
-$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
-$ srun -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
+$ srun -A <Coldfront_Allocation> -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N 1 -G 1 -c 10 --mem=128G --time=12:00:00 --pty bash
 ```
 
 For this workshop on campus, we do have available workshop queue (using flag **-p workshop**) for you (to speed up the process of requesting resources):
 
 ```
-$ srun -N 1 -G 1 -c 10 --mem=64G -p workshop --time=12:00:00 --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N 1 -G 1 -c 10 --mem=64G -p workshop --time=12:00:00 --pty $SHELL
 ```
 
 # Transfering data
