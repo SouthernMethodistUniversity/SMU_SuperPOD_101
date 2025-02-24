@@ -101,6 +101,7 @@ The following batch script is used to submit the training job using 8 GPUs and T
 
 ```
 #!/bin/bash
+#SBATCH -A <Coldfront_Allocation>
 #SBATCH -J CIFAR100M      # job name to display in squeue
 #SBATCH -c 16 --mem=750G      # requested partition
 #SBATCH -o output-%j.txt    # standard output file
