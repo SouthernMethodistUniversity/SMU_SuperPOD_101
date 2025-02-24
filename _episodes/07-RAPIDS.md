@@ -26,14 +26,14 @@ You can install interactively, first, you just need to request a GPU node and lo
 #### In M3:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 -p gpu-dev --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 -p gpu-dev --pty $SHELL
 $ module load conda
 ```
 
 #### In SuperPOD:
 
 ```bash
-$ srun -n1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N1 --gres=gpu:1 -c16 --mem=64gb --time=12:00:00 --pty $SHELL
 $ module load conda
 ```
 
@@ -70,7 +70,7 @@ $ enroot create nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh
 Once my docker container has been downloaded to my home/scratch/work directory, I can load it from login node:
 
 ```bash
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh --container-mounts=$WORK --pty $SHELL
+$ srun -A <Coldfront_Allocation> -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh --container-mounts=$WORK --pty $SHELL
 ```
 
 Your installation is done!
