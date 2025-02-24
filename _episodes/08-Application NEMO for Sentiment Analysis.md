@@ -46,7 +46,7 @@ curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
 ## Requesting a compute node with NeMo container enable with a GPU:
 
 ```
-srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.09.sqsh --container-mounts=$WORK --pty bash -i
+srun -A <Coldfront_Allocation> -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.09.sqsh --container-mounts=$WORK --pty bash -i
 ```
 
 ## Let's run Sentiment Analysis using NeMo
