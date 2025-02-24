@@ -29,7 +29,7 @@ Prepare the batch script with name: **modelCNN.sh** using the following content:
 
 ```bash
 #!/bin/bash
-#SBATCH -A Your_compute_allocation_name # Allocation resources given in Cold Front
+#SBATCH -A <Coldfront_Allocation> # Allocation resources given in Cold Front
 #SBATCH -J CNN_CIFAR10_SPOD       # job name to display in squeue
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
@@ -59,7 +59,7 @@ Prepare the batch script with name: **modelCNN_ngc.sh** using the following cont
 
 ```bash
 #!/bin/bash
-#SBATCH -A Your_compute_allocation_name # Allocation resources given in Cold Front
+#SBATCH -A <Coldfront_Allocation> # Allocation resources given in Cold Front
 #SBATCH -J CNN_CIFAR10_SPOD       # job name to display in squeue
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
