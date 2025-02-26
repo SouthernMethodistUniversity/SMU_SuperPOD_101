@@ -43,7 +43,7 @@ $ module load ollama
 Here we use Ollama models from STARS Project storage. Please inform me if you need access to that location.
 
 ```bash
-$ export OLLAMA_MODELS=/projects/tuev/oit_rts_star/oit_rts_star_storage/Ollama_models
+$ export OLLAMA_MODELS=/projects/tuev/LLMs/LLMs/Ollama_models/
 ```
 
 ### Step 4: Serve Ollama
