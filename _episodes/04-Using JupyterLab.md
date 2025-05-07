@@ -51,13 +51,13 @@ Go back to MobaXTerm and login into SuperPOD using regular SSH
 Request a compute node
         
 ```bash
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
+$ srun -A my_allocation -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```        
 Load cuda, cudnn and activate any of your conda environment, for example Tensorflow_2.9 in the home directory
    
 ```bash
-$ module load conda gcc; module load cuda; module load cudnn
-$ conda activate ~/tensorflow_2.9   
+$ module load conda gcc/13 cuda/12 cudnn/8.9
+$ conda activate ~/tensorflow_2.17   
 ``` 
    
 Make sure to install jupyter
