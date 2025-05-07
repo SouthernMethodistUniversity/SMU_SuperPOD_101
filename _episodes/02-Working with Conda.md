@@ -38,31 +38,31 @@ $ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty
 ### (2) Load cuda and cudnn module for GPU support
 
 ```bash
-$ module load conda gcc/11
-$ module load cuda/11
+$ module load conda gcc/13
+$ module load cuda/12
 $ module load cudnn/8
 ```
 
-### (3) Create Tensorflow environment with your prefered version of python
+### (3) Create Tensorflow environment with your prefered version of python, here let's use TF 2.17 with python 3.10
 
 ```bash
-$ conda create --prefix ~/tensorflow_2.9 python=3.8 pip --y
+$ conda create --prefix ~/tensorflow_2.17 python=3.10 pip --y
 ```
 
-The conda environment named **tensorflow_2.9** is created on your home directory
+The conda environment named **tensorflow_2.17** is created on your home directory
 
-### (4) Activate the conda environment and Install Tensorflow 2.9.1 (or your prefered TF version)
+### (4) Activate the conda environment and Install Tensorflow 2.17.1 (or your prefered TF version)
 
 ```bash
-$ conda activate ~/tensorflow_2.9/  
-$ pip install tensorflow==2.9.1
+$ conda activate ~/tensorflow_2.17/  
+$ pip install tensorflow==2.17.1
 ```
 
 Install ipkernel and create the kernel for Notebook
 
 ```bash
 $ pip install ipykernel
-$ python3 -m ipykernel install --user --name tensorflow_2.9 --display-name TensorflowGPU29
+$ python3 -m ipykernel install --user --name tensorflow_2.17 --display-name TensorflowGPU2.17
 ```
 
 ### (5) Once installation done, check if the conda environment is able to enable the GPU
