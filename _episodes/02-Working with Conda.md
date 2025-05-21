@@ -83,9 +83,11 @@ Similar to Tensorflow, one can create conda environment for Pytorch with GPUs su
 Following is the brief steps (3) to (5) to create the env and install Pytorch after requesting a node and load the libraries
 
 ```bash
-$ conda create --prefix ~/pytorch_1.13 python=3.8 pip --y
-$ source activate ~/pytorch_1.13
-$ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia --y
+$ module purge
+$ module load conda gcc/11 cuda/11 cudnn
+$ conda create --prefix ~/pytorch_2.5.1 pip --y
+$ conda activate ~/pytorch_2.5.1
+$ conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1  pytorch-cuda=11.8 -c pytorch -c nvidia
 $ python
 >>> import torch 
 >>> torch.cuda.is_available()
