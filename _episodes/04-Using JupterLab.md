@@ -47,7 +47,7 @@ Search for proxies and set a Socks proxy with sever localhost and port 8000.
 ## 4.2 Test Proxy
 #### 4.2.1. Test Proxy using conda environment:   
         
-Go back to MobaXTerm and login into SuperPOD using regular SSH 
+Go back to Terminal and login into SuperPOD using regular SSH 
 Request a compute node
         
 ```bash
