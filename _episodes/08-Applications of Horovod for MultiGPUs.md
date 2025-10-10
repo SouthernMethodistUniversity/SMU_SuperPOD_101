@@ -107,12 +107,11 @@ The following batch script is used to submit the training job using 8 GPUs and T
 #SBATCH -e error-%j.txt     # standard error file
 #SBATCH --gres=gpu:8
 #SBATCH -t 1440              # maximum runtime in minutes
-#SBATCH -D /work/users/tuev/cv1/cifar100/multi
 #SBATCH --exclusive
 #SBATCH --mail-user tuev@smu.edu
 #SBATCH --mail-type=end
 
-srun --container-image=$WORK/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --container-mounts=$WORK mpirun -np 8 --allow-run-as-root --oversubscribe python /work/users/tuev/cv1/cifar100/multi/cifar100spod-hvod.py
+srun --container-image=$HOME/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh mpirun -np 8 --allow-run-as-root --oversubscribe python /users/tuev/cv1/cifar100/multi/cifar100spod-hvod.py
 ```
 
 Make sure to use nvidia-smi to check the usage of all 8 GPUs
