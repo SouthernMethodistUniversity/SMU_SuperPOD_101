@@ -26,7 +26,6 @@ keypoints:
 | CPU Cores                   | 2,560                                         |
 | Total Memory                | 52.5 TB                                       |
 | Node Interconnect Bandwidth | 200 Gb/s Infiniband Connections Per Node |
-| Work Storage                | 768 TB (Shared)                               |
 | Scratch Storage             | 750 TB (Raw)                                  |
 | Archival Storage            | N/A                                           |
 | Operating System            | Ubuntu 20.04                                  |
@@ -41,7 +40,6 @@ keypoints:
 | Time Limit                  | 2 days                                        |
 | Home Storage                | 200gb (Independence from M3)                  |
 | Scratch Storage             | Unlimited (Independence from M3)              |
-| Work Storage                | 8TB (shared with M3)                          |
 
 Command to check number the configuration of All nodes:
 
@@ -53,22 +51,15 @@ $ sinfo --Format="PartitionName,Nodes:10,CPUs:8,Memory:12,Time:15,Features:18,Gr
 
 Note that: 
 - SuperPOD's home & scratch directory is different from M3's home.
-- However, both SuperPOD and M3 share the same $WORK storage
+- However, both SuperPOD and M3 share the same project work storage (refer to from SMU ColdFront HPC Management)
 
 Variable       | Path                       | Quota  | Usage                      |
 -------------- | -------------------------- | ------ | -------------------------  |
 ${HOME}        | /users/${USER}             | 200 GB | Home directory, backed up  |
-${WORK}        | /work/users/${USER}        | 8 TB   | Long term storage          |
 ${SCRATCH}     | /scratch/users/${USER}     | None   | Temporary scratch space    |
 ${JOB_SCRATCH} | /scratch/_tmp/${USER:0:1}/  | None   | Per job scratch space,    |
 ${JOB_SCRATCH} | ${USER}/${SLURM_JOB_ID}_   |        | ${SLURM_ARRAY_TASK_ID} is   |
 ${JOB_SCRATCH} | ${SLURM_ARRAY_TASK_ID}     |        | zero for standard jobs     |
-
-Command to check available data from your work storage:
-
-```
-$ lfs quota -h -u $USERNAME /work
-```
 
 # Login to SuperPOD
 
