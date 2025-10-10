@@ -14,20 +14,20 @@ keypoints:
 
 YOLOv5 🚀 is the world's most loved vision AI, representing Ultralytics open-source research into future vision AI methods, incorporating lessons learned and best practices evolved over thousands of hours of research and development.
 
-To download YOLO, simply go to the github page and clone it to your home or work directory:
+To download YOLO, simply go to the github page and clone it to your home or project work directory:
 
 ```bash
 $ git clone https://github.com/ultralytics/yolov5.git
 ```
 
-**Suggestion:**: It is better to use $WORK directory to store the code and data to avoid jamming up your $HOME directory
+**Suggestion:**: It is better to use project work directory (pls consult SMU ColdFront page) to store the code and data to avoid jamming up your $HOME directory
 
 ## Open Conda env and install requirement
 
 Prior to training YOLOv5 model, it's better to go to your own conda env and install the missing library. For simplicit, I use NEMO Container:
 
 ```bash
-$ srun -n1 --gres=gpu:1 --container-image $WORK/sqsh/nvidia+nemo+22.04.sqsh --container-mounts=$WORK --time=12:00:00 --pty $SHELL
+$ srun -n1 --gres=gpu:1 --container-image ./sqsh/nvidia+nemo+22.04.sqsh --time=12:00:00 --pty $SHELL
 ```
 
 Go to yolov5 folder and install missing library
@@ -123,16 +123,16 @@ YOLOv5 🚀 v7.0-56-gc0ca1d2 Python-3.8.13 torch-1.13.0a0+d0d6b1f CUDA:0 (NVIDIA
 
 Fusing layers... 
 Model summary: 157 layers, 7225885 parameters, 0 gradients, 16.4 GFLOPs
-video 1/1 (1/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 156.8ms
-video 1/1 (2/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
-video 1/1 (3/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
-video 1/1 (4/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
-video 1/1 (5/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
-video 1/1 (6/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
-video 1/1 (7/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 3 trains, 8.1ms
-video 1/1 (8/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
-video 1/1 (9/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
-video 1/1 (10/120) /work/users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (1/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 156.8ms
+video 1/1 (2/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (3/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (4/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (5/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (6/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (7/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 3 trains, 8.1ms
+video 1/1 (8/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.1ms
+video 1/1 (9/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
+video 1/1 (10/120) /users/tuev/YOLO/test/before_short.mp4: 384x640 2 trains, 8.2ms
 Speed: 0.3ms pre-process, 9.4ms inference, 2.2ms NMS per image at shape (1, 3, 640, 640)
 Results saved to runs/detect/exp2
 ```
