@@ -34,7 +34,6 @@ Here we use this [sentiment sample](https://docs.nvidia.com/deeplearning/nemo/us
 We download the Stanford Sentiment Treebank v2 (SST-2) and preprocess to nemo format for training and testing data
 
 ```
-cd $WORK
 mkdir nemo && cd nemo
 
 curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
@@ -46,7 +45,7 @@ curl -s -O https://dl.fbaipublicfiles.com/glue/data/SST-2.zip\
 ## Requesting a compute node with NeMo container enable with a GPU:
 
 ```
-srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+nemo+22.09.sqsh --container-mounts=$WORK --pty bash -i
+srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $HOME/sqsh/nvidia+nemo+22.09.sqsh --container-mounts=$HOME --pty bash -i
 ```
 
 ## Let's run Sentiment Analysis using NeMo
@@ -54,7 +53,7 @@ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+
 - Computation using 2 GPUs and 20 epochs
 
 ```
-cd $WORK/nemo/SST-2
+cd ./nemo/SST-2
 python /workspace/nemo/examples/nlp/text_classification/text_classification_with_bert.py \
       model.dataset.num_classes=2 \
       model.dataset.max_seq_length=256 \
