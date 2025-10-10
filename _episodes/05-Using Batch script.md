@@ -16,10 +16,9 @@ SuperPOD uses SLURM as scheduler so there is no difference in running Batch scri
 
 Following are the instructions on how to run Batch script for a Computer Vision sample using [CIFAR10 data](https://www.cs.toronto.edu/~kriz/cifar.html). Here, I use a python file called model_CNN_CIFAR10.py. 
 
-The file can be downloaded from here to your $WORK folder:
+The file can be downloaded from here to your folder:
 
 ```bash
-$ cd $WORK
 $ wget https://raw.githubusercontent.com/SouthernMethodistUniversity/SMU_SuperPOD_101/e6315c29ca0542351b79233729708dfa16161cdf/files/model_CNN_CIFAR10.py
 ```
 
@@ -33,8 +32,6 @@ Prepare the batch script with name: **modelCNN.sh** using the following content:
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
 #SBATCH -G 1                      # request 1 gpu a100
-#SBATCH -p workshop               # request queue name workshop (optional)
-#SBATCH -D /work/users/tuev       # link to your folder
 #SBATCH --mem=32gb                # request 32gb memory
 #SBATCH --mail-user tuev@smu.edu  # request to email to your emailID
 #SBATCH --mail-type=end           # request to mail when the model **end**
@@ -62,12 +59,11 @@ Prepare the batch script with name: **modelCNN_ngc.sh** using the following cont
 #SBATCH -t 60                     # maximum runtime in minutes
 #SBATCH -c 2                      # request 2 cpus    
 #SBATCH -G 1                      # request 1 gpu a100
-#SBATCH -p workshop               # request queue name workshop (optional)
 #SBATCH --mem=32gb                # request 32gb memory
 #SBATCH --mail-user tuev@smu.edu  # request to email to your emailID
 #SBATCH --mail-type=end           # request to mail when the model **end**
 
-srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python $WORK/model_CNN_CIFAR10.py
+srun --container-image=/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh python ./sqsh/model_CNN_CIFAR10.py
 ```
 
 Be on login node to submit the batch script:
