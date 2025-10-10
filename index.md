@@ -6,7 +6,7 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 
 > ## Instructor
 > - **Instructor**: Tue Vu, PhD
-> - **Office**: 119 Ford Hall, SMU
+> - **Office**: 332 Frances Anne Moody Hall, SMU
 > - **Email**: tuev@smu.edu
 {: .prereq}
 
