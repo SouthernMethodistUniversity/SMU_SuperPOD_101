@@ -67,10 +67,10 @@ $ enroot import docker://nvcr.io#nvidia/rapidsai/rapidsai:cuda11.2-runtime-cento
 $ enroot create nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh
 ```
 
-Once my docker container has been downloaded to my home/scratch/work directory, I can load it from login node:
+Once my docker container has been downloaded to my $HOME directory, I can load it from login node:
 
 ```bash
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh --container-mounts=$WORK --pty $SHELL
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $HOME/sqsh/nvidia+rapidsai+rapidsai+cuda11.2-runtime-centos7-py3.10.sqsh --pty $SHELL
 ```
 
 Your installation is done!
