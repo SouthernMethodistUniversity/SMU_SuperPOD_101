@@ -25,7 +25,7 @@ Transfer learning is especially powerful when we do not have a large and varied 
 Here we just use a simple tensorflow conda environment or container:
 
 ```bash
-$ srun -n1 -G1 --container-image $WORK/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --container-mounts=$WORK --time=12:00:00 --pty bash -i
+$ srun -n1 -G1 --container-image $HOME/sqsh/nvidia+tensorflow+22.02-tf2-py3.sqsh --time=12:00:00 --pty bash -i
 ```
 
 ## Objective
