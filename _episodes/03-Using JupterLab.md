@@ -85,10 +85,11 @@ The following information was copied to the memory when selecting the 22.12-tf2 
 nvcr.io/nvidia/tensorflow:22.12-tf2-py3
 ```
 
-- Im gonna download the version 22.12 tf2 to my **work** location using **enroot**, pay attention to the syntax difference when pasting:
+- Im gonna download the version 22.12 tf2 using **enroot**, pay attention to the syntax difference when pasting:
 
 ```
-$ cd $WORK/sqsh
+$ mkdir sqsh
+$ cd sqsh
 $ enroot import docker://nvcr.io#nvidia/tensorflow:22.12-tf2-py3
 ```
 
@@ -105,13 +106,11 @@ $ enroot create nvidia+tensorflow+22.12-tf2-py3.sqsh
 Once the container is import and created into your folder in SuperPOD, you can simply activate it from login node when requesting a compute node:
 
 ```
-$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $WORK/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK --pty $SHELL
+$ srun -N1 -G1 -c10 --mem=64G --time=12:00:00 --container-image $HOME/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --pty $SHELL
 
 ```
 
-- Once loaded, you are placed into **/workspace** which is the container local storage. You can navigate to your **$HOME or $WORK** folder freely.
-
-- Note that in this example, I mounted the container to **$WORK** location only but you can always mount it to your own working directory
+- Once loaded, you are placed into **/workspace** which is the container local storage. You can navigate to your **$HOME** folder freely.
 
 ### Check the GPU enable:
 
@@ -138,7 +137,7 @@ Exit the container using **exit** command.
 #SBATCH -t 1440              # maximum runtime in minutes
 #SBATCH -D /link-to-your-folder/
 
-srun --container-image=/work/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh --container-mounts=$WORK python testing.py
+srun --container-image=/users/tuev/sqsh/nvidia+tensorflow+22.12-tf2-py3.sqsh python testing.py
 ```
 
 - Content of **testing.py**
@@ -177,8 +176,4 @@ http://bcm-dgxa100-0001:8888/?token=fd6495a28350afe11f0d0489755bc3cfd18f88937185
 
 ![image](https://user-images.githubusercontent.com/43855029/211891739-ecb6e633-6fbd-45f2-ba0c-7e917a716da1.png)
 
-**Tip**: Once forwarding to Jupter Lab, you are placed in container's root. It's recommended to create a symlink for your folder in order to navigate away:
 
-```bash
-$ ln -s $WORK work
-```
