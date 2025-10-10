@@ -30,7 +30,8 @@ Next, let's create a conda environment for Tensorflow 2.9, here are the steps:
 
 ### (1) Request a compute node with 1 GPU
 
-Make sure you have your own allocation name 
+Make sure you have your own allocation name, in this case ```tuev_oitrts_workshop_0001``` was allocated via SMU ColdFront HPC Management
+
 ```bash
 $ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```
