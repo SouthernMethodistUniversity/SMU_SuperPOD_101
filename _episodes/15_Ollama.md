@@ -5,9 +5,9 @@ exercises: 0
 questions:
 - "How to use Ollama"
 objectives:
-- "OLLAMA on SuperPOD"
+- "OLLAMA on HPC: M3/SuperPOD"
 keypoints:
-- "Meta, Ollama, SuperPOD"
+- "Ollama, SuperPOD"
 ---
 
 # OLLAMA
@@ -19,34 +19,57 @@ keypoints:
 - **Customization**: Users can create and customize their own models using a straightforward API, allowing for tailored solutions to specific tasks. 
 - **Cross-Platform Support**: Ollama is compatible with macOS, Linux, and Windows operating systems, ensuring broad accessibility. 
 
-## Ollama on SuperPOD
-- Although user can run Ollama on their personal PCs but with very large LLM model like LLAMA3 with 70B or 450B, you would need a strong GPU as A100 in SuperPOD
+## Ollama on HPC: M3/SuperPOD
+- Although user can run Ollama on their personal PCs but with very large LLM model like LLAMA3 with 70B or 450B, you would need a strong GPU as A100 in SuperPOD or at least V100 GPU on M3
 - The model like LLAMA3 450B can easily consumes 200gb storage of your PCs, so we have that saved locally for user to just load and run it
-- Ollama version 4 has been pre-installed as module on SuperPOD, making it easier to work with
+- Ollama version 0.12 has been pre-installed as module on M3/SuperPOD, making it easier to work with
 
-## How to use LLaMA3 on SuperPOD
+## How to use Ollama on HPC: M3/SuperPOD terminal?
 
 ### Step 1: request a compute node with 1 GPU:
 
+M3: 
+
 ```bash
-$ srun -A Allocation -N1 -G1 --mem=64gb --time=12:00:00 --pty $SHELL
+$ srun -A Allocation -N1 -G1 --mem=64gb --time=4:00:00 -p gpu-dev --pty $SHELL
+```
+
+SuperPOD:
+
+```bash
+$ srun -A Allocation -N1 -G1 --mem=64gb --time=4:00:00 --pty $SHELL
 ```
 
 ### Step 2: Load Ollama model:
+- Currently only version 0.12.11 is used.
 
 ```bash
-$ module load ollama
+$ module load testing/ollama/0.12.11
 ```
 
 ### Step 3: Export path to Ollama model
 
-Here we use Ollama models from STARS Project storage. Please inform me if you need access to that location.
+- By default, your Ollama storage will be your $HOME location. You will need to manually pull LLMs from ollama.com; However, if you want to utilize our existing LLMs that we have downloaded, **Please inform me to add your username to access to that location.**
+
+- Note that the following command is only for whom who has access to our location:
 
 ```bash
-$ export OLLAMA_MODELS=/projects/tuev/LLMs/LLMs/Ollama_models/
+$ export OLLAMA_BASE_DIR=/projects/tuev/LLMs/LLMs/Ollama_models/
 ```
 
 ### Step 4: Serve Ollama
+
+There are several command:
+
+```
+$ ollama --version & # to check the version of ollama
+# ollama list & # to list all downloaded LLMs to the location where you specified OLLAMA_BASE_DIR
+$ ollama serve & # to initialize ollama
+$ ollama pull LLMs_name # to download LLMs
+$ ollama run LLMS_name # to run LLMs
+```
+
+Before you can run anything with Ollama, you have to serve it first:
 
 ```bash
 $ ollama serve &
@@ -55,7 +78,7 @@ $ ollama serve &
 ### Step 5: Now Ollama has been loaded and served. Let's check the local models:
 
 ```bash
-$ ollama list
+$ ollama list &
 ```
 
 You should see the screen like this:
@@ -87,5 +110,64 @@ $ ollama run llama3:70
 
 ```bash
 $ killall ollama
+```
+
+
+## How to run Ollama on M3 using Open OnDemand portal: hpc.m3.smu.edu?
+
+### Step 1. Login to Open OnDemand portal as usual
+- Select JupyterLab
+
+### Step 2: JupyterLab's Custom Environment setting
+- The key thing here is to initialize Ollama module, setup base directory and serve the model before hand.
+- Put in the following code to Custom environment settings: (Note the OLLAMA_BASE_DIR is set to mine, email me at tuev@smu.edu if you want to be added to that storage, default is your home directory)
+
+```
+module load testing/ollama/0.12.11
+export OLLAMA_BASE_DIR=/projects/tuev/LLMs/LLMs/Ollama_models
+ollama serve &
+```
+
+### Step 3: Select gpu-dev partition
+- Ollama need gpu to run faster, so it is neccesary to use this partition to request GPU for your node
+- Note that gpu-dev has max walltime of 4 hours, so you have to select Time (hours) accordingly
+
+### Step 4: Click launch and open a Jupyter Notebook.
+- Note that here I use my own kernel with conda environment that I preinstall langchain. You can also create your own conda env.
+- Following is the code that run:
+
+```
+import ollama
+import subprocess
+import os
+# --- LLM & RAG ---
+from langchain_community.chat_models import ChatOllama
+
+# get home and job id
+home_dir =  os.getenv('HOME')
+job_id = os.getenv('SLURM_JOB_ID')
+
+# get ollama directory or default to home
+ollama_dir = os.getenv('OLLAMA_BASE_DIR', home_dir)
+
+try:
+    with open(f"{ollama_dir}/ollama/host_{job_id}.txt") as f:
+        HOST = f.read().strip()
+    with open(f"{ollama_dir}/ollama/port_{job_id}.txt") as f:
+        PORT = f.read().strip()
+    ollama_url = f"http://{HOST}:{PORT}"
+except Exception as e:
+    print("[⚠️] Could not read host/port, you manually set the `ollama_url` below.")
+
+
+chat_model = ChatOllama(
+            base_url=ollama_url,
+            model="gpt-oss:20b",
+            temperature=0,
+        )
+
+response = chat_model.invoke("Where is SMU")
+print(response.content)
+
 ```
 
