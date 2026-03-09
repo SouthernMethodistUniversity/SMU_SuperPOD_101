@@ -96,5 +96,3 @@ True
 >>> torch.cuda.device_count()
 1
 ```
-
-
