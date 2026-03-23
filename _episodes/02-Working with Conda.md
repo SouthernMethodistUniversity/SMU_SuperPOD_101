@@ -33,15 +33,13 @@ Next, let's create a conda environment for Tensorflow 2.9, here are the steps:
 Make sure you have your own allocation name, in this case ```tuev_oitrts_workshop_0001``` was allocated via SMU ColdFront HPC Management
 
 ```bash
-$ srun -A tuev_oitrts_workshop_0001 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
+$ srun -A tuev_oitrts_workshop_0002 -N1 -G1 -c10 --mem=64G --time=12:00:00 --pty $SHELL
 ```
 
 ### (2) Load cuda and cudnn module for GPU support
 
 ```bash
-$ module load conda gcc/13
-$ module load cuda/12
-$ module load cudnn/8
+$ module load conda gcc/13 cuda/12 cudnn/9
 ```
 
 ### (3) Create Tensorflow environment with your prefered version of python, here let's use TF 2.17 with python 3.10
